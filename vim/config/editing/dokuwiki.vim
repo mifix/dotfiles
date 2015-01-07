@@ -1,0 +1,2 @@
+
+NeoBundle 'nblock/vim-dokuwiki'

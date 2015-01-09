@@ -48,6 +48,10 @@ nmap <silent> <leader>s :set spell!<CR>
 nmap <leader>L :lprevious<CR>
 nmap <leader>l :lnext<CR>
 
+" ========================================
+" Settings for various filetypes
+" ========================================
+
 
 " ========================================
 " Custom behaviour

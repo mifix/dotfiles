@@ -2,3 +2,4 @@ vim/bundle/**
 vim/spell/**
 !vim/vundle
 !vim/bundle/neobundle.vim
+vim/bundle/.neobundle/

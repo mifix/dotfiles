@@ -7,7 +7,7 @@ if has('vim_starting')
   set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
 
-call neobundle#rc(expand('~/.vim/bundle/'))
+call neobundle#begin(expand('~/.vim/bundle/'))
 
 " Let NeoBundle manage NeoBundle
 NeoBundleFetch 'Shougo/neobundle.vim'
@@ -30,6 +30,8 @@ endfor
 source ~/.vim/config/custom/mail.vim
 source ~/.vim/config/programming/ruby_rails/endwise.vim
 source ~/.vim/custom.vim
+
+call neobundle#end()
 
 " ================ General Config ====================
 

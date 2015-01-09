@@ -8,7 +8,11 @@ let g:unite_split_rule = 'botright'
 
 
 let g:unite_source_history_yank_enable = 1
+try
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
+catch
+  " noop
+endtry
 nnoremap <leader>, :<C-u>Unite -no-split -buffer-name=files   -start-insert buffer file_rec/async:!<cr>
 "nnoremap <leader>m :<C-u>Unite -no-split -buffer-name=mru     -start-insert file_mru<cr>
 nnoremap <leader>y :<C-u>Unite -no-split -buffer-name=yank    history/yank<cr>

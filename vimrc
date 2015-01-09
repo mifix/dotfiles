@@ -120,4 +120,4 @@ set pastetoggle=<F2>
 set showmode
 
 
-" NeoBundleCheck
+NeoBundleCheck

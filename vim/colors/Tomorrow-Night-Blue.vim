@@ -256,6 +256,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 		call <SID>X("CursorColumn", "", s:line, "none")
 		call <SID>X("PMenu", s:foreground, s:selection, "none")
 		call <SID>X("PMenuSel", s:foreground, s:selection, "reverse")
+		call <SID>X("SignColumn", "", s:background, "none")
 	end
 	if version >= 703
 		call <SID>X("ColorColumn", "", s:line, "none")
@@ -314,7 +315,22 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 	call <SID>X("pythonInclude", s:purple, "", "")
 	call <SID>X("pythonStatement", s:purple, "", "")
 	call <SID>X("pythonConditional", s:purple, "", "")
+	call <SID>X("pythonRepeat", s:purple, "", "")
+	call <SID>X("pythonException", s:purple, "", "")
 	call <SID>X("pythonFunction", s:blue, "", "")
+
+	" Go Highlighting
+	call <SID>X("goStatement", s:purple, "", "")
+	call <SID>X("goConditional", s:purple, "", "")
+	call <SID>X("goRepeat", s:purple, "", "")
+	call <SID>X("goException", s:purple, "", "")
+	call <SID>X("goDeclaration", s:blue, "", "")
+	call <SID>X("goConstants", s:yellow, "", "")
+	call <SID>X("goBuiltins", s:orange, "", "")
+
+	" CoffeeScript Highlighting
+	call <SID>X("coffeeKeyword", s:purple, "", "")
+	call <SID>X("coffeeConditional", s:purple, "", "")
 
 	" JavaScript Highlighting
 	call <SID>X("javaScriptBraces", s:foreground, "", "")
@@ -323,6 +339,12 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 	call <SID>X("javaScriptRepeat", s:purple, "", "")
 	call <SID>X("javaScriptNumber", s:orange, "", "")
 	call <SID>X("javaScriptMember", s:orange, "", "")
+
+	" HTML Highlighting
+	call <SID>X("htmlTag", s:red, "", "")
+	call <SID>X("htmlTagName", s:red, "", "")
+	call <SID>X("htmlArg", s:red, "", "")
+	call <SID>X("htmlScriptTag", s:red, "", "")
 
 	" Diff Highlighting
 	call <SID>X("diffAdded", s:green, "", "")

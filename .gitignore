@@ -4,3 +4,7 @@ vim/spell/**
 !vim/bundle/neobundle.vim
 vim/bundle/.neobundle/
 vim/.netrwhist
+tmux/plugins/*
+!tmux/plugins/tpm
+tmux/resurrect
+tmux/sidebar

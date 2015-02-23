@@ -1,8 +1,5 @@
 set background=dark
-colorscheme atom
-
-let g:airline_powerline_fonts = 1
-let g:airline_theme = 'luna'
+colorscheme xoria256
 
 
 if has("gui_running")
@@ -16,3 +13,28 @@ if has("gui_running")
   " set guifont=Meslo\ LG\ S\ for\ Powerline\ 11
   " set guifont=Ubuntu\ Mono\ 12
 endif
+
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ], ['ctrlpmark'] ],
+      \   'right': [ [ 'syntastic', 'lineinfo' ], ['percent'], [ 'fileformat', 'fileencoding', 'filetype' ] ]
+      \ },
+      \ 'component_function': {
+      \   'fugitive': 'MyFugitive',
+      \   'filename': 'MyFilename',
+      \   'fileformat': 'MyFileformat',
+      \   'filetype': 'MyFiletype',
+      \   'fileencoding': 'MyFileencoding',
+      \   'mode': 'MyMode',
+      \   'ctrlpmark': 'CtrlPMark',
+      \ },
+      \ 'component_expand': {
+      \   'syntastic': 'SyntasticStatuslineFlag',
+      \ },
+      \ 'component_type': {
+      \   'syntastic': 'error',
+      \ },
+      \ 'separator': { 'left': '', 'right': ''  },
+      \ 'subseparator': { 'left': '', 'right': ''  }
+      \ }

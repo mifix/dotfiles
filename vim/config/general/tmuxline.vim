@@ -3,10 +3,10 @@
 NeoBundle "edkolev/tmuxline.vim"
 
 let g:tmuxline_separators = {
-    \ 'left' : '⮀',
-    \ 'left_alt': '⮁',
-    \ 'right' : '⮂',
-    \ 'right_alt' : '⮃',
+    \ 'left' : '',
+    \ 'left_alt': '',
+    \ 'right' : '',
+    \ 'right_alt' : '',
     \ 'space' : ' '}
 
 " let g:tmuxline_preset = {

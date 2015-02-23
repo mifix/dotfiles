@@ -29,9 +29,11 @@ for plugin_file in split(glob('~/.vim/config/**/*/*.vim'), '\n')
 endfor
 source ~/.vim/config/custom/mail.vim
 source ~/.vim/config/programming/ruby_rails/endwise.vim
-source ~/.vim/custom.vim
 
 call neobundle#end()
+
+" keep this after neobundle#end to ensure all plugins are loaded
+source ~/.vim/custom.vim
 
 " ================ General Config ====================
 

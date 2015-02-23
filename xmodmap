@@ -1,3 +1,3 @@
-# map CapsLock to F10
-clear Lock
+clear lock
 keycode 66 = F10
+keycode 191 = Caps_Lock

@@ -5,7 +5,11 @@ NeoBundle 'janko-m/vim-test'
 NeoBundle 'tpope/vim-dispatch'
 
 
-let g:test#strategy = 'dispatch'
+" Send command from vim to a running tmux session
+NeoBundle 'jgdavey/tslime.vim'
+
+
+let g:test#strategy = 'tslime'
 
 nmap <silent> <leader>t :TestNearest<CR>
 nmap <silent> <leader>T :TestFile<CR>

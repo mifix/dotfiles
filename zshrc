@@ -34,6 +34,9 @@ alias remove_key="ssh-keygen -f ~/.ssh/known_hosts -R"
 #   [ -n "$file"   ] && ${EDITOR:-vim} "$file"
 # }
 
+if [[ "$COLORTERM" == "xfce4-terminal" ]]; then
+  export TERM=xterm-256color
+fi
 
 autoload bashcompinit
 bashcompinit

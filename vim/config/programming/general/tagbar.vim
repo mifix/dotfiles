@@ -6,6 +6,6 @@
 " displayed under the class they are defined in.
 NeoBundle "majutsushi/tagbar"
 let g:tagbar_usearrows = 1
-noremap <leader>T :TagbarToggle<CR>
+noremap <leader>tb :TagbarToggle<CR>
 
-"! ,T - toggle Tagbar window
+"! ,tb - toggle Tagbar window

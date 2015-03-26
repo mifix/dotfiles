@@ -8,6 +8,7 @@ set clipboard=unnamed
 " something else to 'add mark'.
 nnoremap gm m
 
+let g:EasyClipUseYankDefaults = 0
 
 let g:EasyClipUseSubstituteDefaults = 1
 let g:EasyClipAlwaysMoveCursorToEndOfPaste = 1

@@ -23,6 +23,7 @@ alias open="xdg-open"
 alias d="docker"
 
 export EDITOR=vim
+export VISUAL=vim
 alias remove_key="ssh-keygen -f ~/.ssh/known_hosts -R"
 
 

@@ -56,7 +56,7 @@ set hidden
 "turn on syntax highlighting
 syntax on
 set t_Co=256
-set synmaxcol=100
+set synmaxcol=200
 set encoding=utf-8
 set termencoding=utf-8
 

@@ -3,6 +3,8 @@ vim/spell/**
 !vim/vundle
 !vim/bundle/neobundle.vim
 vim/bundle/.neobundle/
+vim/undos/*
+!vim/undos/.gitkeep
 vim/.netrwhist
 tmux/plugins/*
 !tmux/plugins/tpm

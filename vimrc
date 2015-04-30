@@ -69,11 +69,20 @@ set smartcase        "Override the 'ignorecase' option if the search
                      "pattern contains upper case characters.
 set viminfo='100,f1  "Save up to 100 marks, enable capital marks
 
-" ================ Turn Off Swap Files ==============
+" ================ Swap, Backup and Undo ==============
 
 set noswapfile
 set nobackup
 set nowb
+
+if has('persistent_undo')
+  let undodir = expand("~/.vim/undos/$USER")
+  if !isdirectory(undodir)
+    call mkdir(undodir)
+  endif
+  set undodir=~/.vim/undos/$USER/
+  set undofile
+endif
 
 " ================ Indentation ======================
 

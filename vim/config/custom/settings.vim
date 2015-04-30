@@ -24,7 +24,7 @@ inoremap <M-o>       <Esc>o
 "! <C-k> || ->
 "! ;; || append ; at end of line and save
 inoremap ;;  <ESC>A;<Esc>:w<CR>
-imap <C-k> ->
+" imap <C-k> ->
 ""! <C-l> || =>
 "imap <C-l> <space>=><space>
 

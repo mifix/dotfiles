@@ -126,6 +126,7 @@ set wildignore=*.o,*.obj,*~ "stuff to ignore when tab completing
 set scrolloff=8         "Start scrolling when we're 8 lines away from margins
 set sidescrolloff=15
 set sidescroll=1
+set nostartofline
 
 " ================ Paste  ========================
 nnoremap <F2> :set invpaste paste?<CR>

@@ -21,3 +21,5 @@ cmap <c-v> <plug>EasyClipCommandModePaste
 
 nmap <leader>cf <plug>EasyClipToggleFormattedPaste
 
+
+vmap <Leader>y "+y

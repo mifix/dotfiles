@@ -14,13 +14,6 @@ nmap <CR> :w<CR>
 "! jj || Switch to normal mode like a boss
 inoremap jj <Esc>:w<CR>
 
-"! ,dd || Close buffer
-noremap <silent> ,dd :close<CR>
-
-"! K || Split line
-nmap K i<cr><esc>k
-
-inoremap <M-o>       <Esc>o
 "! <C-k> || ->
 "! ;; || append ; at end of line and save
 inoremap ;;  <ESC>A;<Esc>:w<CR>
@@ -52,6 +45,32 @@ nmap <leader>l :lnext<CR>
 " Settings for various filetypes
 " ========================================
 
+" ========================================
+" Buffer navigation
+" ========================================
+
+
+"! ,dd || Close buffer
+noremap <silent> ,dd :bw<CR>
+
+nnoremap H :bp<CR>
+nnoremap L :bn<CR>
+
+nnoremap <Leader>j :e#<CR>
+nnoremap <Leader>l :ls<CR>
+nnoremap <Leader>b :bp<CR>
+nnoremap <Leader>f :bn<CR>
+nnoremap <Leader>g :e#<CR>
+nnoremap <Leader>1 :1b<CR>
+nnoremap <Leader>2 :2b<CR>
+nnoremap <Leader>3 :3b<CR>
+nnoremap <Leader>4 :4b<CR>
+nnoremap <Leader>5 :5b<CR>
+nnoremap <Leader>6 :6b<CR>
+nnoremap <Leader>7 :7b<CR>
+nnoremap <Leader>8 :8b<CR>
+nnoremap <Leader>9 :9b<CR>
+nnoremap <Leader>0 :10b<CR>
 
 " ========================================
 " Custom behaviour

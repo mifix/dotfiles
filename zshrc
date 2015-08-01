@@ -43,3 +43,7 @@ autoload bashcompinit
 bashcompinit
 
 source /opt/sneezy/sneezy_env.sh
+
+alias av="ansible-vault --vault-password-file ~/.vault-pass.txt"
+
+export GOPATH=~/Work/Workspace/go

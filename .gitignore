@@ -11,3 +11,4 @@ tmux/plugins/*
 tmux/resurrect
 tmux/sidebar
 tags
+Session.vim

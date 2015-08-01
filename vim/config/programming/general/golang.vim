@@ -23,6 +23,11 @@ au FileType go nmap <leader>gc <Plug>(go-coverage)
 "!, ge - Go rename
 au FileType go nmap <Leader>ge <Plug>(go-rename)
 
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
 
 let g:go_fmt_command = "goimports"
 

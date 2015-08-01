@@ -17,7 +17,7 @@ nnoremap <leader>, :<C-u>Unite -no-split -buffer-name=files   -start-insert buff
 "nnoremap <leader>m :<C-u>Unite -no-split -buffer-name=mru     -start-insert file_mru<cr>
 nnoremap <leader>y :<C-u>Unite -no-split -buffer-name=yank    history/yank<cr>
 "#nnoremap <leader>k :<C-u>Unite -no-split -buffer-name=buffer  -start-insert buffer<cr>
-nnoremap <leader>s :Unite -quick-match buffer<cr>
+"nnoremap <leader>s :Unite -quick-match buffer<cr>
 
 
 " Custom mappings for the unite buffer

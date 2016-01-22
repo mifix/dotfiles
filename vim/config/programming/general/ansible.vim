@@ -1,1 +1,1 @@
-NeoBundle "chase/vim-ansible-yaml"
+NeoBundle "pearofducks/ansible-vim"

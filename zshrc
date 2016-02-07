@@ -15,7 +15,7 @@ fi
 fpath=("$HOME/.dotfiles/zsh/pass.zsh-completion" $fpath)
 
 #export PATH=$PATH:~/bin:~/.rbenv/bin:~/Software/packer
-export PATH=$PATH:~/bin:~/Software/packer:~/Software/icdiff
+export PATH=$PATH:~/bin:~/.local/bin:~/Software/packer:~/Software/icdiff
 #eval "$(rbenv init -)"
 
 alias v="vagrant"

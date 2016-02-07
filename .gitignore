@@ -12,3 +12,6 @@ tmux/resurrect
 tmux/sidebar
 tags
 Session.vim
+nvim/plugged/*
+nvim/.netrwhist
+nvim/.init.vim-rplugin~

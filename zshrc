@@ -21,10 +21,13 @@ export PATH=$PATH:~/bin:~/.local/bin:~/Software/packer:~/Software/icdiff
 alias v="vagrant"
 alias open="xdg-open"
 alias d="docker"
+alias dc="docker-compose"
+alias ssh="LC_ALL=en_US.UTF-8 ssh"
+alias hosts="sudo vim /etc/hosts"
 
 export EDITOR=vim
 export VISUAL=vim
-alias remove_key="ssh-keygen -f ~/.ssh/known_hosts -R"
+#alias remove_key="ssh-keygen -f ~/.ssh/known_hosts -R"
 
 
 export FZF_DEFAULT_COMMAND='ag -l -g ""'
@@ -70,3 +73,9 @@ export GOPATH=~/Work/Workspace/go
 
 keychain -q $HOME/.ssh/id_rsa
 source ~/.keychain/`hostname`-sh
+
+# The next line updates PATH for the Google Cloud SDK.
+source '/home/mayer/tmp/gcloud/google-cloud-sdk/path.zsh.inc'
+
+# The next line enables shell command completion for gcloud.
+source '/home/mayer/tmp/gcloud/google-cloud-sdk/completion.zsh.inc'

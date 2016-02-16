@@ -35,7 +35,7 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 source ~/.fzf.zsh
 export FZF_COMPLETION_TRIGGER=''
 bindkey '^T' fzf-completion
-#bindkey '^I' $fzf_default_completion
+bindkey '^I' $fzf_default_completion
 
 # fe [FUZZY PATTERN] - Open the selected file with the default editor
 #   - Bypass fuzzy finder if there's only one match (--select-1)
@@ -58,6 +58,15 @@ fo() {
   fi
 }
 
+# fbr - checkout git branch (including remote branches)
+fbr() {
+  local branches branch
+  branches=$(git branch --all | grep -v HEAD) &&
+  branch=$(echo "$branches" |
+           fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m) &&
+  git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
+}
+
 if [[ "$COLORTERM" == "xfce4-terminal" ]]; then
   export TERM=xterm-256color
 fi
@@ -74,8 +83,3 @@ export GOPATH=~/Work/Workspace/go
 keychain -q $HOME/.ssh/id_rsa
 source ~/.keychain/`hostname`-sh
 
-# The next line updates PATH for the Google Cloud SDK.
-source '/home/mayer/tmp/gcloud/google-cloud-sdk/path.zsh.inc'
-
-# The next line enables shell command completion for gcloud.
-source '/home/mayer/tmp/gcloud/google-cloud-sdk/completion.zsh.inc'

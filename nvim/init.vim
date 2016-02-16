@@ -13,12 +13,20 @@ call plug#begin('~/.config/nvim/plugged')
 " }
 
 " ================ Load Plugins ======================== {
-for plugin_file in split(glob('~/.config/nvim/config/*.vim'), '\n')
-     exe 'silent source' plugin_file
+"
+" Set befor loading plugins
+" Change leader to a comma because the backslash is too far away
+" That means all \x commands turn into ,x
+let mapleader=","
+
+
+
+for plugin_file in split(glob('~/.config/nvim/colorschemes/*.vim'), '\n')
+  exe 'silent source' plugin_file
 endfor
 
 for plugin_file in split(glob('~/.config/nvim/config/**/*/*.vim'), '\n')
-     exe 'silent source' plugin_file
+  exe 'silent source' plugin_file
 endfor
 
 call plug#end()
@@ -29,9 +37,11 @@ source ~/.config/nvim/custom.vim
 
 " Automatically install missing plugins on startup
 if !empty(filter(copy(g:plugs), '!isdirectory(v:val.dir)'))
-  :PlugInstall
+  echo "To install missing plugins, run :PlugInstall"
+  " :PlugInstall
 endif
 " }
+
 
 " ================ General Config ==================== {
 
@@ -58,11 +68,81 @@ set synmaxcol=200
 set encoding=utf-8
 set termencoding=utf-8
 " }
+" ================ Search Settings  =================
+
+set incsearch        "Find the next match as we type the search
+set hlsearch         "Hilight searches by default
+set ignorecase       "Ignore case in search patterns.
+set smartcase        "Override the 'ignorecase' option if the search
+"pattern contains upper case characters.
+set viminfo='100,f1  "Save up to 100 marks, enable capital marks
+
+" ================ Swap, Backup and Undo ==============
+
+set noswapfile
+set nobackup
+set nowb
+
+if has('persistent_undo')
+  let undodir = expand("~/.config/nvim/undos/$USER")
+  if !isdirectory(undodir)
+    call mkdir(undodir)
+  endif
+  set undodir=~/.config/nvim/undos/$USER/
+  set undofile
+endif
+" }
+
+" ================ Indentation ======================
+
+set autoindent
+set smartindent
+set smarttab
+set shiftwidth=2
+set softtabstop=2
+set tabstop=2
+set expandtab
+
+filetype plugin on
+filetype indent on
+
+set listchars=trail:·
+" set nolist
+
+
+set nowrap       "Don't wrap lines
+set linebreak    "Wrap lines at convenient points
+" }
+
+" ================ Folds ============================
+
+set foldmethod=indent   "fold based on indent
+set foldnestmax=3       "deepest fold is 3 levels
+set nofoldenable        "dont fold by default
+" }
+
+" ================ Completion =======================
+
+set wildmode=list:longest
+set wildmenu                "enable ctrl-n and ctrl-p to scroll thru matches
+set wildignore=*.o,*.obj,*~ "stuff to ignore when tab completing
+" }
+
+" ================ Scrolling ========================
+
+set scrolloff=8         "Start scrolling when we're 8 lines away from margins
+set sidescrolloff=15
+set sidescroll=1
+set nostartofline
+" }
+
+" ================ Paste  ========================
+nnoremap <F2> :set invpaste paste?<CR>
+set pastetoggle=<F2>
+set showmode
+" }
 
 " ================ Custom Keymaps ==================== {
-" Change leader to a comma because the backslash is too far away
-" That means all \x commands turn into ,x
-let mapleader=","
 
 "! Enter || Save in normal mode
 nmap <CR> :w<CR>
@@ -112,10 +192,6 @@ nnoremap H :bp<CR>
 nnoremap L :bn<CR>
 
 nnoremap <Leader>j :e#<CR>
-nnoremap <Leader>l :ls<CR>
-nnoremap <Leader>b :bp<CR>
-nnoremap <Leader>f :bn<CR>
-nnoremap <Leader>g :e#<CR>
 nnoremap <Leader>1 :1b<CR>
 nnoremap <Leader>2 :2b<CR>
 nnoremap <Leader>3 :3b<CR>
@@ -152,7 +228,7 @@ nmap <silent> <leader>wc :close<CR>
 " Remember last location in file
 if has("autocmd")
   au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
-    \| exe "normal g'\"" | endif
+        \| exe "normal g'\"" | endif
 endif
 
 " Save on focus lost
@@ -162,25 +238,25 @@ au FocusLost * silent! :wa
 ":au FocusLost * call PopOutOfInsertMode()
 
 "function! PopOutOfInsertMode()
-    "if v:insertmode
-        "feedkeys("\<C-\>\<C-n>")
-    "endif
-    ":wa
+"if v:insertmode
+"feedkeys("\<C-\>\<C-n>")
+"endif
+":wa
 "endfunction
 
 
 
 " Strip trailing whitespace
 function! <SID>StripTrailingWhitespaces()
-    " Preparation: save last search, and cursor position.
-    let _s=@/
-    let l = line(".")
-    let c = col(".")
-    " Do the business:
-    %s/\s\+$//e
-    " Clean up: restore previous search history, and cursor position
-    let @/=_s
-    call cursor(l, c)
+  " Preparation: save last search, and cursor position.
+  let _s=@/
+  let l = line(".")
+  let c = col(".")
+  " Do the business:
+  %s/\s\+$//e
+  " Clean up: restore previous search history, and cursor position
+  let @/=_s
+  call cursor(l, c)
 endfunction
 autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 

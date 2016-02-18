@@ -15,16 +15,19 @@ fi
 fpath=("$HOME/.dotfiles/zsh/pass.zsh-completion" $fpath)
 
 #export PATH=$PATH:~/bin:~/.rbenv/bin:~/Software/packer
-export PATH=$PATH:~/bin:~/Software/packer:~/Software/icdiff
+export PATH=$PATH:~/bin:~/.local/bin:~/Software/packer:~/Software/icdiff
 #eval "$(rbenv init -)"
 
 alias v="vagrant"
 alias open="xdg-open"
 alias d="docker"
+alias dc="docker-compose"
+alias ssh="LC_ALL=en_US.UTF-8 ssh"
+alias hosts="sudo vim /etc/hosts"
 
 export EDITOR=vim
 export VISUAL=vim
-alias remove_key="ssh-keygen -f ~/.ssh/known_hosts -R"
+#alias remove_key="ssh-keygen -f ~/.ssh/known_hosts -R"
 
 
 export FZF_DEFAULT_COMMAND='ag -l -g ""'
@@ -55,6 +58,15 @@ fo() {
   fi
 }
 
+# fbr - checkout git branch (including remote branches)
+fbr() {
+  local branches branch
+  branches=$(git branch --all | grep -v HEAD) &&
+  branch=$(echo "$branches" |
+           fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m) &&
+  git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
+}
+
 if [[ "$COLORTERM" == "xfce4-terminal" ]]; then
   export TERM=xterm-256color
 fi
@@ -70,3 +82,4 @@ export GOPATH=~/Work/Workspace/go
 
 keychain -q $HOME/.ssh/id_rsa
 source ~/.keychain/`hostname`-sh
+

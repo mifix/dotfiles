@@ -1,5 +1,5 @@
 set background=light
-colorscheme Tomorrow
+colorscheme base16-default
 
 if &term =~ '256color'
   " disable Background Color Erase (BCE) so that color schemes

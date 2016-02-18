@@ -1,25 +1,13 @@
-set background=light
-colorscheme Tomorrow
-
-if &term =~ '256color'
-  " disable Background Color Erase (BCE) so that color schemes
-  " render properly when inside 256-color tmux and GNU screen.
-  " see also http://snk.tuxfamily.org/log/vim-256color-bce.html
-  set t_ut=
-endif
+set background=dark
+colorscheme Tomorrow-Night
 
 
 if has("gui_running")
   set guioptions=egmrt
 
-  set background=light
-  colorscheme Tomorrow
-
-  set guifont=Source\ Code\ Pro\ for\ Powerline\ Medium\ 13
-  " set guifont=Liberation\ Mono\ for\ Powerline\ 12
-  " set guifont=Meslo\ LG\ S\ for\ Powerline\ 11
-  " set guifont=Ubuntu\ Mono\ 12
+  set guifont=Meslo\ LG\ S\ for\ Powerline\ 12
 endif
+
 
 let g:lightline = {
       \ 'colorscheme': 'wombat',

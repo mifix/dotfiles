@@ -68,7 +68,7 @@ endif
 " NeoSnippets
 " -------------------
 NeoBundle 'Shougo/neosnippet'
-" NeoBundle 'Shougo/neosnippet-snippets'
+NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'honza/vim-snippets'
 let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
 

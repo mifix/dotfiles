@@ -1,7 +1,7 @@
 Plug 'fatih/vim-go', { 'for': 'go' }
 
 
-augroup golang
+augroup golang 
 
   au FileType go set ts=4 sw=4 sts=4 noet
 

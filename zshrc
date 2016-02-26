@@ -24,6 +24,8 @@ alias d="docker"
 alias dc="docker-compose"
 alias ssh="LC_ALL=en_US.UTF-8 ssh"
 alias hosts="sudo vim /etc/hosts"
+alias weather="curl -4 http://wttr.in/grz"
+alias ip="curl -s https://api.ipify.org"
 
 export EDITOR=vim
 export VISUAL=vim

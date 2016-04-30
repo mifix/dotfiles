@@ -6,10 +6,10 @@ vim/bundle/.neobundle/
 vim/undos/*
 !vim/undos/.gitkeep
 vim/.netrwhist
-tmux/plugins/*
-!tmux/plugins/tpm
-tmux/resurrect
-tmux/sidebar
+tmux/.tmux/plugins/*
+!tmux/.tmux/plugins/tpm
+tmux/.tmux/resurrect
+tmux/.tmux/sidebar
 tags
 Session.vim
 nvim/plugged/*

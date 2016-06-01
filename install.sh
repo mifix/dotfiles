@@ -3,7 +3,7 @@
 DOTFILES_DIR="$(cd "$(dirname "$0")" && pwd)"
 
 
-DOTFILES=("xmodmap" "tmux" "sakura" "zsh")
+DOTFILES=("xmodmap" "tmux" "sakura" "zsh" "git")
 
 
 for dot in "${DOTFILES[@]}"; do

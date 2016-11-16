@@ -1,6 +1,5 @@
-let g:base16_shell_path='~/.dotfiles/base16-shell/'
 set background=light
-colorscheme base16-google
+colorscheme base16-google-light
 
 " if &term =~ '256color'
 " disable Background Color Erase (BCE) so that color schemes
@@ -21,7 +20,7 @@ let g:lightline = {
       \ 'colorscheme': 'wombat',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ], ['ctrlpmark'] ],
-      \   'right': [ [ 'syntastic', 'lineinfo' ], ['percent'], [ 'fileformat', 'fileencoding', 'filetype' ] ]
+      \   'right': [ [ 'lineinfo' ], ['percent'], [ 'fileformat', 'fileencoding', 'filetype' ] ]
       \ },
       \ 'component_function': {
       \   'fugitive': 'MyFugitive',
@@ -33,10 +32,8 @@ let g:lightline = {
       \   'ctrlpmark': 'CtrlPMark',
       \ },
       \ 'component_expand': {
-      \   'syntastic': 'SyntasticStatuslineFlag',
       \ },
       \ 'component_type': {
-      \   'syntastic': 'error',
       \ },
       \ 'separator': { 'left': '', 'right': ''  },
       \ 'subseparator': { 'left': '', 'right': ''  }

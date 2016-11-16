@@ -23,3 +23,7 @@ stow -v -d ${DOTFILES_DIR} ssh -t ~/.ssh
 if [[ `uname` == 'Darwin' ]]; then
   stow -v -d ${DOTFILES_DIR} osx_prefernces -t ~/Library/Preferences
 fi
+
+
+git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
+

@@ -5,6 +5,9 @@
 "
 " =============================================================
 
+" Base16 colors
+Plug 'chriskempson/base16-vim'
+
 " Automatically closing pair stuff {
 Plug 'cohama/lexima.vim'
 " }

@@ -3,7 +3,7 @@
 DOTFILES_DIR="$(cd "$(dirname "$0")" && pwd)"
 
 
-DOTFILES=("xmodmap" "tmux" "sakura" "zsh")
+DOTFILES=("xmodmap" "tmux" "sakura" "zsh" "git")
 
 
 for dot in "${DOTFILES[@]}"; do
@@ -23,3 +23,7 @@ stow -v -d ${DOTFILES_DIR} ssh -t ~/.ssh
 if [[ `uname` == 'Darwin' ]]; then
   stow -v -d ${DOTFILES_DIR} osx_prefernces -t ~/Library/Preferences
 fi
+
+
+git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
+

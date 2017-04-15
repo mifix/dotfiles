@@ -10,7 +10,6 @@ Host wth
   User wth
   HostName wth-kiste.at
 
-
 Host rsync
   User 15972
   HostName ch-s010.rsync.net

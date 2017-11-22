@@ -15,6 +15,10 @@ if has("gui_running")
   set guifont=Meslo\ LG\ S\ for\ Powerline\ 12
 endif
 
+" if has("g:gui_oni")
+    colorscheme base16-solarized-light
+" endif
+
 
 let g:lightline = {
       \ 'colorscheme': 'wombat',

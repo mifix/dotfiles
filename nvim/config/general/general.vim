@@ -27,3 +27,7 @@ Plug 'tmux-plugins/vim-tmux-focus-events'
 
 "  Handles bracketed-paste-mode in vim (aka. automatic `:set paste`)
 Plug 'ConradIrwin/vim-bracketed-paste'
+
+
+" quoting/parenthesizing made simple
+Plug 'tpope/vim-surround'

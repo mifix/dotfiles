@@ -17,3 +17,4 @@ Host rsync
 Host git.teaching.iaik.tugraz.at
   User git
   HostName git.teaching.iaik.tugraz.at
+  IdentityFile ~/.ssh/sweb

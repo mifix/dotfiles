@@ -3,19 +3,28 @@
 DOTFILES_DIR="$(cd "$(dirname "$0")" && pwd)"
 
 
-DOTFILES=("xmodmap" "tmux" "sakura" "zsh" "git")
+DOTDIRS=("xmodmap" "tmux" "sakura" "zsh" "git" "compton" "colors")
+
+DOTFILES=("Xresources")
+
+CONFFILES=("polybar" "nvim" "firejail" "i3" "dunst" "lemonbar")
 
 
-for dot in "${DOTFILES[@]}"; do
+for dot in "${DOTDIR[@]}"; do
   stow -v -d ${DOTFILES_DIR} $dot -t ~
 done
 
+for dot in "${DOTFILES[@]}"; do
+    ln -s "${DOTFILES_DIR}/${dot}" "$HOME/.${dot}"
+done
 
 mkdir -p ~/.config/nvim/undos
-stow -v -d ${DOTFILES_DIR} nvim -t ~/.config/nvim
 
-mkdir -p ~/.config/base16-shell
-stow -v -d ${DOTFILES_DIR} base16-shell -t ~/.config/base16-shell
+for config in "${CONFFILES[@]}"; do
+  mkdir -p ~/.config/${config}
+  stow -v -d ${DOTFILES_DIR} $config -t ~/.config/${config}
+done
+
 
 mkdir -p ~/.ssh/connections
 stow -v -d ${DOTFILES_DIR} ssh -t ~/.ssh
@@ -25,5 +34,5 @@ if [[ `uname` == 'Darwin' ]]; then
 fi
 
 
-git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
+#git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
 

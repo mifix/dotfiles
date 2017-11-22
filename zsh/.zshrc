@@ -16,3 +16,14 @@ base16_spacemacs
 
 # Customize to your needs...
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+[ -f ~/.nix-profile/etc/profile.d/nix.sh ] && source ~/.nix-profile/etc/profile.d/nix.sh
+
+alias open="xdg-open"
+alias issh="ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null"
+
+if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
+        source /etc/profile.d/vte.sh
+fi
+
+export PATH=$PATH:$HOME/bin

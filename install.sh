@@ -7,7 +7,7 @@ DOTDIRS=("xmodmap" "tmux" "sakura" "zsh" "git" "compton" "colors")
 
 DOTFILES=("Xresources" )
 
-CONFFILES=("polybar" "nvim" "firejail" "i3" "dunst" "lemonbar")
+CONFFILES=("polybar" "nvim" "firejail" "i3" "dunst" "lemonbar" "rofi")
 
 
 for dot in "${DOTDIRS[@]}"; do
@@ -33,7 +33,8 @@ if [[ `uname` == 'Darwin' ]]; then
   stow -v -d ${DOTFILES_DIR} osx_prefernces -t ~/Library/Preferences
 fi
 
-mv $DOTFILES_DIR/dircolors $HOME/.dircolors
+
+cp $DOTFILES_DIR/dircolors $HOME/.dircolors
 
 git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
 git clone https://github.com/morhetz/gruvbox-contrib ~/.config/gruvbox-contrib

@@ -1,0 +1,10 @@
+[user]
+	name = Christian Mayer
+	email = gitlab@mifix.com
+[push]
+	default = simple
+[alias]
+  difftex = difftool -y -t latex
+[difftool.latex]
+	cmd = latexdiff "$LOCAL" "$REMOTE"
+

@@ -1,4 +1,4 @@
-let g:base16_shell_path='~/.dotfiles/base16-shell/'
+let g:base16_shell_path='~/.config/base16-shell/'
 set background=light
 colorscheme base16-google
 

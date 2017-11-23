@@ -5,6 +5,9 @@
 "
 " =============================================================
 
+" Base16 colors
+Plug 'chriskempson/base16-vim'
+
 " Automatically closing pair stuff {
 Plug 'cohama/lexima.vim'
 " }
@@ -24,3 +27,11 @@ Plug 'tmux-plugins/vim-tmux-focus-events'
 
 "  Handles bracketed-paste-mode in vim (aka. automatic `:set paste`)
 Plug 'ConradIrwin/vim-bracketed-paste'
+
+
+" quoting/parenthesizing made simple
+Plug 'tpope/vim-surround'
+
+
+"  dircolors in your vidir session
+Plug 'trapd00r/vim-syntax-vidir-ls'

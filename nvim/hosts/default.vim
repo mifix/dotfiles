@@ -1,5 +1,23 @@
-set background=light
-colorscheme base16-google-light
+" for vim 7
+set t_Co=256
+
+" for vim 8
+if (has("termguicolors"))
+  set termguicolors
+endif
+
+" For Neovim 0.1.3 and 0.1.4
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+
+" Or if you have Neovim >= 0.1.5
+if (has("termguicolors"))
+  set termguicolors
+endif
+
+
+set background=dark
+" colorscheme base16-google-light
+colorscheme OceanicNext
 
 " if &term =~ '256color'
 " disable Background Color Erase (BCE) so that color schemes
@@ -15,13 +33,13 @@ if has("gui_running")
   set guifont=Meslo\ LG\ S\ for\ Powerline\ 12
 endif
 
-" if has("g:gui_oni")
+if has("g:gui_oni")
     colorscheme base16-solarized-light
-" endif
+endif
 
 
 let g:lightline = {
-      \ 'colorscheme': 'wombat',
+      \ 'colorscheme': 'oceanicnext',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ], ['ctrlpmark'] ],
       \   'right': [ [ 'lineinfo' ], ['percent'], [ 'fileformat', 'fileencoding', 'filetype' ] ]
@@ -42,3 +60,7 @@ let g:lightline = {
       \ 'separator': { 'left': '', 'right': ''  },
       \ 'subseparator': { 'left': '', 'right': ''  }
       \ }
+
+
+
+let g:airline_theme='oceanicnext'

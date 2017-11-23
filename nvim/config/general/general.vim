@@ -31,3 +31,7 @@ Plug 'ConradIrwin/vim-bracketed-paste'
 
 " quoting/parenthesizing made simple
 Plug 'tpope/vim-surround'
+
+
+"  dircolors in your vidir session
+Plug 'trapd00r/vim-syntax-vidir-ls'

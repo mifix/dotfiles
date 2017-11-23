@@ -5,7 +5,7 @@ DOTFILES_DIR="$(cd "$(dirname "$0")" && pwd)"
 
 DOTDIRS=("xmodmap" "tmux" "sakura" "zsh" "git" "compton" "colors")
 
-DOTFILES=("Xresources")
+DOTFILES=("Xresources" "dircolors")
 
 CONFFILES=("polybar" "nvim" "firejail" "i3" "dunst" "lemonbar")
 

@@ -27,3 +27,10 @@ if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
 fi
 
 export PATH=$PATH:$HOME/bin
+
+export EDITOR=nvim
+export VISUAL=nvim
+export VIDIR_EDITOR_ARGS='-c :set nolist | :set ft=vidir-ls'
+
+
+source $HOME/.dotfiles/dircolors_source

@@ -1,23 +1,29 @@
 #
-# Executes commands at login post-zshrc.
+# startup file read in interactive login shells
 #
-# Authors:
-#   Sorin Ionescu <sorin.ionescu@gmail.com>
+# The following code helps us by optimizing the existing framework.
+# This includes zcompile, zcompdump, etc.
 #
 
-# Execute code that does not affect the current session in the background.
-{
-  # Compile the completion dump to increase startup speed.
-  zcompdump="${ZDOTDIR:-$HOME}/.zcompdump"
-  if [[ -s "$zcompdump" && (! -s "${zcompdump}.zwc" || "$zcompdump" -nt "${zcompdump}.zwc") ]]; then
-    zcompile "$zcompdump"
-  fi
-} &!
+# (
+#   local file
+#   local zmodule
+#   setopt LOCAL_OPTIONS EXTENDED_GLOB
+#   autoload -U zrecompile
 
-# Print a random, hopefully interesting, adage.
-if (( $+commands[fortune] )); then
-  if [[ -t 0 || -t 1 ]]; then
-    fortune -s
-    print
-  fi
-fi
+#   # zcompile the completion cache; siginificant speedup
+#   zrecompile -pq ${ZDOTDIR:-${HOME}}/${zcompdump_file:-.zcompdump}
+
+#   # zcompile .zshrc
+#   zrecompile -pq ${ZDOTDIR:-${HOME}}/.zshrc
+
+#   # # zcompile enabled module autoloaded functions
+#   # zrecompile -pq ${ZIM_HOME}/functions ${ZIM_HOME}/modules/${^zmodules}/functions/^([_.]*|prompt_*_setup|README*|*.zwc|*.zwc.old)(-.N)
+
+#   # # zcompile enabled module init scripts
+#   # for zmodule (${zmodules}); do
+#   #   zrecompile -pq ${ZIM_HOME}/modules/${zmodule}/init.zsh
+#   # done
+
+
+# ) &!

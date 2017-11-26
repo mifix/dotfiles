@@ -1,3 +1,5 @@
+integer t0=$(date '+%s') # start time
+#zmodload zsh/zprof
 
 # Shell color
 BASE16_SHELL=$HOME/.config/base16-shell/
@@ -5,21 +7,24 @@ BASE16_SHELL=$HOME/.config/base16-shell/
 
 base16_mocha
 
+#eval `keychain --eval --quiet --agents ssh id_rsa`
 
+
+export DOTFILE_DIR=$HOME/.dotfiles
+export ZSH_DIR=$HOME/.zsh
 
 source ~/.zplugrc
 
+# source all .zsh files inside of the zsh/ directory
+for config ($ZSH_DIR/**/*.zsh) source $config
 
+source $ZSH_DIR/completion.zsh.last
 
-# use bash completions
-autoload -Uz bashcompinit
-bashcompinit -i
-
-# use bash completions
-autoload -Uz bashcompinit
-bashcompinit -i
-
-# LS_COLORS
-eval $(dircolors -b $HOME/.dotfiles/dircolors)
-
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+# zprof
+function {
+    local -i t1 startup
+    t1=$(date '+%s')
+    startup=$(( t1 - t0 ))
+    [[ $startup -gt 1 ]] && print "Hmm, poor shell startup time: $startup"
+}
+unset t0

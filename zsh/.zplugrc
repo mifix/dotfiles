@@ -1,3 +1,4 @@
+#zmodload zsh/zprof
 source ~/.zplug/init.zsh
 
 # Try to set terminal to 256 color mode
@@ -5,7 +6,7 @@ zplug 'chrissicool/zsh-256color'
 
 # Prompt theme
 POWERLEVEL9K_MODE='awesome-fontconfig'
-#POWERLEVEL9K_MODE='nerdfont-complete'
+POWERLEVEL9K_MODE='nerdfont-complete'
 zplug "bhilburn/powerlevel9k", use:powerlevel9k.zsh-theme
 
 
@@ -17,6 +18,9 @@ zplug 'djui/alias-tips'
 
 # Auto-close and delete matching delimiters in zsh
 zplug "hlissner/zsh-autopair", defer:2
+
+# Enables and configures smart and extensive tab completion.
+zplug "zsh-users/zsh-completions"
 
 # Autosuggest
 zplug "zsh-users/zsh-autosuggestions"
@@ -40,17 +44,19 @@ zplug "psprint/history-search-multi-word"
 # (If the defer tag is given 2 or above, run after compinit command)
 zplug "zdharma/fast-syntax-highlighting", defer:2
 
-zplug 'zplug/zplug', hook-build:'zplug --self-manage'
+#zplug 'zplug/zplug', hook-build:'zplug --self-manage'
 
 # Install plugins if there are plugins that have not been installed
 #if ! zplug check --verbose; then
-if ! zplug check; then
-    printf "Install? [y/N]: "
-    if read -q; then
-        echo; zplug install
-    fi
-fi
+# if ! zplug check; then
+#     printf "Install? [y/N]: "
+#     if read -q; then
+#         echo; zplug install
+#     fi
+# fi
 
 # Then, source plugins and add commands to $PATH
 #zplug load --verbose
 zplug load 
+
+#zprof

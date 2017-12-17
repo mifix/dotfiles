@@ -35,3 +35,10 @@ Plug 'tpope/vim-surround'
 
 "  dircolors in your vidir session
 Plug 'trapd00r/vim-syntax-vidir-ls'
+
+" i3 config syntax
+Plug 'PotatoesMaster/i3-vim-syntax'
+
+
+" TOML syntax
+Plug 'cespare/vim-toml'

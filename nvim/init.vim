@@ -19,6 +19,7 @@ call plug#begin('~/.config/nvim/plugged')
 " That means all \x commands turn into ,x
 let mapleader=","
 
+let maplocalleader=" "
 
 
 for plugin_file in split(glob('~/.config/nvim/colorschemes/*.vim'), '\n')

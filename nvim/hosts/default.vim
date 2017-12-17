@@ -17,7 +17,8 @@ endif
 
 set background=dark
 " colorscheme base16-google-light
-colorscheme OceanicNext
+" colorscheme OceanicNext
+colorscheme srcery
 
 " if &term =~ '256color'
 " disable Background Color Erase (BCE) so that color schemes

@@ -4,7 +4,7 @@ else
   alias -g G=' | grep --color'
 fi
 
-alias -G L=' | less'
+alias -g L=' | less'
 
 
 alias S='builtin cd $HOME/Documents/Schule/'

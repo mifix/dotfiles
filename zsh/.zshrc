@@ -7,8 +7,10 @@ BASE16_SHELL=$HOME/.config/base16-shell/
 
 base16_mocha
 
-#eval `keychain --eval --quiet --agents ssh id_rsa`
+eval `keychain --eval --quiet --agents ssh id_rsa`
 
+# add before compinit
+fpath+=~/.zfunc
 
 export DOTFILE_DIR=$HOME/.dotfiles
 export ZSH_DIR=$HOME/.zsh

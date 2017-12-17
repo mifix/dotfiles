@@ -1,33 +1,49 @@
+if (( ${+commands[rg]} )); then
+  alias -g G=' | rg'
+else
+  alias -g G=' | grep --color'
+fi
+
+alias -G L=' | less'
+
+
+alias S='builtin cd $HOME/Documents/Schule/'
+
 alias ch="builtin cd $HOME"
 
-alias v="$EDITOR"
+alias e="nvim"
+export VIDIR_EDITOR_ARGS='-c :set nolist | :set ft=vidir-ls'
+
+alias open="xdg-open"
+
+alias issh="ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null"
 
 # Verbose copying with no auto-correct.
-alias cp="nocorrect cp -v"              
+alias cp="nocorrect cp -v"
 
 # Enable human-readable output.
-alias df="df -h"                        
+alias df="df -h"
 
 # Use the Ncdu tool instead of du.
-#alias du='ncdu'                         
+#alias du='ncdu'
 
 # Show color and line numbers for match.
-alias grep="grep -n --color"            
+alias grep="grep -n --color"
 
 # Show only my processes.
-alias ht="htop -u $(whoami)"            
+alias ht="htop -u $(whoami)"
 
 # Colorize listing output, append indicator
 alias ls="ls --color -F"
 
 # No auto-correct when making directory.
-alias mkdir='nocorrect mkdir'           
+alias mkdir='nocorrect mkdir'
 
 # Verbose moving with no auto-correct.
-alias mv="nocorrect mv -v"              
+alias mv="nocorrect mv -v"
 
 # Verbose removing with no auto-correct.
-alias rm="nocorrect rm -v"              
+alias rm="nocorrect rm -v"
 
 if type exa > /dev/null; then
   alias l='exa -abghl --git --color=automatic'
@@ -61,3 +77,13 @@ fi
 if (( ${+commands[pbunzip2]} )); then
   alias bunzip2='pbunzip2'
 fi
+
+
+# Docker
+alias d="docker"
+
+
+# Ruby/Rails
+alias bi="bundler install -j `nproc`"
+alias rs='rails server'
+

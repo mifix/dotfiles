@@ -11,13 +11,13 @@ fasd_cd() {
   fi
 }
 
-alias a='fasd -a'
-alias s='fasd -si'
+# alias a='fasd -a'
+# alias s='fasd -si'
 alias sd='fasd -sid'
 alias sf='fasd -sif'
-alias d='fasd -d'
+# alias d='fasd -d'
 alias f='fasd -f'
-alias v='f -e vim -b viminfo'
+# alias v='f -e vim -b viminfo'
 alias z='fasd_cd -d'
 alias zz='fasd_cd -d -i'
 

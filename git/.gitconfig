@@ -1,6 +1,6 @@
 [user]
 	name = Christian Mayer
-	email = gitlab@mifix.com
+	email = github@mifix.com
 [push]
 	default = simple
 [alias]
@@ -8,3 +8,5 @@
 [difftool.latex]
 	cmd = latexdiff "$LOCAL" "$REMOTE"
 
+[http "https://gopkg.in"]
+	followRedirects = true

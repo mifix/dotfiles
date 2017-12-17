@@ -1,12 +1,33 @@
+# i3config
 # vi: set ft=conf
+# ========================================================
 
 
-#*************** Keybindings ******************
+# >>> initializatione <<<
 
 set $mod Mod1
 
+set $left   h
+set $down   j
+set $up     k
+set $right  l
+
+# set $terminal gnome-terminal
+set $terminal termite
+
+#*************** Keybindings ******************
+
+
+# My apps shortcut
+bindsym $mod+p exec --no-startup-id pcmanfm
+bindsym $mod+Shift+p exec --no-startup-id pcmanfm `$HOME/bin/xcwd`
+
 # Start a terminal
-bindsym $mod+Return exec --no-startup-id gnome-terminal
+bindsym $mod+Return exec --no-startup-id $terminal
+# bindsym $mod+Shift+Return exec --no-startup-id gnome-terminal --working-directory=`~/bin/termdir.py`
+bindsym $mod+Shift+Return exec --no-startup-id $terminal -d `$HOME/bin/xcwd`
+
+bindsym $mod+c exec --no-startup-id google-chrome-stable
 
 # Kill focused window
 bindsym $mod+Shift+q kill
@@ -38,10 +59,10 @@ bindsym $mod+Shift+l move right
 
 
 # Split in horizontal orientation
-bindsym $mod+- split h
+bindsym $mod+\ split h
 
 # Split in vertical orientation
-bindsym $mod+\ split v
+bindsym $mod+- split v
 
 # Enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -110,10 +131,10 @@ bindsym $mod+Shift+0 move container to workspace $w10
 
 
 #toggle workspace's display screen
-bindsym Ctrl+Right move workspace to output right
-bindsym Ctrl+Left move workspace to output right
-bindsym Ctrl+Up move workspace to output up
-bindsym Ctrl+Down move workspace to output down
+bindsym Ctrl+Shift+Right move workspace to output right
+bindsym Ctrl+Shift+Left move workspace to output right
+bindsym Ctrl+Shift+Up move workspace to output up
+bindsym Ctrl+Shift+Down move workspace to output down
 
 
 # Reload the configuration file
@@ -243,17 +264,13 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 20
 bindsym XF86TouchpadToggle exec /some/path/toggletouchpad.sh
 
 # Screenshot with scrot
-bindsym Print exec --no-startup-id scrot -e 'mv $f ~/Pictures/screenshots' && notify-send "Screenshot Taken"
+bindsym Print exec --no-startup-id scrot -e 'mv $f ~/Pictures/Screenshots/' && notify-send "Screenshot Taken"
 
 # Kill screencast
 bindsym $mod+x  exec --no-startup-id pkill -f 'x11grab'
 
 # View Todo List
 bindsym $mod+F10 exec --no-startup-id ~/.config/popups/todo/todo
-
-# My apps shortcut
-bindsym $mod+p exec --no-startup-id pcmanfm
-bindsym $mod+b exec --no-startup-id luakit
 
 # Theme switcher
 bindsym $mod+F11 exec --no-startup-id ~/.local/bin/themeswitcher
@@ -307,15 +324,16 @@ client.urgent             $darkblack  $darkblack   $white          $darkblack  $
 
 
 # Fancy title bar
-font pango:lemon 18
+#font pango:lemon 18
 #for_window [class=".*"] title_format "<span font='tewi 8'> ➤ %title</span>"
-for_window [class=".*"] title_format "<span font='tewi 8'> </span>"
+#for_window [class=".*"] title_format "<span font='tewi 8'> </span>"
 
 
 #************  Startup apps ***********************
 
 #exec_always --no-startup-id feh --bg-fill $HOME/Pictures/Wallpapers/Mountain.jpg
-exec_always --no-startup-id feh --bg-fill $HOME/Pictures/Wallpapers/wallhaven-168642.png
+#exec_always --no-startup-id feh --bg-fill $HOME/Pictures/Wallpapers/wallhaven-168642.png
+exec_always --no-startup-id feh --bg-fill $HOME/Pictures/Wallpapers/sadkitty1.jpg
 exec --no-startup-id compton $HOME/.compton.conf -b
 exec --no-startup-id dunst -config $HOME/.config/dunst/dunstrc
 
@@ -331,7 +349,7 @@ for_window [class="^.*"] border pixel 1
 
 # Enable or disable floating
 #for_window [class="Arandr"] floating enable
-#for_window [class="Lxappearance"] floating enable
+for_window [class="Lxappearance"] floating enable
 #for_window [class="Nitrogen"] floating enable
 #for_window [class="Artha"] floating enable
 #for_window [instance="dukto"] floating enable
@@ -342,6 +360,8 @@ for_window [window_type="menu"] floating enable
 for_window [class="Pavucontrol"] floating enable
 #for_window [class="^.*"] floating enable
 
+for_window [title="Sign in.*feedly" class="(?i)Firefox"] floating enable
+
 # Starting apps on a specific workspace
 #assign [class="^Tor Browser$"]           $w1
 assign [class="^Firefox$"]               $w1
@@ -351,7 +371,7 @@ assign [class="^Firefox$"]               $w1
 #assign [class="^VirtualBox$"]            $w7
 #assign [class="^Gimp$"]                  $w8
 #assign [class="^Wireshark"]              $w8
-assign [class="^Pcmanfm"]                $w4
+#assign [class="^Pcmanfm"]                $w4
 #assign [class="^burp-StartBurp"]         $w8
 #assign [class="^OWASP ZAP"]              $w8
 #assign [class="^jetbrains-studio"]       $w8
@@ -369,5 +389,13 @@ workspace $w7 output DVI-D-0
 workspace $w8 output  HDMI-0
 workspace $w9 output  HDMI-0
 workspace $w10 output HDMI-0
+
+
+#*************** Autostart ******************
+
+exec --no-startup-id i3-msg "workspace 2; exec $terminal &"
+exec --no-startup-id i3-msg "workspace 5; exec /usr/bin/yakyak &"
+exec --no-startup-id i3-msg "workspace 1; exec /usr/bin/firefox &"
+
 
 # vim:filetype=i3

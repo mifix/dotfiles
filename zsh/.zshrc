@@ -32,3 +32,5 @@ function {
     [[ $startup -gt 1 ]] && print "Hmm, poor shell startup time: $startup"
 }
 unset t0
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

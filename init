@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+# get directory of this script
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+source "$SCRIPT_DIR/dotfiles.lib"
+
+USERNAME=$(whoami)
+
+bundles="${@}"
+
+if [[ -z $bundles ]]; then
+  source $SCRIPT_DIR/bundles/base.sh
+fi
+
+for b in $bundles; do
+  bundle="$SCRIPT_DIR/bundles/$b.sh"
+  if [[ ! -e $bundle ]];then
+    yellow "Bundle $b does not exist. Create one in $SCRIPT_DIR/bundles/"; echo
+  else
+    source $bundle
+  fi
+done

@@ -1,7 +1,7 @@
 Plug 'fatih/vim-go', { 'for': 'go' }
 
 
-augroup golang 
+augroup golang
 
   au FileType go set ts=4 sw=4 sts=4 noet
 
@@ -35,7 +35,7 @@ augroup golang
 
 
 
-  Plug 'zchee/deoplete-go', { 'do': 'make'}
+  Plug 'zchee/deoplete-go', { 'do': 'make', 'for': 'go'}
   let g:deoplete#sources#go#align_class = 1
 
 

@@ -1,5 +1,6 @@
 
-APT_PACKAGES=(git tmux zsh curl wget htop stow aria2 fasd keychain python3)
+APT_PACKAGES=(git tmux zsh curl wget htop stow aria2 fasd keychain python3 \
+  exuberant-ctags)
 
 NIX_PACKAGES=(ripgrep tmux neovim)
 

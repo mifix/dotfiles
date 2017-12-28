@@ -7,7 +7,9 @@ BASE16_SHELL=$HOME/.config/base16-shell/
 
 base16_mocha
 
-eval `keychain --eval --quiet --agents ssh id_rsa`
+if [[ -e $HOME/.ssh/id_rsa ]];then
+	eval `keychain --eval --quiet --agents ssh id_rsa`
+fi
 
 # add before compinit
 fpath+=~/.zfunc

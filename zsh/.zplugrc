@@ -7,14 +7,20 @@ zplug 'chrissicool/zsh-256color'
 # Prompt theme
 POWERLEVEL9K_MODE='awesome-fontconfig'
 POWERLEVEL9K_MODE='nerdfont-complete'
-zplug "bhilburn/powerlevel9k", use:powerlevel9k.zsh-theme
+zplug "bhilburn/powerlevel9k", use:powerlevel9k.zsh-theme, if:"[[ $HOSTNAME == *jebediah* ]]"
 
+
+zplug mafredri/zsh-async, from:github
+zplug sindresorhus/pure, use:pure.zsh, from:github, as:theme
 
 # Remind me of aliases (because I'm old :()
-export ZSH_PLUGINS_ALIAS_TIPS_TEXT="Junge! Alias tip: "
+export ZSH_PLUGINS_ALIAS_TIPS_TEXT="💡 Junge! Alias tip: "
 export ZSH_PLUGINS_ALIAS_TIPS_EXCLUDES="_ ll vi"
-zplug 'djui/alias-tips'
+zplug 'mifix/alias-tips'
 
+
+# System clipboard integration
+zplug "lib/clipboard", from:oh-my-zsh
 
 # Auto-close and delete matching delimiters in zsh
 zplug "hlissner/zsh-autopair", defer:2
@@ -26,9 +32,9 @@ zplug "zsh-users/zsh-completions"
 zplug "zsh-users/zsh-autosuggestions"
 
 # Command not found
-zplug "Tarrasch/zsh-command-not-found"
+zplug "plugins/command-not-found", from:oh-my-zsh
 
-# A next-generation cd command with an interactive filter 
+# A next-generation cd command with an interactive filter
 export ENHANCD_DISABLE_DOT=1
 zplug "b4b4r07/enhancd", use:init.sh
 
@@ -48,15 +54,15 @@ zplug "zdharma/fast-syntax-highlighting", defer:2
 
 # Install plugins if there are plugins that have not been installed
 #if ! zplug check --verbose; then
-# if ! zplug check; then
-#     printf "Install? [y/N]: "
-#     if read -q; then
-#         echo; zplug install
-#     fi
-# fi
+if ! zplug check; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    fi
+fi
 
 # Then, source plugins and add commands to $PATH
 #zplug load --verbose
-zplug load 
+zplug load
 
 #zprof

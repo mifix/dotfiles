@@ -45,7 +45,7 @@ key_info=(
 
 # Bind the keys
 
-local key
+#local key
 for key in "${(s: :)key_info[ControlLeft]}"; do
   bindkey ${key} backward-word
 done

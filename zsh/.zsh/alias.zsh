@@ -87,3 +87,4 @@ alias d="docker"
 alias bi="bundler install -j `nproc`"
 alias rs='rails server'
 
+

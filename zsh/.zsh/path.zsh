@@ -13,3 +13,6 @@ export PATH=$PATH:$GOPATH/bin
 
 # Rust
 export PATH=$PATH:$HOME/.cargo/bin
+
+# Nodejs
+export PATH=$PATH:./node_modules/.bin

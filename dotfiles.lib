@@ -80,6 +80,8 @@ task() {
 function install_packages() {
   local package_type="${1}"
 
+  can_install_multiple=1
+
   case $package_type in
     "APT")
       installed_packages="$(dpkg --get-selections | grep -v deinstall | awk 'BEGIN{FS="[\t:]"}{print $1}' | uniq)";
@@ -92,6 +94,7 @@ function install_packages() {
       install_command="nix-env -i"
       ;;
     "GO")
+      can_install_multiple=0
       packages=$GO_PACKAGES
       install_command="go get -u"
       ;;
@@ -104,7 +107,19 @@ function install_packages() {
     if (( ${#packages[@]} > 0 )); then
       for package in "${packages[@]}"; do
         [[ "$(type -t preinstall_$package)" == function ]] && preinstall_$package
-        task "Installing $package" "$install_command ${package}" && \
+      done
+
+      if [[ $can_install_multiple ]];then
+			  pkgs_str=$(join_by ', ' ${packages[@]})
+			  pkgs=$(join_by ' ' ${packages[@]})
+        task "Installing $pkgs_str" "$install_command $pkgs"
+      else
+        for package in "${packages[@]}"; do
+          task "Installing $package" "$install_command ${package}"
+        done
+      fi
+
+      for package in "${packages[@]}"; do
           [[ "$(type -t postinstall_$package)" == function ]] && postinstall_$package
       done
     fi
@@ -113,6 +128,7 @@ function install_packages() {
   }
 
 
+	function join_by { local d=$1; shift; echo -n "$1"; shift; printf "%s" "${@/#/$d}"; }
 
 
   # Given strings containing space-delimited words A and B, "setdiff A B" will

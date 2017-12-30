@@ -95,7 +95,7 @@ function install_packages() {
       ;;
     "GO")
       can_install_multiple=0
-      packages=$GO_PACKAGES
+      packages=(${GO_PACKAGES[@]})
       install_command="go get -u"
       ;;
     *)
@@ -109,7 +109,7 @@ function install_packages() {
         [[ "$(type -t preinstall_$package)" == function ]] && preinstall_$package
       done
 
-      if [[ $can_install_multiple ]];then
+      if [[ $can_install_multiple == 1 ]];then
 			  pkgs_str=$(join_by ', ' ${packages[@]})
 			  pkgs=$(join_by ' ' ${packages[@]})
         task "Installing $pkgs_str" "$install_command $pkgs"

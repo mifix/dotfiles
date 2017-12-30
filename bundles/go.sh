@@ -2,7 +2,7 @@ APT_PACKAGES=()
 
 NIX_PACKAGES=(go)
 
-GO_PACKAGES=(github.com/nsf/gocode)
+GO_PACKAGES=(github.com/nsf/gocode github.com/sourcegraph/go-langserver)
 
 # -----------------------------------------------------------------------
 

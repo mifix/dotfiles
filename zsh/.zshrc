@@ -13,6 +13,7 @@ fi
 
 # add before compinit
 fpath+=~/.zfunc
+autoload -U _rustup
 
 export DOTFILE_DIR=$HOME/.dotfiles
 export ZSH_DIR=$HOME/.zsh

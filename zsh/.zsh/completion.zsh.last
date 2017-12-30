@@ -33,7 +33,7 @@ setopt ALWAYS_TO_END
 # Automatically use menu completion after the second consecutive request for completion
 setopt AUTO_MENU
 
-# Automatically list choices on an ambiguous completion. 
+# Automatically list choices on an ambiguous completion.
 setopt AUTO_LIST
 
 # Perform a path search even on command names with slashes in them.
@@ -74,6 +74,7 @@ zstyle ':completion:*:-tilde-:*' group-order 'named-directories' 'path-directori
 zstyle ':completion:*' squeeze-slashes true
 
 # enable caching
+mkdir -p $HOME/.zcompcache
 zstyle ':completion::complete:*' use-cache on
 zstyle ':completion::complete:*' cache-path "${ZDOTDIR:-${HOME}}/.zcompcache"
 

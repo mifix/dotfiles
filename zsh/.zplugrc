@@ -4,14 +4,17 @@ source ~/.zplug/init.zsh
 # Try to set terminal to 256 color mode
 zplug 'chrissicool/zsh-256color'
 
+zplug mafredri/zsh-async, from:github
+
 # Prompt theme
 POWERLEVEL9K_MODE='awesome-fontconfig'
 POWERLEVEL9K_MODE='nerdfont-complete'
-zplug "bhilburn/powerlevel9k", use:powerlevel9k.zsh-theme, if:"[[ $HOSTNAME == *jebediah* ]]"
 
-
-zplug mafredri/zsh-async, from:github
-zplug sindresorhus/pure, use:pure.zsh, from:github, as:theme
+if [[ $(hostname) == 'plutarch' ]];then
+  zplug "bhilburn/powerlevel9k", use:powerlevel9k.zsh-theme
+else
+  zplug sindresorhus/pure, use:pure.zsh, from:github, as:theme
+fi
 
 # Remind me of aliases (because I'm old :()
 export ZSH_PLUGINS_ALIAS_TIPS_TEXT="💡 Junge! Alias tip: "

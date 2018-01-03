@@ -6,6 +6,8 @@ fi
 
 [ -f ~/.nix-profile/etc/profile.d/nix.sh ] && source ~/.nix-profile/etc/profile.d/nix.sh
 
+# Snap
+export PATH=$PAHT:/snap/bin
 
 # GO
 export GOPATH=$HOME/Projects/go

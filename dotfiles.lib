@@ -1,0 +1,157 @@
+# vi: ft=sh
+
+header()  { echo -e "\n\033[1m$@\033[0m"; }
+success()  { echo -en " \033[1;32m✔\033[0m  $@"; }
+error()    { echo -en " \033[1;31m✖\033[0m  $@"; }
+arrow()    { echo -en " \033[1;34m➜\033[0m  $@"; }
+
+black()     { echo -en "$(tput setaf 0)$*$(tput setaf 9) \033[0m"; }
+red()       { echo -en "$(tput setaf 1)$*$(tput setaf 9) \033[0m"; }
+green()     { echo -en "$(tput setaf 2)$*$(tput setaf 9) \033[0m"; }
+yellow()    { echo -en "$(tput setaf 3)$*$(tput setaf 9) \033[0m"; }
+blue()      { echo -en "$(tput setaf 4)$*$(tput setaf 9) \033[0m"; }
+magenta()   { echo -en "$(tput setaf 5)$*$(tput setaf 9) \033[0m"; }
+cyan()      { echo -en "$(tput setaf 6)$*$(tput setaf 9) \033[0m"; }
+white()     { echo -en "$(tput setaf 7)$*$(tput setaf 9) \033[0m"; }
+
+
+LOG_FILE="$SCRIPT_DIR/run.log"
+
+
+task() {
+  local description="${1}"
+  local command="${2}"
+  local skip_if_exists="${3}"
+  local skip_if_exists_is_equal_to="${4}"
+
+  local animation_delay="0.2"
+  #local animation_chars=('◐' '◓' '◑' '◒')
+  #local animation_chars=('⠋' '⠋' '⠋' '⠋')
+  local animation_chars=('\' '|' '/' '-')
+
+  if [[ ! -z ${skip_if_exists_is_equal_to} ]] && [[ ${skip_if_exists} == ${skip_if_exists_is_equal_to} ]];then
+    arrow
+    yellow "SKIP"
+    white "${description} (already set)"
+    echo
+    return
+  fi
+
+  if [[ ! -z ${skip_if_exists} ]] && [[ -z ${skip_if_exists_is_equal_to} ]] && ([[ -e ${skip_if_exists} ]] || [[ -L ${skip_if_exists} ]]); then
+    arrow
+    yellow "SKIP"
+    white "${description} ($skip_if_exists already exists)"
+    echo
+    return
+  fi
+
+  arrow ${description}
+  echo "$command" >> $LOG_FILE
+  bash -c "$command >> $LOG_FILE 2>&1" &
+  pid=$!
+
+  while ps -a | grep -q "${pid}";
+  do
+    for animation_char in ${animation_chars[@]};
+    do
+      printf " [%c]  " "${animation_char}"
+      sleep "${animation_delay}"
+      printf "\b\b\b\b\b\b"
+    done
+  done
+
+  wait $pid
+  my_status=$?
+  echo -en "\r"
+  if wait $pid; then
+    success $description
+  else
+    error $description
+    echo
+    red "Aborting due to errors. See $LOG_FILE for full log.\n"
+    yellow "Printing last 10 lines of log...\n"
+    tail -n 10 $LOG_FILE
+    echo
+  fi
+  echo
+}
+
+
+function install_packages() {
+  local package_type="${1}"
+
+  can_install_multiple=1
+
+  case $package_type in
+    "APT")
+      installed_packages="$(dpkg --get-selections | grep -v deinstall | awk 'BEGIN{FS="[\t:]"}{print $1}' | uniq)";
+      packages=($(setdiff "${APT_PACKAGES[*]}" "$installed_packages"));
+      install_command="DEBIAN_FRONTEND=noninteractive sudo apt-get install -q -y"
+      ;;
+    "NIX")
+      installed_packages="$(nix-env -q | sed -e 's/-[0-9].*$//' | uniq)"
+      packages=($(setdiff "${NIX_PACKAGES[*]}" "$installed_packages"))
+      install_command="nix-env -i"
+      ;;
+    "GO")
+      can_install_multiple=0
+      packages=$GO_PACKAGES
+      install_command="go get -u"
+      ;;
+    *)
+      error "Call to install_packages() argument missing or unkown.\n"
+      exit
+
+    esac
+
+    if (( ${#packages[@]} > 0 )); then
+      for package in "${packages[@]}"; do
+        [[ "$(type -t preinstall_$package)" == function ]] && preinstall_$package
+      done
+
+      if [[ $can_install_multiple ]];then
+			  pkgs_str=$(join_by ', ' ${packages[@]})
+			  pkgs=$(join_by ' ' ${packages[@]})
+        task "Installing $pkgs_str" "$install_command $pkgs"
+      else
+        for package in "${packages[@]}"; do
+          task "Installing $package" "$install_command ${package}"
+        done
+      fi
+
+      for package in "${packages[@]}"; do
+          [[ "$(type -t postinstall_$package)" == function ]] && postinstall_$package
+      done
+    fi
+    if [ -z $packages ]; then arrow "No new packages to install";echo; fi
+
+  }
+
+
+	function join_by { local d=$1; shift; echo -n "$1"; shift; printf "%s" "${@/#/$d}"; }
+
+
+  # Given strings containing space-delimited words A and B, "setdiff A B" will
+  # return all words in A that do not exist in B. Arrays in bash are insane
+  # (and not in a good way).
+  # From http://stackoverflow.com/a/1617303/142339
+  function setdiff() {
+    local debug skip a b
+    if [[ "$1" == 1 ]]; then debug=1; shift; fi
+    if [[ "$1" ]]; then
+      local setdiff_new setdiff_cur setdiff_out
+      setdiff_new=($1); setdiff_cur=($2)
+    fi
+    setdiff_out=()
+    for a in "${setdiff_new[@]}"; do
+      skip=
+      for b in "${setdiff_cur[@]}"; do
+        [[ "$a" == "$b" ]] && skip=1 && break
+      done
+      [[ "$skip" ]] || setdiff_out=("${setdiff_out[@]}" "$a")
+    done
+    [[ "$debug" ]] && for a in setdiff_new setdiff_cur setdiff_out; do
+    echo "$a ($(eval echo "\${#$a[*]}")) $(eval echo "\${$a[*]}")" 1>&2
+  done
+  [[ "$1" ]] && echo "${setdiff_out[@]}"
+}

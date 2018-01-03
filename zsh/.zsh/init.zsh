@@ -3,7 +3,7 @@ autoload -Uz bashcompinit
 bashcompinit -i
 
 # LS_COLORS
-eval $(dircolors -b $HOME/.dotfiles/dircolors)
+eval $(dircolors -b $HOME/.dircolors)
 
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 

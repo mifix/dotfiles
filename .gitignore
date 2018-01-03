@@ -17,6 +17,7 @@ nvim/.netrwhist
 nvim/.init.vim-rplugin~
 nvim/undos/
 tmux/.tmux/*.log
+run.log
 
 
 nvim/autoload/plug\.vim

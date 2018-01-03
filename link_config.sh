@@ -36,8 +36,4 @@ fi
 
 cp $DOTFILES_DIR/dircolors $HOME/.dircolors
 
-git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
-git clone https://github.com/morhetz/gruvbox-contrib ~/.config/gruvbox-contrib
-
-git clone https://github.com/zplug/zplug ~/.zplug
 

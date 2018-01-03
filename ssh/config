@@ -1,5 +1,5 @@
 Host *
-    ControlMaster auto
+    ControlMaster no
     ControlPath ~/.ssh/connections/%r@%h:%p
     ControlPersist 2m
     ForwardAgent no
@@ -14,7 +14,3 @@ Host rsync
   User 15972
   HostName ch-s010.rsync.net
 
-Host git.teaching.iaik.tugraz.at
-  User git
-  HostName git.teaching.iaik.tugraz.at
-  IdentityFile ~/.ssh/sweb

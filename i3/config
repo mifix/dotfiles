@@ -28,6 +28,7 @@ bindsym $mod+Return exec --no-startup-id $terminal
 bindsym $mod+Shift+Return exec --no-startup-id $terminal -d `$HOME/bin/xcwd`
 
 bindsym $mod+c exec --no-startup-id google-chrome-stable
+bindsym $mod+x exec --no-startup-id gnome-calculator
 
 # Kill focused window
 bindsym $mod+Shift+q kill
@@ -265,9 +266,6 @@ bindsym XF86TouchpadToggle exec /some/path/toggletouchpad.sh
 
 # Screenshot with scrot
 bindsym Print exec --no-startup-id scrot -e 'mv $f ~/Pictures/Screenshots/' && notify-send "Screenshot Taken"
-
-# Kill screencast
-bindsym $mod+x  exec --no-startup-id pkill -f 'x11grab'
 
 # View Todo List
 bindsym $mod+F10 exec --no-startup-id ~/.config/popups/todo/todo

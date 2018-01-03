@@ -3,6 +3,9 @@ function md() {
   [[ -n ${1} ]] && mkdir -p ${1} && builtin cd ${1}
 }
 
+function edit_alias() {
+  $EDITOR $HOME/.zsh/alias.zsh && source $HOME/.zsh/alias.zsh
+}
 
 #
 # File Downloads

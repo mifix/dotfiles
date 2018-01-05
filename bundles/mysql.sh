@@ -1,4 +1,4 @@
-APT_PACKAGES=(mariadb-server mariadb-client)
+APT_PACKAGES=(mariadb-server mariadb-client libmariadb-dev)
 
 NIX_PACKAGES=()
 

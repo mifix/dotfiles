@@ -18,3 +18,8 @@ export PATH=$PATH:$HOME/.cargo/bin
 
 # Nodejs
 export PATH=$PATH:./node_modules/.bin
+
+# Ruby
+if [[ $(which gem) ]];then
+  export PATH=$PATH:$(gem environment gemdir)/bin
+fi

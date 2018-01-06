@@ -1,4 +1,4 @@
-APT_PACKAGES=(mariadb-server mariadb-client)
+APT_PACKAGES=(mariadb-server mariadb-client libmariadb-dev)
 
 NIX_PACKAGES=()
 
@@ -16,12 +16,12 @@ install_packages "APT"
 DB_USER="sneezy"
 DB_PASSWD="sneezy"
 
-SQL="CREATE USER IF NOT EXISTS '$DB_USER'@'localhost' IDENTIFIED BY '$DB_PASSWD';\n
-GRANT ALL PRIVILEGES ON *.* TO '$DB_USER'@'localhost';\n
+SQL="CREATE USER IF NOT EXISTS '$DB_USER'@'%' IDENTIFIED BY '$DB_PASSWD';\n
+GRANT ALL PRIVILEGES ON *.* TO '$DB_USER'@'%';\n
 FLUSH PRIVILEGES;
 ";
 
-DROP_SQL="DROP USER IF EXISTS '$DB_USER'@'localhost';"
+DROP_SQL="DROP USER IF EXISTS '$DB_USER'@'%';"
 
 task "Creating user $DB_USER" "echo \"${SQL}\" | sudo mysql -uroot"
 # task "Removing user $DB_USER" "echo \"${DROP_SQL}\" | sudo mysql -uroot"

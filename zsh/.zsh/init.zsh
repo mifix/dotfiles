@@ -13,13 +13,13 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 unsetopt beep notify
 
 # Print an error when the filename pattern has no match.
-setopt nomatch                          
+setopt nomatch
 
 # Report job status.
-setopt notify                           
+setopt notify
 
 # Enable Vi/Emacs mode.
-#bindkey -v                             
+#bindkey -v
 bindkey -e
 
 
@@ -41,3 +41,9 @@ else
   EDITOR=vim
   VISUAL=vim
 fi
+
+
+autoload -z edit-command-line
+zle -N edit-command-line
+bindkey "^X^E" edit-command-line
+#bindkey -M vicmd v edit-command-line

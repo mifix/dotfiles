@@ -9,6 +9,12 @@ alias -g L=' | less'
 
 alias S='builtin cd $HOME/Documents/Schule/'
 
+if (( ${+commands[aria2c]} )); then
+  alias yt='youtube-dl -f mp4 --external-downloader aria2c'
+else
+  alias yt='youtube-dl -f mp4'
+fi
+
 alias ch="builtin cd $HOME"
 
 alias e="nvim"

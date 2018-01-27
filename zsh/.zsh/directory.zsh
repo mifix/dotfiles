@@ -1,3 +1,6 @@
+alias SCHULE="builtin cd ~/Documents/Schule/"
+
+
 #
 # Directory navigation options
 #

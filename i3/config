@@ -17,10 +17,15 @@ set $terminal termite
 
 #*************** Keybindings ******************
 
+# Toggle keyboard layout
+bindsym $mod+Ctrl+k exec --no-startup-id $HOME/bin/switch_keyboard.sh
 
 # My apps shortcut
 bindsym $mod+p exec --no-startup-id pcmanfm
 bindsym $mod+Shift+p exec --no-startup-id pcmanfm `$HOME/bin/xcwd`
+
+# Music/Spotify
+bindsym $mod+m exec --no-startup-id $HOME/bin/spotify
 
 # Start a terminal
 bindsym $mod+Return exec --no-startup-id $terminal
@@ -132,10 +137,10 @@ bindsym $mod+Shift+0 move container to workspace $w10
 
 
 #toggle workspace's display screen
-bindsym Ctrl+Shift+Right move workspace to output right
-bindsym Ctrl+Shift+Left move workspace to output right
-bindsym Ctrl+Shift+Up move workspace to output up
-bindsym Ctrl+Shift+Down move workspace to output down
+# bindsym Ctrl+Shift+Right move workspace to output right
+# bindsym Ctrl+Shift+Left move workspace to output right
+# bindsym Ctrl+Shift+Up move workspace to output up
+# bindsym Ctrl+Shift+Down move workspace to output down
 
 
 # Reload the configuration file
@@ -253,9 +258,9 @@ set $Locker i3lock-fancy
 bindsym $mod+F9 exec --no-startup-id $HOME/.config/popups/power/power
 
 # Volume control
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5%
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 2 +5%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 2 -5%
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 2 toggle
 
 # Brightness control
 bindsym XF86MonBrightnessUp exec xbacklight -inc 20
@@ -363,7 +368,8 @@ for_window [title="Sign in.*feedly" class="(?i)Firefox"] floating enable
 # Starting apps on a specific workspace
 #assign [class="^Tor Browser$"]           $w1
 assign [class="^Firefox$"]               $w1
-#assign [class="^Luakit$"]                $w1
+#assign [class="Spotify"]               $w7
+for_window [class="Spotify"] move to workspace $w7
 #assign [class="^Zathura"]                $w3
 #assign [class="^mpv$"]                   $w4
 #assign [class="^VirtualBox$"]            $w7

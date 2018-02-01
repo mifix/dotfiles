@@ -11,7 +11,9 @@ POWERLEVEL9K_MODE='awesome-fontconfig'
 POWERLEVEL9K_MODE='nerdfont-complete'
 
 if [[ $(hostname) == 'plutarch' ]];then
-  zplug "bhilburn/powerlevel9k", use:powerlevel9k.zsh-theme
+  # zplug "bhilburn/powerlevel9k", use:powerlevel9k.zsh-theme
+  zplug "denysdovhan/spaceship-prompt", use:spaceship.zsh, from:github, as:theme
+  SPACESHIP_KUBECONTEXT_SHOW=false
 else
   zplug sindresorhus/pure, use:pure.zsh, from:github, as:theme
 fi
@@ -45,6 +47,8 @@ zplug "b4b4r07/enhancd", use:init.sh
 # Search history
 zplug "psprint/history-search-multi-word"
 
+# Taskwarrior completion
+zplug "plugins/taskwarrior", from:oh-my-zsh
 
 
 # Set the priority when loading

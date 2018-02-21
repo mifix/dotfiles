@@ -45,11 +45,11 @@ alias ls="ls --color -F"
 # No auto-correct when making directory.
 alias mkdir='nocorrect mkdir'
 
-# Verbose moving with no auto-correct.
-alias mv="nocorrect mv -v"
+# Moving with no auto-correct.
+alias mv="nocorrect mv"
 
-# Verbose removing with no auto-correct.
-alias rm="nocorrect rm -v"
+# Removing with no auto-correct.
+alias rm="nocorrect rm"
 
 if type exa > /dev/null; then
   alias l='exa -abghl --git --color=automatic'
@@ -57,6 +57,8 @@ else
   alias l='ls -lAh --color=auto'
 fi
 
+# get public ip
+alias get_ip="wget http://ipecho.net/plain -O - -q ; echo"
 
 # if pigz/pbzip2 are available, alias them as they are drop-in replacements for gzip and bzip2, respectively.
 
@@ -88,6 +90,8 @@ fi
 # Docker
 alias d="docker"
 
+# virsh & co
+alias sv="sudo virsh"
 
 # Ruby/Rails
 alias bi="bundler install -j `nproc`"

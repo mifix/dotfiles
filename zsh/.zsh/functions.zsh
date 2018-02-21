@@ -7,6 +7,12 @@ function edit_alias() {
   $EDITOR $HOME/.zsh/alias.zsh && source $HOME/.zsh/alias.zsh
 }
 
+function ssh() {
+  /usr/bin/ssh "$@"
+  # reset theme
+  zsh $HOME/.base16_theme
+}
+
 #
 # File Downloads
 #

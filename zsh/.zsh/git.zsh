@@ -171,7 +171,7 @@ alias gtv='git verify-tag'
 # Working Copy (w)
 alias gws='git status --short'
 alias gwS='git status'
-alias gwd='git diff --no-ext-diff'
+alias gwd='git dsf' # use diff-so-fancy
 alias gwD='git diff --no-ext-diff --word-diff'
 alias gwr='git reset --soft'
 alias gwR='git reset --hard'

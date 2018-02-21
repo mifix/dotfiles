@@ -5,7 +5,11 @@ integer t0=$(date '+%s') # start time
 BASE16_SHELL=$HOME/.config/base16-shell/
 [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
 
-base16_mocha
+if [[ $(hostname) == 'plutarch' ]];then
+  base16_mocha
+elif [[ $(hostname) == 'wth-kiste' ]];then
+  base16_gruvbox-dark-medium
+fi
 
 if [[ -e $HOME/.ssh/id_rsa ]];then
 	eval `keychain --eval --quiet --agents ssh id_rsa`

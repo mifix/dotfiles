@@ -1,0 +1,22 @@
+default-remote: local
+remotes:
+  images:
+    addr: https://images.linuxcontainers.org
+    public: true
+    protocol: simplestreams
+  local:
+    addr: unix://
+    public: false
+  ubuntu:
+    addr: https://cloud-images.ubuntu.com/releases
+    public: true
+    protocol: simplestreams
+  ubuntu-daily:
+    addr: https://cloud-images.ubuntu.com/daily
+    public: true
+    protocol: simplestreams
+aliases:
+  delete: delete -f
+  ls: list -c ns46
+  shell: exec @ARGS@ -- bash
+  u: exec @ARGS@ -- sudo --login --user ubuntu

@@ -7,7 +7,9 @@ DOTDIRS=("xmodmap" "tmux" "sakura" "zsh" "git" "compton" "colors")
 
 DOTFILES=("Xresources" )
 
-CONFFILES=("polybar" "nvim" "firejail" "i3" "dunst" "lemonbar" "rofi")
+CONFFILES=("polybar" "nvim" "firejail" "i3" "dunst" "lemonbar" "rofi" )
+
+SNAPCONFS=("lxd")
 
 
 for dot in "${DOTDIRS[@]}"; do
@@ -25,6 +27,11 @@ for config in "${CONFFILES[@]}"; do
   stow -v -d ${DOTFILES_DIR} $config -t ~/.config/${config}
 done
 
+
+for config in "${SNAPCONFS[@]}"; do
+  mkdir -p "$HOME/snap/${config}"
+  stow -v -d ${DOTFILES_DIR} $config -t "$HOME/snap/${config}/current/"
+done
 
 mkdir -p ~/.ssh/connections
 stow -v -d ${DOTFILES_DIR} ssh -t ~/.ssh

@@ -8,7 +8,6 @@ GO_PACKAGES=(github.com/nsf/gocode github.com/sourcegraph/go-langserver)
 
 header "Installing Go..."
 
-# install_packages "APT"
 install_packages "NIX"
 
 if [[ -z $GOPATH ]];then

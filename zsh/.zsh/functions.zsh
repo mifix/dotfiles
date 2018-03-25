@@ -13,6 +13,16 @@ function ssh() {
   zsh $HOME/.base16_theme
 }
 
+function lxc() {
+  if [ -e /var/lib/snapd/snap/bin/lxc ]; then
+    /var/lib/snapd/snap/bin/lxc "$@"
+  else
+    echo "NO lxc bin found. Edit in ~/.zsh/functions.zsh"
+  fi
+  # reset theme
+  zsh $HOME/.base16_theme
+}
+
 #
 # File Downloads
 #

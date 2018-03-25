@@ -90,6 +90,9 @@ fi
 # Docker
 alias d="docker"
 
+# Kubernetes
+alias k="kubectl"
+
 # virsh & co
 alias sv="sudo virsh"
 

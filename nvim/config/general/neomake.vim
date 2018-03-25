@@ -18,3 +18,10 @@ let g:neomake_error_sign = {
       \ 'texthl': 'ErrorMsg',
       \ }
 " }
+
+" let g:neomake_open_list = 2
+
+
+
+" Run Async Shell Commands in Vim 8.0 / NeoVim and Output to Quickfix Window
+Plug 'skywind3000/asyncrun.vim'

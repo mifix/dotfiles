@@ -6,6 +6,7 @@
 # >>> initializatione <<<
 
 set $mod Mod1
+set $mod2 Mod4
 
 set $left   h
 set $down   j
@@ -21,8 +22,8 @@ set $terminal termite
 bindsym $mod+Ctrl+k exec --no-startup-id $HOME/bin/switch_keyboard.sh
 
 # My apps shortcut
-bindsym $mod+p exec --no-startup-id pcmanfm
-bindsym $mod+Shift+p exec --no-startup-id pcmanfm `$HOME/bin/xcwd`
+bindsym $mod+p exec --no-startup-id nautilus
+bindsym $mod+Shift+p exec --no-startup-id nautilus `$HOME/bin/xcwd`
 
 # Music/Spotify
 bindsym $mod+m exec --no-startup-id $HOME/bin/spotify
@@ -49,7 +50,7 @@ bindsym $mod+Shift+Escape exec i3-msg exit
 #bindsym $mod+d exec --no-startup-id rofi -show drun
 bindsym Ctrl+space exec --no-startup-id rofi -show drun
 bindsym Mod4+Tab exec --no-startup-id rofi -show window
-bindsym $mod+Shift+d exec --no-startup-id rofi -show run
+#bindsym $mod+Shift+d exec --no-startup-id rofi -show run
 
 # Change focus
 bindsym $mod+h focus left
@@ -65,10 +66,10 @@ bindsym $mod+Shift+l move right
 
 
 # Split in horizontal orientation
-bindsym $mod+\ split h
+bindsym $mod2+l split h
 
 # Split in vertical orientation
-bindsym $mod+- split v
+bindsym $mod2+j split v
 
 # Enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -91,10 +92,13 @@ bindsym $mod+space focus mode_toggle
 floating_modifier $mod
 
 # Focus the parent container
-bindsym $mod+a focus parent
+bindsym $mod2+a focus parent
 
 # Focus the child container
-#bindsym $mod+d focus child
+bindsym $mod2+d focus child
+
+# Easyfocus
+bindsym $mod2+f exec --no-startup-id i3-easyfocus -a
 
 # Initialize workspace
 #list of icons to use with i3bar requires fontawesome
@@ -278,65 +282,13 @@ bindsym $mod+F10 exec --no-startup-id ~/.config/popups/todo/todo
 # Theme switcher
 bindsym $mod+F11 exec --no-startup-id ~/.local/bin/themeswitcher
 
-# Custom colors
-set_from_resource $black       color8  #000000
-set_from_resource $darkblack   color0  #000000
-set_from_resource $darkred     color1  #000000
-set_from_resource $red         color9  #000000
-set_from_resource $darkgreen   color2  #000000
-set_from_resource $green       color10 #000000
-set_from_resource $darkyellow  color3  #000000
-set_from_resource $yellow      color11 #000000
-set_from_resource $darkblue    color4  #000000
-set_from_resource $blue        color12 #000000
-set_from_resource $darkmagenta color5  #000000
-set_from_resource $magenta     color13 #000000
-set_from_resource $darkcyan    color6  #000000
-set_from_resource $cyan        color14 #000000
-set_from_resource $white       color15 #000000
-
-#set $darkblack #ddd9cd
-
-# Window colors           border      background   text            indicator    child_border
-client.focused            $blue       $blue        $white          $darkblack  $darkblack
-client.focused_inactive   $darkblack  $darkblack   $white          $darkblack  $darkblack
-client.unfocused          $yellow     $yellow      $white          $darkblack  $darkblack
-client.urgent             $darkblack  $darkblack   $white          $darkblack  $darkblack
-
-#Start i3bar to display a workspace bar
-#Uncomment to use the default i3bar status
-# bar {
-#
-#           status_command  $HOME/.local/bin/conkyi3.sh
-#           position top
-#           font xft:tewi, FontAwesome 8
-#           strip_workspace_numbers yes
-#
-#           colors {
-#               separator          #161615
-#               background         #020202
-#               statusline         #111111
-#
-#               # Bar colors       border    background    text
-#               focused_workspace  #07090d   #020202       #5E468C
-#               active_workspace   #07090d   #020202       #268bd2
-#               inactive_workspace #07090d   #020202       #899CA1
-#               urgent_workspace   #07090d   #020202       #287373
-#          }
-# }
-
-
-# Fancy title bar
-#font pango:lemon 18
-#for_window [class=".*"] title_format "<span font='tewi 8'> ➤ %title</span>"
-#for_window [class=".*"] title_format "<span font='tewi 8'> </span>"
-
 
 #************  Startup apps ***********************
 
 #exec_always --no-startup-id feh --bg-fill $HOME/Pictures/Wallpapers/Mountain.jpg
-#exec_always --no-startup-id feh --bg-fill $HOME/Pictures/Wallpapers/wallhaven-168642.png
+# exec_always --no-startup-id feh --bg-fill $HOME/Pictures/Wallpapers/wallhaven-168642.png
 exec_always --no-startup-id feh --bg-fill $HOME/Pictures/Wallpapers/sadkitty1.jpg
+# exec_always --no-startup-id feh --bg-fill $HOME/Pictures/Wallpapers/dark_material.png
 exec --no-startup-id compton $HOME/.compton.conf -b
 exec --no-startup-id dunst -config $HOME/.config/dunst/dunstrc
 
@@ -370,6 +322,7 @@ for_window [title="Sign in.*feedly" class="(?i)Firefox"] floating enable
 assign [class="^Firefox$"]               $w1
 #assign [class="Spotify"]               $w7
 for_window [class="Spotify"] move to workspace $w7
+assign [class="Pidgin"] $w5
 #assign [class="^Zathura"]                $w3
 #assign [class="^mpv$"]                   $w4
 #assign [class="^VirtualBox$"]            $w7
@@ -398,8 +351,48 @@ workspace $w10 output HDMI-0
 #*************** Autostart ******************
 
 exec --no-startup-id i3-msg "workspace 2; exec $terminal &"
-exec --no-startup-id i3-msg "workspace 5; exec /usr/bin/yakyak &"
+#exec --no-startup-id i3-msg "workspace 5; exec /usr/bin/yakyak &"
+exec --no-startup-id i3-msg "workspace 5; exec /usr/bin/pidgin &"
 exec --no-startup-id i3-msg "workspace 1; exec /usr/bin/firefox &"
 
+#**************** Colors ********************
+
+# # Custom colors
+# set_from_resource $black       color8  #000000
+# set_from_resource $darkblack   color0  #000000
+# set_from_resource $darkred     color1  #000000
+# set_from_resource $red         color9  #000000
+# set_from_resource $darkgreen   color2  #000000
+# set_from_resource $green       color10 #000000
+# set_from_resource $darkyellow  color3  #000000
+# set_from_resource $yellow      color11 #000000
+# set_from_resource $darkblue    color4  #000000
+# set_from_resource $blue        color12 #000000
+# set_from_resource $darkmagenta color5  #000000
+# set_from_resource $magenta     color13 #000000
+# set_from_resource $darkcyan    color6  #000000
+# set_from_resource $cyan        color14 #000000
+# set_from_resource $white       color15 #000000
+
+# #set $darkblack #ddd9cd
+
+# # Window colors           border      background   text            indicator    child_border
+# client.focused            $blue       $blue        $white          $darkblack  $darkblack
+# client.focused_inactive   $darkblack  $darkblack   $white          $darkblack  $darkblack
+# client.unfocused          $yellow     $yellow      $white          $darkblack  $darkblack
+# client.urgent             $darkblack  $darkblack   $white          $darkblack  $darkblack
+
+set $cbg "#00bcd4"
+set $ccolor "#efebe0"
+set $cunfo "#222D32"
+# set $cindi "#145ba7"
+set $cindi "#ff0000"
+set $cindiu "#8a9db1"
+
+#<colorclass>           <border> <background> <text> <indicator> <child_border>
+client.focused          $cbg    $cbg    $ccolor $cindi   $cbg
+client.focused_inactive $cbg    $cunfo  $ccolor $cindiu   $cunfo
+client.unfocused        $cbg    $cunfo  $ccolor $cindiu   $cunfo
+client.urgent           $cbg    $cunfo  $ccolor $cindi   $cunfo
 
 # vim:filetype=i3

@@ -1,12 +1,18 @@
 [user]
 	name = Christian Mayer
 	email = gitlab@mifix.com
+	signingkey = 65B4B6EEB53808A1
 [push]
 	default = simple
 [alias]
   difftex = difftool -y -t latex
+  patch = !git --no-pager diff --no-color
+	dsf = "!f() { [ -z \"$GIT_PREFIX\" ] || cd \"$GIT_PREFIX\" && git diff --color \"$@\" | $HOME/opt/diff-so-fancy/diff-so-fancy  | less --tabs=4 -RFX; }; f"
+
 [difftool.latex]
 	cmd = latexdiff "$LOCAL" "$REMOTE"
 
 [http "https://gopkg.in"]
 	followRedirects = true
+[commit]
+	gpgsign = true

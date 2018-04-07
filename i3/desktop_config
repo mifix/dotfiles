@@ -13,13 +13,12 @@ set $down   j
 set $up     k
 set $right  l
 
-# set $terminal gnome-terminal
 set $terminal termite
 
 #*************** Keybindings ******************
 
 # Toggle keyboard layout
-bindsym $mod+Ctrl+k exec --no-startup-id $HOME/bin/switch_keyboard.sh
+bindsym $mod+Ctrl+s exec --no-startup-id $HOME/bin/switch_keyboard.sh
 
 # My apps shortcut
 bindsym $mod+p exec --no-startup-id nautilus
@@ -50,13 +49,19 @@ bindsym $mod+Shift+Escape exec i3-msg exit
 #bindsym $mod+d exec --no-startup-id rofi -show drun
 bindsym Ctrl+space exec --no-startup-id rofi -show drun
 bindsym Mod4+Tab exec --no-startup-id rofi -show window
-#bindsym $mod+Shift+d exec --no-startup-id rofi -show run
+bindsym $mod+Shift+d exec --no-startup-id rofi -show run
 
 # Change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
+
+# Change focus of containers
+bindsym $mod+Ctrl+h exec --no-startup-id $HOME/bin/i3pocus l
+bindsym $mod+Ctrl+j exec --no-startup-id $HOME/bin/i3pocus d
+bindsym $mod+Ctrl+k exec --no-startup-id $HOME/bin/i3pocus u
+bindsym $mod+Ctrl+l exec --no-startup-id $HOME/bin/i3pocus r
 
 # Move focused window
 bindsym $mod+Shift+h move left
@@ -274,7 +279,9 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 20
 bindsym XF86TouchpadToggle exec /some/path/toggletouchpad.sh
 
 # Screenshot with scrot
-bindsym Print exec --no-startup-id scrot -e 'mv $f ~/Pictures/Screenshots/' && notify-send "Screenshot Taken"
+# bindsym Print exec --no-startup-id scrot -e 'mv $f ~/Pictures/Screenshots/' && notify-send "Screenshot Taken"
+bindsym Print exec --no-startup-id nougat && notify-send "Screenshot Taken"
+bindsym Shift+Print exec --no-startup-id nougat -f && notify-send "Screenshot Taken"
 
 # View Todo List
 bindsym $mod+F10 exec --no-startup-id ~/.config/popups/todo/todo

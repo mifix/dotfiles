@@ -1,0 +1,258 @@
+# Configuration By Aditya Shakya
+
+[global/wm]
+margin-top = 0
+margin-bottom = 0
+
+[color]
+white = #fff
+base = #efebe0
+brown = #666
+orange = #fbb253
+orange2 = #ef7922
+purple = #e58a95
+red = #f1383d
+pink = #f26262
+pink2 = #f64d64
+blue = #19aed3
+cyan = #00bcd4
+adapta = #263238
+
+[bar/top]
+monitor = HDMI-0
+override-redirect = false
+bottom = false
+fixed-center = true
+
+width = 100%
+height = 20
+
+# font-0 = "Misc Termsyn:size=12;1"
+font-1 = "Wuncon Siji:size=12;1"
+font-0 = Iosevka Slab:size=10;3
+# font-1 = Material Icons:antialia=false:size=12;5
+
+background = ${color.adapta}
+foreground = ${color.white}
+
+line-color = ${color.cyan}
+underline-size = 0
+overline-size = 0
+
+border-bottom-size = 2
+border-bottom-color = ${color.cyan}
+
+padding-left = 2
+padding-right = 2
+module-margin-left = 1
+module-margin-right = 2
+
+tray-position = right
+tray-padding = 0
+tray-maxsize = 16
+
+scroll-up = i3wm-wsnext
+scroll-down = i3wm-wsprev
+
+# Mod Loc ####################################################
+
+modules-left = arch xwindow
+modules-center = i3
+modules-right = home xkeyboard battery volume date powermenu
+
+# Scripts ####################################################
+# Directory = ~/.config/polybar/scripts/
+
+[module/gmail]
+type = custom/script
+exec = ~/.config/polybar/scripts/polybar-gmail/launch.py
+tail = true
+click-left = xdg-open https://mail.google.com
+
+[module/redshift]
+type = custom/script
+exec = ~/.config/polybar/scripts/info-redshift-temp/info-redshift-temp.sh
+interval = 5
+
+# Modules ####################################################
+
+[module/xwindow]
+type = internal/xwindow
+format = <label>
+label = %title%
+label-maxlen = 75
+
+[module/i3]
+type = internal/i3
+strip-wsnumbers = true
+wrapping-scroll = false
+
+label-focused =%name%
+label-focused-foreground = ${color.cyan}
+label-focused-background = ${color.adapta}
+label-focused-padding = 1
+
+label-unfocused =%name%
+label-unfocused-padding = 1
+
+label-visible =%name%
+label-visible-padding = 1
+
+label-urgent =%name%
+label-urgent-background = ${color.adapta}
+label-urgent-foreground = ${color.red}
+label-urgent-padding = 1
+
+[module/battery]
+type = internal/battery
+full-at = 98
+time-format = %H:%M
+battery = BAT1
+adapter = AC
+
+format-charging = <animation-charging> <label-charging>
+label-charging = %percentage%% (%time%)
+
+format-discharging = <ramp-capacity> <label-discharging>
+label-discharging = %percentage%% (%time%)
+
+format-full = <label-full>
+format-full-prefix = " "
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+ramp-capacity-5 = 
+ramp-capacity-6 = 
+ramp-capacity-7 = 
+ramp-capacity-8 = 
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+animation-charging-5 = 
+animation-charging-6 = 
+animation-charging-7 = 
+animation-charging-8 = 
+animation-charging-framerate = 750
+
+# Another Icon ######
+
+;ramp-capacity-0 = 
+;ramp-capacity-1 = 
+;ramp-capacity-2 = 
+
+;animation-charging-0 = 
+;animation-charging-1 = 
+;animation-charging-2 = 
+;animation-charging-framerate = 750
+
+[module/volume]
+type = internal/volume
+
+;speaker-mixer = Speaker
+;headphone-mixer = Headphone
+;headphone-id = 16
+;mapped = true
+
+format-volume = <ramp-volume> <label-volume>
+label-volume = %percentage%%
+
+format-muted-prefix = " "
+label-muted = MUTE
+
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+ramp-volume-3 = 
+ramp-volume-4 = 
+ramp-volume-5 = 
+ramp-volume-6 = 
+ramp-volume-7 = 
+ramp-volume-8 = 
+ramp-volume-9 = 
+
+ramp-headphones-0 = 
+ramp-headphones-1 = 
+
+[module/date]
+type = internal/date
+interval = 30
+label =  %time%
+time =  %H:%M
+time-alt =  %Y-%m-%d
+
+##### Text / Icon / Launchers ##################
+
+[module/arch]
+type = custom/text
+
+content = 
+content-background = ${color.adapta}
+content-foreground = ${color.cyan}
+;content-padding = 4
+
+click-left = rofi-apps
+click-middle = "dmenu-run"
+click-right = rofi -show run
+
+################################################
+
+[module/powermenu]
+type = custom/menu
+
+expand-right = true
+
+format-spacing = 1
+
+label-open = 
+label-open-foreground = ${color.cyan}
+label-close =  cancel
+label-close-foreground = ${color.cyan}
+label-separator = |
+label-separator-foreground = ${color.cyan}
+
+menu-0-0 = reboot
+menu-0-0-exec = menu-open-1
+menu-0-1 = shutdown
+menu-0-1-exec = menu-open-2
+
+menu-1-0 = cancel
+menu-1-0-exec = menu-open-0
+menu-1-1 = reboot
+menu-1-1-exec = systemctl reboot
+
+menu-2-0 = shutdown
+menu-2-0-exec = systemctl poweroff
+menu-2-1 = cancel
+menu-2-1-exec = menu-open-0
+
+[module/xkeyboard]
+type = internal/xkeyboard
+blacklist-0 = num lock
+
+format-prefix = " "
+format-prefix-foreground = ${color.white}
+format-prefix-underline = ${color.white}
+
+label-layout = %layout%
+label-layout-underline = ${color.white}
+
+label-indicator-padding = 2
+label-indicator-margin = 1
+label-indicator-background = ${color.white}
+label-indicator-underline = ${color.white}
+
+[module/home]
+type = internal/fs
+interval = 25
+
+mount-0 = /
+;label-mounted =  %percentage_used%%
+label-mounted =  %percentage_used%%
+label-unmounted = %mountpoint% not mounted
+label-unmounted-foreground = ${color.pink}

@@ -1,19 +1,19 @@
-!    ░█  █░                                                               
-!     ▓▒▒▓   █▒██▒  ███   ▒███▒   ███   █   █   █▒██▒  ▓██▒   ███   ▒███▒ 
-!      ██    ██  █ ▓▓ ▒█  █▒ ░█  █▓ ▓█  █   █   ██  █ ▓█  ▓  ▓▓ ▒█  █▒ ░█ 
-!      ██    █     █   █  █▒░    █   █  █   █   █     █░     █   █  █▒░   
-!     ▒██░   █     █████  ░███▒  █   █  █   █   █     █      █████  ░███▒ 
-!     █▒▒█   █     █         ▒█  █   █  █   █   █     █░     █         ▒█ 
-!    ▒█  █░  █     ▓▓  █  █░ ▒█  █▓ ▓█  █▒ ▓█   █     ▓█  ▓  ▓▓  █  █░ ▒█ 
-!    █▒  ▒█  █      ███▒  ▒███▒   ███   ▒██▒█   █      ▓██▒   ███▒  ▒███▒                                                                       
-                                                                      
+!    ░█  █░
+!     ▓▒▒▓   █▒██▒  ███   ▒███▒   ███   █   █   █▒██▒  ▓██▒   ███   ▒███▒
+!      ██    ██  █ ▓▓ ▒█  █▒ ░█  █▓ ▓█  █   █   ██  █ ▓█  ▓  ▓▓ ▒█  █▒ ░█
+!      ██    █     █   █  █▒░    █   █  █   █   █     █░     █   █  █▒░
+!     ▒██░   █     █████  ░███▒  █   █  █   █   █     █      █████  ░███▒
+!     █▒▒█   █     █         ▒█  █   █  █   █   █     █░     █         ▒█
+!    ▒█  █░  █     ▓▓  █  █░ ▒█  █▓ ▓█  █▒ ▓█   █     ▓█  ▓  ▓▓  █  █░ ▒█
+!    █▒  ▒█  █      ███▒  ▒███▒   ███   ▒██▒█   █      ▓██▒   ███▒  ▒███▒
+
 
 !-----------------------------------------------------------------------
 !                         Xft settings
 !-----------------------------------------------------------------------
 
 Xft.dpi:                96
-Xft.autohint:           0       
+Xft.autohint:           0
 Xft.antialias:          true
 Xft.rgba:               rgb
 Xft.hinting:            true
@@ -22,10 +22,10 @@ Xft.hintstyle:          hintsfull
 
 
 !-----------------------------------------------------------------------
-!                        URxvt settings 
+!                        URxvt settings
 !-----------------------------------------------------------------------
 
-URxvt.internalBorder:    10
+URxvt.internalBorder:    0
 URxvt.externalBorder:    0
 !URxvt.lineSpace:        0
 !urxvt*shading:          30
@@ -43,11 +43,12 @@ URxvt*scrollWithBuffer:  true
 URxvt*scrollTtyKeypress: true
 
 !! Fonts
-#define fonts xft:Iosevka:size=9,\
-              xft:Droid Sans Mono for Powerline:size=12,\
-              xft:Dejavu Sans Mono for Powerline:size=12,\
-              xft:Tewi:size=8,\
-              xft:Siji:size=12
+#define fonts xft:Input Mono:size=12
+!#define fonts xft:Iosevka:size=9,\
+!              xft:Droid Sans Mono for Powerline:size=12,\
+!              xft:Dejavu Sans Mono for Powerline:size=12,\
+!              xft:Tewi:size=8,\
+!              xft:Siji:size=12
 
 URxvt*font:              fonts
 URxvt*boldMode:          true

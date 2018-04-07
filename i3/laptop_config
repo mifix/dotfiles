@@ -1,0 +1,394 @@
+# i3config
+# vi: set ft=conf
+# ========================================================
+
+
+# >>> initializatione <<<
+
+set $mod Mod1
+set $mod2 Mod4
+
+set $left   h
+set $down   j
+set $up     k
+set $right  l
+
+# set $terminal gnome-terminal
+set $terminal termite
+set $filebrowser pcmanfm
+
+#*************** Keybindings ******************
+
+# Toggle keyboard layout
+bindsym $mod+Ctrl+k exec --no-startup-id $HOME/bin/switch_keyboard.sh
+
+# My apps shortcut
+bindsym $mod+p exec --no-startup-id $filebrowser
+bindsym $mod+Shift+p exec --no-startup-id $filebrowser `$HOME/bin/xcwd`
+
+# Music/Spotify
+bindsym $mod+m exec --no-startup-id $HOME/bin/spotify
+
+# Start a terminal
+bindsym $mod+Return exec --no-startup-id $terminal
+# bindsym $mod+Shift+Return exec --no-startup-id gnome-terminal --working-directory=`~/bin/termdir.py`
+bindsym $mod+Shift+Return exec --no-startup-id $terminal -d `$HOME/bin/xcwd`
+
+bindsym $mod+c exec --no-startup-id google-chrome-stable
+bindsym $mod+x exec --no-startup-id gnome-calculator
+
+# Kill focused window
+bindsym $mod+Shift+q kill
+
+# Quit i3
+bindsym $mod+Shift+Escape exec i3-msg exit
+
+# Start dmenu (a program launcher)
+#bindsym $mod+d exec --no-startup-id dmenu_run -b -lh 24 -x 10 -y 10 -w 1347 -nf "#586e75" -sb "#268bd2" -sf "#dfddd5" -nb "#dfddd5" -fn "Iosevka-9"
+
+# Start Rofi (a program launcher, ssh, window switcher)
+# https://davedavenport.github.io/rofi/
+#bindsym $mod+d exec --no-startup-id rofi -show drun
+bindsym Ctrl+space exec --no-startup-id rofi -show drun
+bindsym Mod4+Tab exec --no-startup-id rofi -show window
+bindsym $mod+Shift+d exec --no-startup-id rofi -show run
+
+# Change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# Move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+
+# Split in horizontal orientation
+bindsym $mod2+l split h
+
+# Split in vertical orientation
+bindsym $mod2+j split v
+
+# Enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+bindsym $mod+g fullscreen global
+# put YouTube into fullscreen and execute this for media mode
+bindsym $mod+y fullscreen disable; floating enable; resize set 600 400; sticky enable; move window to position 1940 54
+
+# Change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# Toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# Change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# Focus the parent container
+bindsym $mod2+a focus parent
+
+# Focus the child container
+bindsym $mod2+d focus child
+
+# Easyfocus
+bindsym $mod2+f exec --no-startup-id i3-easyfocus -a
+
+# Initialize workspace
+#list of icons to use with i3bar requires fontawesome
+#
+set $w1 1
+set $w2 2
+set $w3 3
+set $w4 4
+set $w5 5
+set $w6 6
+set $w7 7
+set $w8 8
+set $w9 9
+set $w10 10
+
+# Switch to workspace
+bindsym $mod+1 workspace $w1
+bindsym $mod+2 workspace $w2
+bindsym $mod+3 workspace $w3
+bindsym $mod+4 workspace $w4
+bindsym $mod+5 workspace $w5
+bindsym $mod+6 workspace $w6
+bindsym $mod+7 workspace $w7
+bindsym $mod+8 workspace $w8
+bindsym $mod+9 workspace $w9
+bindsym $mod+0 workspace $w10
+bindsym $mod+Tab workspace back_and_forth
+
+# Move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $w1
+bindsym $mod+Shift+2 move container to workspace $w2
+bindsym $mod+Shift+3 move container to workspace $w3
+bindsym $mod+Shift+4 move container to workspace $w4
+bindsym $mod+Shift+5 move container to workspace $w5
+bindsym $mod+Shift+6 move container to workspace $w6
+bindsym $mod+Shift+7 move container to workspace $w7
+bindsym $mod+Shift+8 move container to workspace $w8
+bindsym $mod+Shift+9 move container to workspace $w9
+bindsym $mod+Shift+0 move container to workspace $w10
+
+
+#toggle workspace's display screen
+# bindsym Ctrl+Shift+Right move workspace to output right
+# bindsym Ctrl+Shift+Left move workspace to output right
+# bindsym Ctrl+Shift+Up move workspace to output up
+# bindsym Ctrl+Shift+Down move workspace to output down
+
+
+# Reload the configuration file
+bindsym $mod+Shift+c reload
+
+# Restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+
+# Resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym k resize grow height 10 px or 10 ppt
+        bindsym j resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+# Make the currently focused window a scratchpad
+bindsym $mod+Shift+minus move scratchpad
+
+# Show the first scratchpad window
+bindsym $mod+minus scratchpad show
+
+#  i3-gaps settings
+#  More info visit: https://github.com/Airblader/i3
+
+#smart_gaps on
+smart_borders on
+smart_gaps on
+
+
+# Global gaps size
+gaps inner 10
+gaps outer 5
+
+set $mode_gaps Gaps: (o) outer, (i) inner
+set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
+set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
+bindsym $mod+Shift+g mode "$mode_gaps"
+
+mode "$mode_gaps" {
+        bindsym o      mode "$mode_gaps_outer"
+        bindsym i      mode "$mode_gaps_inner"
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+mode "$mode_gaps_inner" {
+        bindsym plus  gaps inner current plus 5
+        bindsym minus gaps inner current minus 5
+        bindsym 0     gaps inner current set 0
+
+        bindsym Shift+plus  gaps inner all plus 5
+        bindsym Shift+minus gaps inner all minus 5
+        bindsym Shift+0     gaps inner all set 0
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+mode "$mode_gaps_outer" {
+        bindsym plus  gaps outer current plus 5
+        bindsym minus gaps outer current minus 5
+        bindsym 0     gaps outer current set 0
+
+        bindsym Shift+plus  gaps outer all plus 5
+        bindsym Shift+minus gaps outer all minus 5
+        bindsym Shift+0     gaps outer all set 0
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+# Specify gaps for specific workspace
+# workspace $w1 gaps outer 15
+# workspace $w2 gaps outer 15
+# workspace $w5 gaps outer 15
+# workspace $w8 gaps outer 15
+
+bindsym $mod+r mode "resize"
+
+# Lock screen
+set $Locker i3lock-fancy
+
+# Shutdwon, Restart, Logout, Suspend, Hibernate, Reboot, Lock
+# set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
+# mode "$mode_system" {
+#     bindsym l exec --no-startup-id $Locker, mode "default"
+#     bindsym e exec --no-startup-id i3-msg exit, mode "default"
+#     bindsym s exec --no-startup-id $Locker && systemctl suspend, mode "default"
+#     bindsym h exec --no-startup-id $Locker && systemctl hibernate,mode "default"
+#     bindsym r exec --no-startup-id systemctl reboot, mode "default"
+#     bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"
+
+#     # back to normal: Enter or Escape
+#     bindsym Return mode "default"
+#     bindsym Escape mode "default"
+# }
+#bindsym $mod+F9 mode "$mode_system"
+bindsym $mod+F9 exec --no-startup-id $HOME/.config/popups/power/power
+
+# Volume control
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
+
+# Brightness control
+bindsym XF86MonBrightnessUp exec sudo brightnessctl s "+10%"
+bindsym XF86MonBrightnessDown exec sudo brightnessctl s "10%-"
+
+# Touchpad controls
+bindsym XF86TouchpadToggle exec /some/path/toggletouchpad.sh
+
+# Screenshot with scrot
+bindsym Print exec --no-startup-id scrot -e 'mv $f ~/Pictures/Screenshots/' && notify-send "Screenshot Taken"
+
+# View Todo List
+bindsym $mod+F10 exec --no-startup-id ~/.config/popups/todo/todo
+
+# Theme switcher
+bindsym $mod+F11 exec --no-startup-id ~/.local/bin/themeswitcher
+
+
+#************  Startup apps ***********************
+
+#exec_always --no-startup-id feh --bg-fill $HOME/Pictures/Wallpapers/Mountain.jpg
+# exec_always --no-startup-id feh --bg-fill $HOME/Pictures/Wallpapers/wallhaven-168642.png
+# exec_always --no-startup-id feh --bg-fill $HOME/Pictures/Wallpapers/sadkitty1.jpg
+exec_always --no-startup-id feh --bg-fill $HOME/Pictures/Wallpapers/wall01.jpg
+exec --no-startup-id compton $HOME/.compton.conf -b
+exec --no-startup-id dunst -config $HOME/.config/dunst/dunstrc
+
+exec --no-startup-id $HOME/bin/laptop_startup &
+
+
+#*************  Other settings  *********************
+
+# Set per-application border
+for_window [class="^.*"] border pixel 2
+#for_window [class="(?i)urxvt"] border pixel 4
+#for_window [class="(?i)urxvt"] border normal 0
+
+# Enable or disable floating
+#for_window [class="Arandr"] floating enable
+for_window [class="Lxappearance"] floating enable
+#for_window [class="Nitrogen"] floating enable
+#for_window [class="Artha"] floating enable
+#for_window [instance="dukto"] floating enable
+for_window [class="feh"] floating enable
+for_window [window_role="Preferences"] floating enable
+for_window [window_type="dialog"] floating enable
+for_window [window_type="menu"] floating enable
+for_window [class="Pavucontrol"] floating enable
+#for_window [class="^.*"] floating enable
+
+for_window [title="Sign in.*feedly" class="(?i)Firefox"] floating enable
+
+# Starting apps on a specific workspace
+#assign [class="^Tor Browser$"]           $w1
+assign [class="^Firefox$"]               $w1
+#assign [class="Spotify"]               $w7
+for_window [class="Spotify"] move to workspace $w7
+assign [class="Pidgin"] $w5
+#assign [class="^Zathura"]                $w3
+#assign [class="^mpv$"]                   $w4
+#assign [class="^VirtualBox$"]            $w7
+#assign [class="^Gimp$"]                  $w8
+#assign [class="^Wireshark"]              $w8
+#assign [class="^Pcmanfm"]                $w4
+#assign [class="^burp-StartBurp"]         $w8
+#assign [class="^OWASP ZAP"]              $w8
+#assign [class="^jetbrains-studio"]       $w8
+#assign [class="^Deluge"]                 $w8
+
+
+#assign workspace to screens
+# workspace $w1 output HDMI-0
+# workspace $w2 output HDMI-0
+# workspace $w3 output HDMI-0
+# workspace $w4 output HDMI-0
+# workspace $w5 output DVI-D-0
+# workspace $w6 output DVI-D-0
+# workspace $w7 output DVI-D-0
+# workspace $w8 output  HDMI-0
+# workspace $w9 output  HDMI-0
+# workspace $w10 output HDMI-0
+
+
+#*************** Autostart ******************
+
+exec --no-startup-id i3-msg "workspace 2; exec $terminal &"
+##exec --no-startup-id i3-msg "workspace 5; exec /usr/bin/yakyak &"
+#exec --no-startup-id i3-msg "workspace 5; exec /usr/bin/pidgin &"
+#exec --no-startup-id i3-msg "workspace 1; exec /usr/bin/firefox &"
+
+#**************** Appearence ********************
+
+font pango: Hack Nerd Font Bold 12
+
+# Defining colors
+set $cyan	   #00afd7
+set $acqua	 #007089
+set $wine 	 #72003e
+set $magenta #af005f
+set $orange  #ff8700
+set $silver  #e4e4e4
+set $elegant #00002c
+
+# Set some nice colors      border	 background text	   indicator
+client.focused              $cyan	   $cyan      $elegant $silver
+client.unfocused            $elegant $elegant   $cyan    $silver
+client.focused_inactive     $acqua   $acqua     $silver  $magenta
+client.urgent               $magenta $magenta   $silver  $magenta
+client.placeholder          $magenta $magenta   $silver  $white
+
+# Start i3blocks to display a workspace bar
+bar
+{
+	position top
+	status_command i3blocks
+	font pango: Hack Nerd Font Bold 12
+	colors
+	{
+                        # Border	# Background	# Text
+		focused_workspace   $silver	  $silver		$elegant
+		active_workspace    $elegant  $elegant  $orange
+		inactive_workspace  $elegant  $elegant 	$cyan
+		urgent_workspace    $acqua    $acqua    $silver
+		background          $elegant
+    	}
+}

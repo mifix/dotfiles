@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# Wrapper for .dotfiles/init <bundle>
+
+cd ~/.dotfiles
+./init "$*"

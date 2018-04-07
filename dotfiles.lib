@@ -29,6 +29,7 @@ task() {
   #local animation_chars=('⠋' '⠋' '⠋' '⠋')
   local animation_chars=('\' '|' '/' '-')
 
+
   if [[ ! -z ${skip_if_exists_is_equal_to} ]] && [[ ${skip_if_exists} == ${skip_if_exists_is_equal_to} ]];then
     arrow
     yellow "SKIP"
@@ -76,14 +77,28 @@ task() {
   echo
 }
 
+function add_apt_ppa_repositories() {
+  if (( ${#APT_PPA_REPOSITORIES[@]} > 0 )); then
+    for repo in "${APT_PPA_REPOSITORIES[@]}"; do
+
+      task "Adding repository '$repo'" "sudo add-apt-repository --yes ppa:${repo}" "$(grep -l $repo /etc/apt/sources.list.d/*.list | wc -l)" "1"
+
+    done
+  fi
+}
+
 
 function install_packages() {
   local package_type="${1}"
 
   can_install_multiple=1
 
+  sudo -v
+
   case $package_type in
     "APT")
+      add_apt_ppa_repositories
+
       installed_packages="$(dpkg --get-selections | grep -v deinstall | awk 'BEGIN{FS="[\t:]"}{print $1}' | uniq)";
       packages=($(setdiff "${APT_PACKAGES[*]}" "$installed_packages"));
       install_command="DEBIAN_FRONTEND=noninteractive sudo apt-get install -q -y"
@@ -91,7 +106,18 @@ function install_packages() {
     "NIX")
       installed_packages="$(nix-env -q | sed -e 's/-[0-9].*$//' | uniq)"
       packages=($(setdiff "${NIX_PACKAGES[*]}" "$installed_packages"))
-      install_command="nix-env -i"
+      #install_command="nix-env -i"
+      error "NIX packages not supported at the moment."
+      ;;
+    "SNAP")
+      installed_packages="$(snap list | awk '{ print $1 }')"
+      packages=($(setdiff "${SNAP_PACKAGES[*]}" "$installed_packages"))
+      install_command="sudo snap install"
+      ;;
+    "SNAP-CLASSIC")
+      installed_packages="$(snap list | awk '{ print $1 }')"
+      packages=($(setdiff "${SNAP_CLASSIC_PACKAGES[*]}" "$installed_packages"))
+      install_command="sudo snap install --classic"
       ;;
     "GO")
       can_install_multiple=0
@@ -123,7 +149,7 @@ function install_packages() {
           [[ "$(type -t postinstall_$package)" == function ]] && postinstall_$package
       done
     fi
-    if [ -z $packages ]; then arrow "No new packages to install";echo; fi
+    if [ -z $packages ]; then arrow "No new packages to install [$package_type].";echo; fi
 
   }
 

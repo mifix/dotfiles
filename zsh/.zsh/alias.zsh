@@ -6,6 +6,8 @@ fi
 
 alias -g L=' | less'
 
+alias au='sudo apt update && sudo apt full-upgrade'
+alias ai='sudo apt install -y'
 
 alias S='builtin cd $HOME/Documents/Schule/'
 
@@ -14,6 +16,8 @@ if (( ${+commands[aria2c]} )); then
 else
   alias yt='youtube-dl -f mp4'
 fi
+
+alias edit_i3='e ~/.config/i3/config && i3-msg reload'
 
 alias ch="builtin cd $HOME"
 

@@ -1,0 +1,13 @@
+#!/bin/bash
+
+i3-msg workspace "7"
+
+
+instance_cnt=`ps aux | grep -c spotify`
+
+echo $instance_cnt
+
+if [ $instance_cnt -lt 4 ]; then
+  echo "Starting Spotify..."
+  /snap/bin/spotify --ui.track_notifications_enabled=false
+fi

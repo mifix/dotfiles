@@ -1,0 +1,8 @@
+#!/bin/bash
+# vi: set ft=bash
+
+
+# qutebrowser editor:
+# ["nvim-gui", "-f", "{file}", "-c", "'normal {line}G{column0}l'"]
+
+termite -t "nvim-gui" -e "nvim $*"

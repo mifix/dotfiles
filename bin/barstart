@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+xrdb -load -I$HOME $HOME/.Xresources
+
+compton --config ~/.compton.conf -b
+
+killall -q polybar
+pkill conky
+
+#conky -c ~/.config/polybar/conky_wrapper &
+
+
+while pgrep -x polybar >/dev/null; do sleep 2; done
+
+# Launch top bar
+polybar top -c ~/.config/polybar/config.top 2> /dev/null &
+polybar bottom -c ~/.config/polybar/config.bottom 2> /dev/null &
+
+/usr/lib/gnome-settings-daemon/gsd-xsettings 2>/dev/null &
+true

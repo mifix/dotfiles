@@ -1,6 +1,6 @@
 APT_PACKAGES=()
 
-NIX_PACKAGES=(go)
+SNAP_CLASSIC_PACKAGES=(go)
 
 GO_PACKAGES=(github.com/nsf/gocode github.com/sourcegraph/go-langserver)
 
@@ -8,7 +8,7 @@ GO_PACKAGES=(github.com/nsf/gocode github.com/sourcegraph/go-langserver)
 
 header "Installing Go..."
 
-install_packages "NIX"
+install_packages "SNAP-CLASSIC"
 
 if [[ -z $GOPATH ]];then
   gp="$HOME/Projects/go"

@@ -14,8 +14,9 @@ function ssh() {
 }
 
 function lxc() {
-  if [ -e /var/lib/snapd/snap/bin/lxc ]; then
-    /var/lib/snapd/snap/bin/lxc "$@"
+  local snap_bin="/snap/bin/lxc"
+  if [ -e "$snap_bin" ]; then
+    "$snap_bin" "$@"
   else
     echo "NO lxc bin found. Edit in ~/.zsh/functions.zsh"
   fi

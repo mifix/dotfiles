@@ -7,9 +7,14 @@ DOTDIRS=("xmodmap" "tmux" "sakura" "zsh" "git" "compton" "colors")
 
 DOTFILES=("Xresources" )
 
-CONFFILES=("polybar" "nvim" "firejail" "i3" "dunst" "lemonbar" "rofi" )
+CONFFILES=("polybar" "nvim" "firejail" "i3" "dunst" "lemonbar" \
+  "rofi" "termite" "i3blocks" "qutebrowser")
 
 SNAPCONFS=("lxd")
+
+
+# bin dir
+[[ ! -L $HOME/bin ]] && ln -s "${DOTFILES_DIR}/bin" "$HOME/bin"
 
 
 for dot in "${DOTDIRS[@]}"; do
@@ -17,7 +22,7 @@ for dot in "${DOTDIRS[@]}"; do
 done
 
 for dot in "${DOTFILES[@]}"; do
-    ln -s "${DOTFILES_DIR}/${dot}" "$HOME/.${dot}"
+    [[ ! -L "$HOME/.${dot}" ]] && ln -s "${DOTFILES_DIR}/${dot}" "$HOME/.${dot}"
 done
 
 mkdir -p ~/.config/nvim/undos

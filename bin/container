@@ -1,0 +1,24 @@
+#!/bin/bash
+
+container_name=$1
+
+container_dir=$HOME/Projects/cnt/$1
+
+mkdir -p "$container_dir"
+
+
+lxc init images:ubuntu/18.04  $container_name
+lxc config set $container_name raw.idmap "both $UID 1000"
+lxc config device add $container_name homedir disk source=$container_dir path=/home/ubuntu
+lxc start $container_name
+
+
+# add ubuntu user to sudoers
+lxc exec "$container_name" -- bash -c 'echo "ubuntu ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/ubuntu'
+lxc exec "$container_name" -- bash -c 'chmod 440 /etc/sudoers.d/ubuntu'
+
+
+
+# add dotfiles
+cd "$container_dir"
+git clone git@gitlab.com:mifix/dotfiles.git .dotfiles

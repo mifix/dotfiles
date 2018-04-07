@@ -1,0 +1,1 @@
+Plug 'honza/dockerfile.vim'

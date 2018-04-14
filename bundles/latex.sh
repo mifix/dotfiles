@@ -1,5 +1,5 @@
 
-APT_PACKAGES=(texlive-full)
+APT_PACKAGES=(texlive)
 
 NIX_PACKAGES=()
 

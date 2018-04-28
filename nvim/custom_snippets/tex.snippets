@@ -1,0 +1,69 @@
+snippet question "add question (SA)"
+\begin{question}[name=$1]{$2}
+	$0
+\end{question}
+endsnippet
+
+
+snippet enu "enumerate alpha (SA)"
+\begin{enumerate}[label=\textbf{\alph*})]
+	\item ${0}
+\end{enumerate}
+endsnippet
+
+snippet enum "enumerate alpha - multicol (SA)"
+\begin{multicols}{$1}
+	\begin{enumerate}[label=\textbf{\alph*})]
+		\item ${0}
+	\end{enumerate}
+\end{multicols}
+endsnippet
+
+snippet item "item with points (SA)"
+\item (\points{$1}) $0
+endsnippet
+
+
+snippet VierAusSechs "VierAusSechs (SA)"
+\VierAusSechs[width=0.45,
+   A={$5},
+   B={$6},
+   C={$7},
+   D={$8},
+   E={$9},
+   F={$10}
+]%
+{$1}
+{$2}
+{$3}
+{$4}
+endsnippet
+
+
+snippet half "2 cols - parbox (SA)"
+\hfill
+\parbox{.${1:45}\linewidth}{
+	$0
+}
+\hfill
+\parbox{.${2:45}\linewidth}{
+
+}
+endsnippet
+
+snippet halft "2 cols - align top (SA)"
+\adjustbox{valign=t}{\begin{minipage}{.{$1:45}\textwidth}
+	$0
+\end{minipage}}
+%
+\hfill
+%
+\adjustbox{valign=t}{\begin{minipage}{.{$2:45}\textwidth}
+
+\end{minipage}}
+endsnippet
+
+
+snippet under "underline (SA)"
+\underline{\hspace{$1cm}}$0
+endsnippet

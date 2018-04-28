@@ -1,16 +1,20 @@
 " Neomake -- Asynchronous maker and linter {
 " NOTE: needs linters to work.
 " See: https://github.com/benekastah/neomake/tree/master/autoload/neomake/makers/ft
-Plug 'benekastah/neomake', { 'on': ['Neomake'] }
+Plug 'neomake/neomake' ", { 'on': ['Neomake'] }
 
 " run on every save
 augroup neomake
-      autocmd! BufWritePost * Neomake
+      autocmd! BufWritePost * Neomake!
 augroup END
 
-let g:neomake_verbose=0
+" Full config: when writing or reading a buffer, and on changes in insert and
+" normal mode (after 1s; no delay when writing).
+" call neomake#configure#automake('nrwi', 500)
+
+let g:neomake_verbose=1
 let g:neomake_warning_sign = {
-      \ 'text': '❯',
+      \ 'text': '●',
       \ 'texthl': 'WarningMsg',
       \ }
 let g:neomake_error_sign = {

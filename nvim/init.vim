@@ -152,6 +152,7 @@ nmap <CR> :w<CR>
 
 "! jj || Switch to normal mode like a boss
 inoremap jj <Esc>:w<CR>
+inoremap jk <Esc>:w<CR>
 
 "! <C-k> || ->
 "! ;; || append ; at end of line and save

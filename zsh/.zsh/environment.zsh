@@ -1,3 +1,5 @@
+export RANGER_LOAD_DEFAULT_RC=false
+
 #
 # generic options and environment settings
 #

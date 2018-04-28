@@ -90,6 +90,8 @@ if (( ${+commands[pbunzip2]} )); then
   alias bunzip2='pbunzip2'
 fi
 
+# Ranger
+alias r="ranger"
 
 # Docker
 alias d="docker"

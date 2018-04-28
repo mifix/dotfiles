@@ -8,7 +8,7 @@ DOTDIRS=("xmodmap" "tmux" "sakura" "zsh" "git" "compton" "colors")
 DOTFILES=("Xresources" )
 
 CONFFILES=("polybar" "nvim" "firejail" "i3" "dunst" "lemonbar" \
-  "rofi" "termite" "i3blocks" "qutebrowser")
+  "rofi" "termite" "i3blocks" "qutebrowser" "ranger")
 
 SNAPCONFS=("lxd")
 

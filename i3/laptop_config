@@ -26,8 +26,12 @@ bindsym $mod+Ctrl+k exec --no-startup-id $HOME/bin/switch_keyboard.sh
 bindsym $mod+p exec --no-startup-id $filebrowser
 bindsym $mod+Shift+p exec --no-startup-id $filebrowser `$HOME/bin/xcwd`
 
+
 # Music/Spotify
 bindsym $mod+m exec --no-startup-id $HOME/bin/spotify
+
+# Messanger
+bindsym $mod+Shift+m exec --no-startup-id $HOME/opt/bin/rambox
 
 # Start a terminal
 bindsym $mod+Return exec --no-startup-id $terminal
@@ -299,13 +303,14 @@ exec --no-startup-id $HOME/bin/laptop_startup &
 #*************  Other settings  *********************
 
 # Set per-application border
-for_window [class="^.*"] border pixel 2
+for_window [class="^.*"] border pixel 5
 #for_window [class="(?i)urxvt"] border pixel 4
 #for_window [class="(?i)urxvt"] border normal 0
 
 # Enable or disable floating
 #for_window [class="Arandr"] floating enable
 for_window [class="Lxappearance"] floating enable
+for_window [class="Yad"] floating enable
 #for_window [class="Nitrogen"] floating enable
 #for_window [class="Artha"] floating enable
 #for_window [instance="dukto"] floating enable
@@ -321,6 +326,7 @@ for_window [title="Sign in.*feedly" class="(?i)Firefox"] floating enable
 # Starting apps on a specific workspace
 #assign [class="^Tor Browser$"]           $w1
 assign [class="^Firefox$"]               $w1
+assign [class="^Rambox$"]               $w5
 #assign [class="Spotify"]               $w7
 for_window [class="Spotify"] move to workspace $w7
 assign [class="Pidgin"] $w5
@@ -381,6 +387,7 @@ bar
 {
 	position top
 	status_command i3blocks
+  tray_output eDP-1
 	font pango: Hack Nerd Font Bold 12
 	colors
 	{

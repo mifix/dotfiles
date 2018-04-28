@@ -18,6 +18,7 @@ nvim/.init.vim-rplugin~
 nvim/undos/
 tmux/.tmux/*.log
 run.log
+*.pyc
 
 
 nvim/autoload/plug\.vim

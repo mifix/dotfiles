@@ -14,12 +14,17 @@ function ssh() {
 }
 
 function lxc() {
-  local snap_bin="/snap/bin/lxc"
-  if [ -e "$snap_bin" ]; then
-    "$snap_bin" "$@"
+  if [ -e /var/lib/snapd/snap/bin/lxc ]; then
+    local snap_bin="/var/lib/snapd/snap/bin/lxc"
+  elif [ -e /snap/bin/lxc ]; then
+    local snap_bin="/snap/bin/lxc"
   else
     echo "NO lxc bin found. Edit in ~/.zsh/functions.zsh"
+    exit 1
   fi
+
+  "$snap_bin" "$@"
+
   # reset theme
   zsh $HOME/.base16_theme
 }

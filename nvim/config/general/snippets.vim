@@ -14,4 +14,6 @@ let g:UltiSnipsRemoveSelectModeMappings = 0
 " optional
 inoremap <silent> <c-u> <c-r>=cm#sources#ultisnips#trigger_or_popup("\<Plug>(ultisnips_expand)")<cr>
 
+ let g:UltiSnipsSnippetDirectories=["UltiSnips", "custom_snippets"]
+
 " }

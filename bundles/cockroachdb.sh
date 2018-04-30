@@ -10,7 +10,11 @@ mkdir -p "$COCKROACH_BIN_PATH"
 
 
 
-version=$(${COCKROACH_BIN_PATH}/cockroach version | grep 'Build Tag' | cut -d v -f 2)
+if [ -e "${COCKROACH_BIN_PATH}/cockroach" ]; then
+  version=$(${COCKROACH_BIN_PATH}/cockroach version | grep 'Build Tag' | cut -d v -f 2)
+else
+  version="0"
+fi
 
 task "Downloading CockrouchDB version: ${COCKROACH_VERSION}" "wget -qO- https://binaries.cockroachdb.com/cockroach-v${COCKROACH_VERSION}.linux-amd64.tgz | tar  xvz -C /tmp" "$version" "${COCKROACH_VERSION}"
 

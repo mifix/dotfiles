@@ -93,7 +93,7 @@ function install_packages() {
 
   can_install_multiple=1
 
-  sudo -v
+  # sudo -v 
 
   case $package_type in
     "APT")
@@ -172,14 +172,6 @@ function install_packages() {
       if [[ ! -e $bundle ]];then
         yellow "Bundle $b does not exist. Create one in $SCRIPT_DIR/bundles/"; echo
       else
-        APT_PACKAGES=()
-        NIX_PACKAGES=()
-        SNAP_PACKAGES=()
-        SNAP_CLASSIC_PACKAGES=()
-        GO_PACKAGES=()
-        NPM_PACKAGES=()
-        GEM_PACKAGES=()
-
         source $bundle
       fi
     done

@@ -1,11 +1,12 @@
-APT_PACKAGES=()
+APT_PPA_REPOSITORIES=()
 
-NIX_PACKAGES=(ruby bundler)
+APT_PACKAGES=(ruby ruby-dev libxml2-dev)
 
+NIX_PACKAGES=()
 
 # -----------------------------------------------------------------------
 
 header "Installing Ruby..."
 
 install_packages "APT"
-install_packages "NIX"
+

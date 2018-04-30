@@ -16,11 +16,5 @@ if [[ -z $bundles ]]; then
   source $SCRIPT_DIR/bundles/base.sh
 fi
 
-for b in $bundles; do
-  bundle="$SCRIPT_DIR/bundles/$b.sh"
-  if [[ ! -e $bundle ]];then
-    yellow "Bundle $b does not exist. Create one in $SCRIPT_DIR/bundles/"; echo
-  else
-    source $bundle
-  fi
-done
+
+include_bundles "$bundles"

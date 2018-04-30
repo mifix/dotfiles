@@ -124,6 +124,16 @@ function install_packages() {
       packages=(${GO_PACKAGES[@]})
       install_command="go get -u"
       ;;
+    "NPM")
+      installed_packages="$(npm list -g --depth=0  | grep '@' | cut -d ' ' -f 2 | cut -d '@' -f 1)" # TODO
+      packages=($(setdiff "${NPM_PACKAGES[*]}" "$installed_packages"))
+      install_command="sudo npm install -g"
+      ;;
+    "GEM")
+      installed_packages="$(gem list | cut -d ' ' -f 1)"
+      packages=($(setdiff "${GEM_PACKAGES[*]}" "$installed_packages"))
+      install_command="sudo gem install --no-rdoc --no-ri"
+      ;;
     *)
       error "Call to install_packages() argument missing or unkown.\n"
       exit
@@ -151,6 +161,28 @@ function install_packages() {
     fi
     if [ -z $packages ]; then arrow "No new packages to install [$package_type].";echo; fi
 
+  }
+
+
+  function include_bundles {
+    local bundles="$*"
+
+    for b in $bundles; do
+      bundle="$SCRIPT_DIR/bundles/$b.sh"
+      if [[ ! -e $bundle ]];then
+        yellow "Bundle $b does not exist. Create one in $SCRIPT_DIR/bundles/"; echo
+      else
+        APT_PACKAGES=()
+        NIX_PACKAGES=()
+        SNAP_PACKAGES=()
+        SNAP_CLASSIC_PACKAGES=()
+        GO_PACKAGES=()
+        NPM_PACKAGES=()
+        GEM_PACKAGES=()
+
+        source $bundle
+      fi
+    done
   }
 
 

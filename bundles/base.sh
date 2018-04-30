@@ -1,6 +1,7 @@
 
 APT_PACKAGES=(git tmux zsh curl wget htop stow aria2 fasd keychain python3 \
-  exuberant-ctags make tmux neovim snapd linux-tools-common linux-tools-generic)
+  exuberant-ctags make tmux neovim snapd linux-tools-common linux-tools-generic \
+  software-properties-common)
 
 NIX_PACKAGES=()
 

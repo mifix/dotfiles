@@ -6,7 +6,7 @@ GEM_PACKAGES=(rails)
 
 # -----------------------------------------------------------------------
 
-include_bundles "ruby" "node"
+include_bundles "ruby" "node" "cockroachdb"
 
 header "Installing Ruby on Rails..."
 

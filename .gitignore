@@ -19,6 +19,8 @@ nvim/undos/
 tmux/.tmux/*.log
 run.log
 *.pyc
+*.pyo
 
+zsh/paths/*
 
 nvim/autoload/plug\.vim

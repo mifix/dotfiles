@@ -1,3 +1,8 @@
+
+include_bundles "ruby" "node" "cockroachdb"
+
+# -----------------------------------------------------------------------
+
 APT_PACKAGES=(libpq-dev libsqlite3-dev)
 
 NPM_PACKAGES=(yarn)
@@ -5,8 +10,6 @@ NPM_PACKAGES=(yarn)
 GEM_PACKAGES=(rails)
 
 # -----------------------------------------------------------------------
-
-include_bundles "ruby" "node" "cockroachdb"
 
 header "Installing Ruby on Rails..."
 

@@ -280,8 +280,8 @@ bindsym XF86TouchpadToggle exec /some/path/toggletouchpad.sh
 
 # Screenshot with scrot
 # bindsym Print exec --no-startup-id scrot -e 'mv $f ~/Pictures/Screenshots/' && notify-send "Screenshot Taken"
-bindsym Print exec --no-startup-id nougat && notify-send "Screenshot Taken"
-bindsym Shift+Print exec --no-startup-id nougat -f && notify-send "Screenshot Taken"
+bindsym Print exec --no-startup-id ~/bin/screenshot
+bindsym Shift+Print exec --no-startup-id ~/bin/screenshot -f
 
 # View Todo List
 bindsym $mod+F10 exec --no-startup-id ~/.config/popups/todo/todo

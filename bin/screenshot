@@ -1,0 +1,11 @@
+#!/bin/bash
+# vi: set ft=sh
+
+
+if [ ! $(which scrot) ]; then
+  echo "Could not take screenshot: 'scrot' is missing."
+  notify-send "Could not take screenshot: 'scrot' is missing."
+fi
+
+mkdir -p ~/Pictures/Screenshots
+scrot -e 'mv $f ~/Pictures/Screenshots/' && notify-send "Screenshot Taken"

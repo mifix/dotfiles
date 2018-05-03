@@ -38,6 +38,8 @@ for config in "${SNAPCONFS[@]}"; do
   stow -v -d ${DOTFILES_DIR} $config -t "$HOME/snap/${config}/current/"
 done
 
+ln -s "${DOTFILES_DIR}/nougat/nougat" "$HOME/.config/"
+
 mkdir -p ~/.ssh/connections
 stow -v -d ${DOTFILES_DIR} ssh -t ~/.ssh
 

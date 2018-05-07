@@ -9,6 +9,8 @@ if [[ $(hostname) == 'plutarch' ]];then
   base16_mocha
 elif [[ $(hostname) == 'wth-kiste' ]];then
   base16_gruvbox-dark-medium
+elif [[ -e ~/.is_sneezy ]]; then
+  base16_google-light
 fi
 
 if [[ -e $HOME/.ssh/id_rsa ]];then

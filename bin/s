@@ -1,0 +1,96 @@
+#!/bin/bash
+# vi: set ft=bash
+
+ #     #
+ ##   ##  #  #    #  #          ####   #    #  ######  ######  ######  #   #
+ # # # #  #  ##   #  #         #       ##   #  #       #           #    # #
+ #  #  #  #  # #  #  #  #####   ####   # #  #  #####   #####      #      #
+ #     #  #  #  # #  #              #  #  # #  #       #         #       #
+ #     #  #  #   ##  #         #    #  #   ##  #       #        #        #
+ #     #  #  #    #  #          ####   #    #  ######  ######  ######    #
+
+
+IMAGE="images:ubuntu/18.04"
+
+
+# To map user ids from host to container, run this command once:
+# echo "root:$UID:1" | sudo tee -a /etc/subuid
+# echo "root:$GID:1" | sudo tee -a /etc/subgid
+
+command=$1
+container=$2
+bundles="${@:3}"
+
+workspace="$HOME/Projects/cnt/${container}"
+
+
+if [ -z $command ]; then
+  echo "ERROR: command is missing"
+  echo "Usage: s <command> <containter_name>"
+  echo
+  echo "Commands:"
+  echo "  c ... create container"
+  echo "  u ... start container (up)"
+  echo "  h ... stop container (halt)"
+  echo "  s ... enter container (shell)"
+  echo "  d ... delete container"
+  echo "  b ... go to 'base' directory (Workspace)"
+  exit
+fi
+
+if [ -z $container ]; then
+  echo "ERROR: container name is missing"
+  echo "Usage: s <command> <containter_name>"
+  exit
+fi
+
+
+
+case $command in
+  c)
+    if [ $(lsb_release -id | grep -c Arch) ]; then
+      OPTION=""
+    else
+      OPTIONS="-c security.privileged=true"
+      echo "Arch Linux detected. Setting lxc options to: $OPTIONS"
+    fi
+
+    mkdir -p $workspace 2>/dev/null
+    lxc init "$IMAGE" $container $OPTIONS
+    lxc config set $container raw.idmap "both `id -u` 1000"
+    lxc config device add $container homedir disk source=$workspace path=/home/ubuntu
+    # lxc config device add $container Workspace disk source=$workspace path=/opt/Workspace
+    lxc start $container
+
+    # add ubuntu user to sudoers
+    lxc exec "$container" -- bash -c 'echo "ubuntu ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/ubuntu'
+    lxc exec "$container" -- bash -c 'chmod 440 /etc/sudoers.d/ubuntu'
+    # lxc exec $container  -- su -l ubuntu bash -c "ln -s /opt/Workspace"
+
+    if [ -d ~/.dotfiles ]; then
+      echo "Dotfiles detected. Running 'base' install"
+      echo "Syncing dotfiles."
+      cd $workspace
+      rsync -aqvz ~/.dotfiles .
+      lxc exec $container  -- sudo --login -u ubuntu bash -c "cd ~/.dotfiles; ./init base ${bundles}"
+    fi
+
+    ;;
+  u)
+    lxc start $container
+    ;;
+  h)
+    lxc stop $container
+    ;;
+  s)
+    lxc exec $container  -- sudo --login -u ubuntu
+    # lxc exec $container  -- su -l ubuntu
+    ;;
+  d)
+    lxc stop $container
+    lxc delete $container
+    ;;
+  b)
+    echo "Not yet implemented."
+    ;;
+esac

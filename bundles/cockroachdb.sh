@@ -23,6 +23,6 @@ if [ $version != $COCKROACH_VERSION ]; then
   rm -rf "/tmp/cockroach-v${COCKROACH_VERSION}.linux-amd64/cockroach"
 fi
 
-task "Add ${COCKROACH_BIN_PATH} to \$PATH" "echo \"export PATH=\$PATH:${COCKROACH_BIN_PATH}\" | tee \"$HOME/.zsh/paths/cockroach.zsh\"" "$HOME/.zsh/paths/cockroach.zsh"
-
-export PATH=$PATH:${COCKROACH_BIN_PATH}
+# TODO
+#task "Add ${COCKROACH_BIN_PATH} to \$PATH" "echo \"export PATH=\$PATH:${COCKROACH_BIN_PATH}\" | tee \"$HOME/.zsh/paths/cockroach.zsh\"" "$HOME/.zsh/paths/cockroach.zsh"
+#export PATH=$PATH:${COCKROACH_BIN_PATH}

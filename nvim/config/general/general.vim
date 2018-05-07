@@ -21,6 +21,8 @@ Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'tpope/vim-commentary'
 " }
 
+Plug 'tpope/vim-unimpaired'
+
 " FocusGained and FocusLost autocommand events  for tmux {
 Plug 'tmux-plugins/vim-tmux-focus-events'
 " }

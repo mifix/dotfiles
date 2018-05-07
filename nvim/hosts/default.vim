@@ -42,7 +42,7 @@ endif
 let g:lightline = {
       \ 'colorscheme': 'oceanicnext',
       \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ], ['ctrlpmark'] ],
+      \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename', 'neomake' ], ['ctrlpmark'] ],
       \   'right': [ [ 'lineinfo' ], ['percent'], [ 'fileformat', 'fileencoding', 'filetype' ] ]
       \ },
       \ 'component_function': {
@@ -53,10 +53,13 @@ let g:lightline = {
       \   'fileencoding': 'MyFileencoding',
       \   'mode': 'MyMode',
       \   'ctrlpmark': 'CtrlPMark',
+      \   'neomake': 'lightline_neomake#component',
       \ },
       \ 'component_expand': {
+      \		'neomake': 'lightline_neomake#component',
       \ },
       \ 'component_type': {
+      \   'neomake': 'error',
       \ },
       \ 'separator': { 'left': '', 'right': ''  },
       \ 'subseparator': { 'left': '', 'right': ''  }

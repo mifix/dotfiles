@@ -21,6 +21,6 @@ run.log
 *.pyc
 *.pyo
 
-zsh/paths/*
+zsh/.zsh/paths/*
 
 nvim/autoload/plug\.vim

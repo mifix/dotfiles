@@ -93,7 +93,7 @@ function install_packages() {
 
   can_install_multiple=1
 
-  # sudo -v 
+  # sudo -v
 
   case $package_type in
     "APT")

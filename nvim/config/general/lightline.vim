@@ -1,6 +1,9 @@
 " lean & mean statusline for vim that's light as air
 Plug 'itchyny/lightline.vim'
 
+" show numbers of make warnings and errors for neomake
+Plug 'mkalinski/vim-lightline_neomake'
+
 set laststatus=2
 
 " let g:lightline = {

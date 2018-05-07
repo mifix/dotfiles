@@ -3,7 +3,7 @@ include_bundles "ruby" "node" "cockroachdb"
 
 # -----------------------------------------------------------------------
 
-APT_PACKAGES=(libpq-dev)
+APT_PACKAGES=(libpq-dev libsqlite3-dev)
 
 NPM_PACKAGES=(yarn)
 

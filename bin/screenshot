@@ -1,0 +1,27 @@
+#!/bin/bash
+# vi: set ft=sh
+
+
+export PATH=$PATH:$HOME/opt/bin
+
+if [ ! $(which scrot) ]; then
+  echo "Could not take screenshot: 'scrot' is missing."
+  notify-send "Could not take screenshot: 'scrot' is missing."
+fi
+
+mkdir -p ~/Pictures/Screenshots
+
+
+# Use nougat if we have it
+# https://github.com/Sweets/nougat
+
+if [ $(which nougat) ]; then
+  if [[ ! -z $1 && $1 = '-f' ]]; then
+    # Fullscreen screenshot
+    nougat -f && notify-send "Screenshot Taken."
+  else
+    nougat && notify-send "Screenshot Taken."
+  fi
+else
+  scrot -e 'mv $f ~/Pictures/Screenshots/' && notify-send "Screenshot Taken."
+fi

@@ -2,3 +2,5 @@
 " applications.
 Plug 'tpope/vim-rails', {'for': 'ruby'}
 
+" ghetto HTML/XML mappings
+Plug 'tpope/vim-ragtag'

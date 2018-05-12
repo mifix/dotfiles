@@ -65,6 +65,7 @@ case $command in
     # add ubuntu user to sudoers
     lxc exec "$container" -- bash -c 'echo "ubuntu ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/ubuntu'
     lxc exec "$container" -- bash -c 'chmod 440 /etc/sudoers.d/ubuntu'
+    lxc exec $container  -- su -l ubuntu bash -c "touch ~/.is_sneezy"
     # lxc exec $container  -- su -l ubuntu bash -c "ln -s /opt/Workspace"
 
     if [ -d ~/.dotfiles ]; then
@@ -85,6 +86,8 @@ case $command in
   s)
     lxc exec $container  -- sudo --login -u ubuntu
     # lxc exec $container  -- su -l ubuntu
+    # reset theme
+    zsh $HOME/.base16_theme
     ;;
   d)
     lxc stop $container

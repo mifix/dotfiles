@@ -278,7 +278,10 @@ autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 
 
 function! MyOnBattery()
-  return readfile('/sys/class/power_supply/AC/online') == ['0']
+  if ! filereadable('/sys/class/power_supply/AC/online')
+    return v:false
+ end
+ return readfile('/sys/class/power_supply/AC/online') == ['0']
 endfunction
 
 if MyOnBattery()

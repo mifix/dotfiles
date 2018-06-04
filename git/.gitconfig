@@ -15,4 +15,6 @@
 [http "https://gopkg.in"]
 	followRedirects = true
 [commit]
-	gpgsign = true
+	gpgsign = false
+[core]
+	editor = nvim

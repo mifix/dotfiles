@@ -35,6 +35,7 @@ bindsym $mod+Shift+m exec --no-startup-id $HOME/opt/bin/rambox
 
 # Start a terminal
 bindsym $mod+Return exec --no-startup-id $terminal
+bindsym $mod2+Return exec --no-startup-id termite -c $HOME/.config/termite/config2
 # bindsym $mod+Shift+Return exec --no-startup-id gnome-terminal --working-directory=`~/bin/termdir.py`
 bindsym $mod+Shift+Return exec --no-startup-id $terminal -d `$HOME/bin/xcwd`
 
@@ -294,7 +295,7 @@ bindsym $mod+F11 exec --no-startup-id ~/.local/bin/themeswitcher
 #exec_always --no-startup-id feh --bg-fill $HOME/Pictures/Wallpapers/Mountain.jpg
 # exec_always --no-startup-id feh --bg-fill $HOME/Pictures/Wallpapers/wallhaven-168642.png
 # exec_always --no-startup-id feh --bg-fill $HOME/Pictures/Wallpapers/sadkitty1.jpg
-exec_always --no-startup-id feh --bg-fill $HOME/Pictures/Wallpapers/wall02.jpg
+exec_always --no-startup-id feh --bg-fill $HOME/Pictures/Wallpapers/wall03.jpg
 exec --no-startup-id compton $HOME/.compton.conf -b
 exec --no-startup-id dunst -config $HOME/.config/dunst/dunstrc
 

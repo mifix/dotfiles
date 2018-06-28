@@ -1,5 +1,5 @@
 APT_PACKAGES=(materia-gtk-theme arc-theme numix-gtk-theme numix-icon-theme papirus-icon-theme \
-  pcmanfm ranger mpv youtube-dl lightdm-gtk-greeter-settings scrot)
+  pcmanfm ranger mpv youtube-dl lightdm-gtk-greeter-settings scrot zathura-pdf-poppler)
 
 APT_PPA_REPOSITORIES=()
 

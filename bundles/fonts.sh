@@ -1,5 +1,5 @@
 
-NERD_FONTS=(RobotoMono Hack)
+NERD_FONTS=(RobotoMono Hack ProFont)
 
 # -----------------------------------------------------------------------
 

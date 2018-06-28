@@ -1,7 +1,11 @@
+APT_PACKAGES=(gcc)
 
 # -----------------------------------------------------------------------
 
 header "Installing Rust..."
+
+install_packages "APT"
+
 
 
 task "Downloading rustup" "curl https://sh.rustup.rs -sSf | sh -s -- -y" "$HOME/.cargo/bin/rustup"

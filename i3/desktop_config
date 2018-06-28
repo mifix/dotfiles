@@ -13,7 +13,11 @@ set $down   j
 set $up     k
 set $right  l
 
+# set $terminal gnome-terminal
 set $terminal termite
+
+#set $filebrowser pcmanfm
+set $filebrowser nautilus
 
 #*************** Keybindings ******************
 
@@ -21,8 +25,11 @@ set $terminal termite
 bindsym $mod+Ctrl+s exec --no-startup-id $HOME/bin/switch_keyboard.sh
 
 # My apps shortcut
-bindsym $mod+p exec --no-startup-id nautilus
-bindsym $mod+Shift+p exec --no-startup-id nautilus `$HOME/bin/xcwd`
+bindsym $mod+p exec --no-startup-id $filebrowser
+bindsym $mod+Shift+p exec --no-startup-id $filebrowser `$HOME/bin/xcwd`
+
+# Open all pdfs in current directory
+bindsym $mod+Ctrl+p exec --no-startup-id zathura `$HOME/bin/xcwd`/*.pdf
 
 # Music/Spotify
 bindsym $mod+m exec --no-startup-id $HOME/bin/spotify
@@ -58,10 +65,10 @@ bindsym $mod+k focus up
 bindsym $mod+l focus right
 
 # Change focus of containers
-bindsym $mod+Ctrl+h exec --no-startup-id $HOME/bin/i3pocus l
-bindsym $mod+Ctrl+j exec --no-startup-id $HOME/bin/i3pocus d
-bindsym $mod+Ctrl+k exec --no-startup-id $HOME/bin/i3pocus u
-bindsym $mod+Ctrl+l exec --no-startup-id $HOME/bin/i3pocus r
+bindsym $mod+Ctrl+h exec --no-startup-id $HOME/opt/bin/i3pocus l
+bindsym $mod+Ctrl+j exec --no-startup-id $HOME/opt/bin/i3pocus d
+bindsym $mod+Ctrl+k exec --no-startup-id $HOME/opt/bin/i3pocus u
+bindsym $mod+Ctrl+l exec --no-startup-id $HOME/opt/bin/i3pocus r
 
 # Move focused window
 bindsym $mod+Shift+h move left
@@ -272,14 +279,13 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 2 -5%
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 2 toggle
 
 # Brightness control
-bindsym XF86MonBrightnessUp exec xbacklight -inc 20
-bindsym XF86MonBrightnessDown exec xbacklight -dec 20
+bindsym XF86MonBrightnessUp exec sudo brightnessctl s "+10%"
+bindsym XF86MonBrightnessDown exec sudo brightnessctl s "10%-"
 
 # Touchpad controls
 bindsym XF86TouchpadToggle exec /some/path/toggletouchpad.sh
 
 # Screenshot with scrot
-# bindsym Print exec --no-startup-id scrot -e 'mv $f ~/Pictures/Screenshots/' && notify-send "Screenshot Taken"
 bindsym Print exec --no-startup-id ~/bin/screenshot
 bindsym Shift+Print exec --no-startup-id ~/bin/screenshot -f
 
@@ -342,6 +348,9 @@ assign [class="Pidgin"] $w5
 #assign [class="^OWASP ZAP"]              $w8
 #assign [class="^jetbrains-studio"]       $w8
 #assign [class="^Deluge"]                 $w8
+for_window [window_role="gimp-dock"] floating disable; move left; resize shrink width 30 px or 30ppt
+for_window [window_role="gimp-toolbox"] floating disable; move right; resize grow width 30 px or 30ppt
+for_window [class="Zathura"] resize set 40ppt 100ppt
 
 
 #assign workspace to screens

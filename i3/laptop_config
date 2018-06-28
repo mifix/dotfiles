@@ -15,23 +15,24 @@ set $right  l
 
 # set $terminal gnome-terminal
 set $terminal termite
+
 set $filebrowser pcmanfm
+#set $filebrowser nautilus
 
 #*************** Keybindings ******************
 
 # Toggle keyboard layout
-bindsym $mod+Ctrl+k exec --no-startup-id $HOME/bin/switch_keyboard.sh
+bindsym $mod+Ctrl+s exec --no-startup-id $HOME/bin/switch_keyboard.sh
 
 # My apps shortcut
 bindsym $mod+p exec --no-startup-id $filebrowser
 bindsym $mod+Shift+p exec --no-startup-id $filebrowser `$HOME/bin/xcwd`
 
+# Open all pdfs in current directory
+bindsym $mod+Ctrl+p exec --no-startup-id zathura `$HOME/bin/xcwd`/*.pdf
 
 # Music/Spotify
 bindsym $mod+m exec --no-startup-id $HOME/bin/spotify
-
-# Messanger
-bindsym $mod+Shift+m exec --no-startup-id $HOME/opt/bin/rambox
 
 # Start a terminal
 bindsym $mod+Return exec --no-startup-id $terminal
@@ -63,6 +64,12 @@ bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
+
+# Change focus of containers
+bindsym $mod+Ctrl+h exec --no-startup-id $HOME/opt/bin/i3pocus l
+bindsym $mod+Ctrl+j exec --no-startup-id $HOME/opt/bin/i3pocus d
+bindsym $mod+Ctrl+k exec --no-startup-id $HOME/opt/bin/i3pocus u
+bindsym $mod+Ctrl+l exec --no-startup-id $HOME/opt/bin/i3pocus r
 
 # Move focused window
 bindsym $mod+Shift+h move left
@@ -343,6 +350,7 @@ assign [class="Pidgin"] $w5
 #assign [class="^OWASP ZAP"]              $w8
 #assign [class="^jetbrains-studio"]       $w8
 #assign [class="^Deluge"]                 $w8
+for_window [class="Zathura"] resize set 40ppt 100ppt
 
 
 #assign workspace to screens

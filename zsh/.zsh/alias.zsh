@@ -34,6 +34,9 @@ alias cp="nocorrect cp -v"
 # Enable human-readable output.
 alias df="df -h"
 
+# Bat - cat clone with wings
+alias c="bat"
+
 # Use the Ncdu tool instead of du.
 #alias du='ncdu'
 
@@ -95,6 +98,7 @@ alias r="ranger"
 
 # Docker
 alias d="docker"
+alias dc="docker-compose"
 
 # Kubernetes
 alias k="kubectl"

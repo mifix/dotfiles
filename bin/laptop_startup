@@ -4,8 +4,10 @@ compton --config ~/.compton.conf -b
 
 
 # Palm detechtion
+xinput --set-prop 10 293 1
 xinput --set-prop 12 293 1
 
 # Natural scrolling
+xinput --set-prop 10 280 -27 -27
 xinput --set-prop 12 280 -27 -27
 

@@ -14,3 +14,6 @@ Host rsync
   User 15972
   HostName ch-s010.rsync.net
 
+Host laptop
+  User chris
+  HostName 192.168.0.63

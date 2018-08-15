@@ -36,8 +36,12 @@ bindsym $mod+m exec --no-startup-id $HOME/bin/spotify
 
 # Start a terminal
 bindsym $mod+Return exec --no-startup-id $terminal
+bindsym $mod2+Return exec --no-startup-id termite -c $HOME/.config/termite/config2
 # bindsym $mod+Shift+Return exec --no-startup-id gnome-terminal --working-directory=`~/bin/termdir.py`
 bindsym $mod+Shift+Return exec --no-startup-id $terminal -d `$HOME/bin/xcwd`
+
+bindsym --release $mod2+b exec $HOME/bin/magic-term.sh run
+bindsym $mod2+Shift+t exec --no-startup-id $HOME/bin/magic-term.sh test
 
 bindsym $mod+c exec --no-startup-id google-chrome-stable
 bindsym $mod+x exec --no-startup-id gnome-calculator

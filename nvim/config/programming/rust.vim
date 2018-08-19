@@ -4,7 +4,7 @@ let g:rustfmt_autosave = 1
 
 
 
-Plug 'ncm2/ncm2-racer'
+Plug 'ncm2/ncm2-racer', { 'for': 'rust' }
 
 
 " Language Server

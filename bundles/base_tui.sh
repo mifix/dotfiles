@@ -1,6 +1,7 @@
+APT_PPA_REPOSITORIES=(neovim-ppa/stable)
 
 APT_PACKAGES=(tmux htop aria2 fasd keychain \
-  exuberant-ctags neovim)
+  exuberant-ctags neovim python-dev python-pip python3-dev python3-pip)
 
 NIX_PACKAGES=()
 
@@ -41,4 +42,5 @@ task "Link config files" "$SCRIPT_DIR/link_config.sh"
 
 task "Set $LOGIN_SHELL as default shell" "sudo chsh -s $(which $LOGIN_SHELL) $USERNAME" "$(getent passwd $USERNAME | cut -d: -f7)" "$(which $LOGIN_SHELL)"
 
+task "Install or upgrade neovim python plugin..." "sudo pip3 install --upgrade neovim"
 

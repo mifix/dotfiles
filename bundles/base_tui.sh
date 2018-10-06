@@ -6,7 +6,7 @@ APT_PACKAGES=(tmux htop aria2 fasd keychain \
 NIX_PACKAGES=()
 
 SNAP_PACKAGES=()
-SNAP_CLASSIC_PACKAGES=(rg)
+SNAP_CLASSIC_PACKAGES=(ripgrep)
 
 
 LOGIN_SHELL="zsh"
@@ -31,6 +31,8 @@ fi
 
 install_packages "SNAP"
 install_packages "SNAP-CLASSIC"
+
+task "Set ripgrep symlink" "sudo snap alias ripgrep.rg rg" "$(snap aliases | grep -c ripgrep.rg)" "1"
 
 task "Downloading zplug" "git clone https://github.com/zplug/zplug.git $HOME/.zplug" "$HOME/.zplug"
 task "Downloading base16 colors" "git clone https://github.com/chriskempson/base16-shell.git $HOME/.config/base16-shell" "$HOME/.config/base16-shell"

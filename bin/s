@@ -9,7 +9,7 @@
  #     #  #  #   ##  #         #    #  #   ##  #       #        #        #
  #     #  #  #    #  #          ####   #    #  ######  ######  ######    #
 
-
+SNEEZY_IMAGE="sneezy-bionic"
 IMAGE="images:ubuntu/18.04"
 
 
@@ -55,10 +55,18 @@ case $command in
       echo "Arch Linux detected. Setting lxc options to: $OPTIONS"
     fi
 
+    if [ $(lxc image list | grep -c $SNEEZY_IMAGE) -eq 1 ]; then
+      IMAGE=${SNEEZY_IMAGE}
+      echo "Found sneezy base image. Using ${IMAGE}."
+    else
+      echo "Didn't find sneezy base image. Using ${IMAGE}."
+    fi
+
     mkdir -p $workspace 2>/dev/null
     lxc init "$IMAGE" $container $OPTIONS
     lxc config set $container raw.idmap "both `id -u` 1000"
     lxc config device add $container homedir disk source=$workspace path=/home/ubuntu
+    lxc config device add $container dotfiles disk source=/home/chris/.dotfiles path=/home/ubuntu/.dotfiles
     # lxc config device add $container Workspace disk source=$workspace path=/opt/Workspace
     lxc start $container
 
@@ -70,9 +78,9 @@ case $command in
 
     if [ -d ~/.dotfiles ]; then
       echo "Dotfiles detected. Running 'base' install"
-      echo "Syncing dotfiles."
-      cd $workspace
-      rsync -aqvz ~/.dotfiles .
+    #   echo "Syncing dotfiles."
+    #   cd $workspace
+    #   rsync -aqvz ~/.dotfiles .
       lxc exec $container  -- sudo --login -u ubuntu bash -c "cd ~/.dotfiles; ./init base ${bundles}"
     fi
 

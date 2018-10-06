@@ -11,3 +11,4 @@ xinput --set-prop 12 293 1
 xinput --set-prop 10 280 -27 -27
 xinput --set-prop 12 280 -27 -27
 
+mons -a &!

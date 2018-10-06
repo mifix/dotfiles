@@ -6,12 +6,13 @@ fi
 
 alias -g L=' | less'
 
-alias au='sudo apt update && sudo apt full-upgrade'
+alias au='sudo apt update && sudo apt full-upgrade -V'
 alias ai='sudo apt install -y'
 
 alias S='builtin cd $HOME/Documents/Schule/'
 alias D='builtin cd $HOME/Downloads/'
 alias P='builtin cd $HOME/Projects/'
+alias DF='builtin cd $HOME/.dotfiles/'
 
 if (( ${+commands[aria2c]} )); then
   alias yt='youtube-dl -f mp4 --external-downloader aria2c'

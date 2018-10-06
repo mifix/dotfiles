@@ -14,10 +14,13 @@ set $up     k
 set $right  l
 
 # set $terminal gnome-terminal
-set $terminal termite
+# set $terminal termite
+set $terminal alacritty
 
 set $filebrowser pcmanfm
 #set $filebrowser nautilus
+
+set $Locker $HOME/bin/lock.sh
 
 #*************** Keybindings ******************
 
@@ -27,6 +30,7 @@ bindsym $mod+Ctrl+s exec --no-startup-id $HOME/bin/switch_keyboard.sh
 # My apps shortcut
 bindsym $mod+p exec --no-startup-id $filebrowser
 bindsym $mod+Shift+p exec --no-startup-id $filebrowser `$HOME/bin/xcwd`
+bindsym $mod2+Shift+p exec --no-startup-id alacritty --working-directory `$HOME/bin/xcwd` -e ranger `$HOME/bin/xcwd`
 
 # Open all pdfs in current directory
 bindsym $mod+Ctrl+p exec --no-startup-id zathura `$HOME/bin/xcwd`/*.pdf
@@ -35,10 +39,10 @@ bindsym $mod+Ctrl+p exec --no-startup-id zathura `$HOME/bin/xcwd`/*.pdf
 bindsym $mod+m exec --no-startup-id $HOME/bin/spotify
 
 # Start a terminal
-bindsym $mod+Return exec --no-startup-id $terminal
+bindsym $mod+Return exec $terminal
 bindsym $mod2+Return exec --no-startup-id termite -c $HOME/.config/termite/config2
 # bindsym $mod+Shift+Return exec --no-startup-id gnome-terminal --working-directory=`~/bin/termdir.py`
-bindsym $mod+Shift+Return exec --no-startup-id $terminal -d `$HOME/bin/xcwd`
+bindsym $mod+Shift+Return exec --no-startup-id $terminal --working-directory "`$HOME/bin/xcwd`"
 
 bindsym --release $mod2+b exec $HOME/bin/magic-term.sh run
 bindsym $mod2+Shift+t exec --no-startup-id $HOME/bin/magic-term.sh test
@@ -49,8 +53,8 @@ bindsym $mod+x exec --no-startup-id gnome-calculator
 # Kill focused window
 bindsym $mod+Shift+q kill
 
-# Quit i3
-bindsym $mod+Shift+Escape exec i3-msg exit
+# Lock Screen
+bindsym $mod+Shift+Escape exec $Locker
 
 # Start dmenu (a program launcher)
 #bindsym $mod+d exec --no-startup-id dmenu_run -b -lh 24 -x 10 -y 10 -w 1347 -nf "#586e75" -sb "#268bd2" -sf "#dfddd5" -nb "#dfddd5" -fn "Iosevka-9"
@@ -257,24 +261,21 @@ mode "$mode_gaps_outer" {
 
 bindsym $mod+r mode "resize"
 
-# Lock screen
-set $Locker i3lock-fancy
-
 # Shutdwon, Restart, Logout, Suspend, Hibernate, Reboot, Lock
-# set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
-# mode "$mode_system" {
-#     bindsym l exec --no-startup-id $Locker, mode "default"
-#     bindsym e exec --no-startup-id i3-msg exit, mode "default"
-#     bindsym s exec --no-startup-id $Locker && systemctl suspend, mode "default"
-#     bindsym h exec --no-startup-id $Locker && systemctl hibernate,mode "default"
-#     bindsym r exec --no-startup-id systemctl reboot, mode "default"
-#     bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"
+set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
+ mode "$mode_system" {
+     bindsym l exec --no-startup-id $Locker, mode "default"
+     bindsym e exec --no-startup-id i3-msg exit, mode "default"
+     bindsym s exec --no-startup-id systemctl suspend, mode "default"
+     bindsym h exec --no-startup-id $Locker && systemctl hibernate,mode "default"
+     bindsym r exec --no-startup-id systemctl reboot, mode "default"
+     bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"
 
-#     # back to normal: Enter or Escape
-#     bindsym Return mode "default"
-#     bindsym Escape mode "default"
-# }
-#bindsym $mod+F9 mode "$mode_system"
+     # back to normal: Enter or Escape
+     bindsym Return mode "default"
+     bindsym Escape mode "default"
+ }
+bindsym $mod+Escape mode "$mode_system"
 bindsym $mod+F9 exec --no-startup-id $HOME/.config/popups/power/power
 
 # Volume control

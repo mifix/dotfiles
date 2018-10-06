@@ -3,12 +3,12 @@
 DOTFILES_DIR="$(cd "$(dirname "$0")" && pwd)"
 
 
-DOTDIRS=("xmodmap" "tmux" "sakura" "zsh" "git" "compton" "colors")
+DOTDIRS=("xmodmap" "tmux" "sakura" "zsh" "git" "compton" "colors" "offlineimap")
 
 DOTFILES=("Xresources" )
 
 CONFFILES=("polybar" "nvim" "firejail" "i3" "dunst" "lemonbar" \
-  "rofi" "termite" "i3blocks" "qutebrowser" "ranger")
+  "rofi" "termite" "i3blocks" "qutebrowser" "ranger" "mutt")
 
 SNAPCONFS=("lxd")
 

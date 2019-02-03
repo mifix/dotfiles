@@ -9,4 +9,4 @@ let g:neotex_latexdiff=1
 Plug 'lervag/vimtex'
 
 autocmd BufRead,BufNewFile *.{tex} setlocal filetype=tex spell spelllang=de fo+=t tw=72
-autocmd BufRead,BufNewFile *.{tex} autocmd BufWritePost * Neomake!
+"autocmd BufRead,BufNewFile *.{tex} autocmd BufWritePost * Neomake!

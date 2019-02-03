@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+mons --primary HDMI-0
+mons -e right
+
 xrdb -load -I$HOME $HOME/.Xresources
 
 compton --config ~/.compton.conf -b
@@ -16,5 +19,10 @@ while pgrep -x polybar >/dev/null; do sleep 2; done
 polybar top -c ~/.config/polybar/config.top 2> /dev/null &
 polybar bottom -c ~/.config/polybar/config.bottom 2> /dev/null &
 
-/usr/lib/gnome-settings-daemon/gsd-xsettings 2>/dev/null &
+#/usr/lib/gnome-settings-daemon/gsd-xsettings 2>/dev/null &
+
+#cd Projects/dynpaper
+#./dynpaper.py -e feh -f ~/Pictures/Wallpapers/mojave/mojave_dynamic_{}.jpeg &
+
 true
+

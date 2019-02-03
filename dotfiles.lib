@@ -80,9 +80,15 @@ task() {
 function add_apt_ppa_repositories() {
   if (( ${#APT_PPA_REPOSITORIES[@]} > 0 )); then
     for repo in "${APT_PPA_REPOSITORIES[@]}"; do
-
       task "Adding repository '$repo'" "sudo add-apt-repository --yes ppa:${repo}" "$(grep -l $repo /etc/apt/sources.list.d/*.list | wc -l)" "1"
+    done
+  fi
+}
 
+function add_apt_keys() {
+  if (( ${#APT_KEYS[@]} > 0 )); then
+    for key in "${APT_KEYS[@]}"; do
+      task "Adding signing key.." "wget --quiet -O - ${key} | sudo apt-key add -"
     done
   fi
 }
@@ -97,6 +103,7 @@ function install_packages() {
 
   case $package_type in
     "APT")
+      # add_apt_keys
       add_apt_ppa_repositories
 
       installed_packages="$(dpkg --get-selections | grep -v deinstall | awk 'BEGIN{FS="[\t:]"}{print $1}' | uniq)";

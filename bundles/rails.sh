@@ -1,5 +1,5 @@
 
-include_bundles "ruby" "node" "cockroachdb"
+include_bundles "ruby" "node"
 
 # -----------------------------------------------------------------------
 

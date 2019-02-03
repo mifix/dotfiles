@@ -48,7 +48,7 @@ fi
 
 case $command in
   c)
-    if [ $(lsb_release -id | grep -c Arch) ]; then
+    if [ $(lsb_release -id | grep -c Arch) -eq 0 ]; then
       OPTION=""
     else
       OPTIONS="-c security.privileged=true"

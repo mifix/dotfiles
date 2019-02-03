@@ -21,7 +21,7 @@ command=$1
 container=$2
 bundles="${@:3}"
 
-workspace="$HOME/Projects/cnt/${container}"
+workspace_base="$HOME/Projects/cnt"
 
 
 if [ -z $command ]; then
@@ -34,6 +34,7 @@ if [ -z $command ]; then
   echo "  h ... stop container (halt)"
   echo "  s ... enter container (shell)"
   echo "  d ... delete container"
+  echo "  p ... create and switch to a lxd project"
   echo "  b ... go to 'base' directory (Workspace)"
   exit
 fi
@@ -45,9 +46,51 @@ if [ -z $container ]; then
 fi
 
 
+# get current lxc project name
+# use project name as directory namespace
+# e.g. container foo in project bar will be in
+# $workspace_base/bar/foo
+project_current_project() {
+  lxc project  list | grep current | cut -d ' ' -f 2
+}
+
+project_exists() {
+  lxc project list | grep -c $1
+}
+
+
+get_workspace_dir() {
+  if [[ -z $1 ]]; then echo "Workspace base is missing."; exit 1;fi
+  base="$1"
+  if [[ -z $2 ]]; then echo "Project is missing."; exit 1;fi
+  project="$2"
+  if [[ -z $3 ]]; then echo "Container is missing."; exit 1;fi
+  container="$3"
+
+  if [[ $project = "default" ]]; then
+    project=""
+  fi
+
+  echo "${base}/${project}/${container}" | sed -e 's/\/\//\//'
+}
+
+project=$(project_current_project)
+if [[ $project != "default" ]]; then
+  echo "Current Project: $project"
+fi
+
+workspace=$(get_workspace_dir ${workspace_base} ${project} ${container})
+
 
 case $command in
   c)
+    # make sure no project with the same name exists
+    pe=$(project_exists $container)
+    if [[ $pe = 1 ]]; then
+      echo "A project with the same name already exists!"
+      exit 1
+    fi
+
     if [ $(lsb_release -id | grep -c Arch) ]; then
       OPTION=""
     else
@@ -96,6 +139,20 @@ case $command in
     # lxc exec $container  -- su -l ubuntu
     # reset theme
     zsh $HOME/.base16_theme
+    ;;
+  p)
+    project=$container
+    exists=$(project_exists $project)
+    if [[ $exists = 0 ]]; then
+      # create lxd projects and use features from default
+      # https://github.com/lxc/lxd/blob/master/doc/projects.md
+      echo "Creating project: $project"
+      lxc project create $project
+      lxc project set $project features.images false
+      lxc project set $project features.profiles false
+    fi
+    echo "Switching to project: $project"
+    lxc project switch $project
     ;;
   d)
     lxc stop $container

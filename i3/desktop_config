@@ -14,7 +14,9 @@ set $up     k
 set $right  l
 
 # set $terminal gnome-terminal
-set $terminal termite
+# set $terminal termite
+set $terminal alacritty
+set $terminal2 alacritty --live-config-reload --config-file ~/.config/alacritty/coding.yml --working-directory=`$HOME/bin/xcwd`
 
 #set $filebrowser pcmanfm
 set $filebrowser nautilus
@@ -36,7 +38,7 @@ bindsym $mod+m exec --no-startup-id $HOME/bin/spotify
 
 # Start a terminal
 bindsym $mod+Return exec --no-startup-id $terminal
-bindsym $mod2+Return exec --no-startup-id termite -c $HOME/.config/termite/config2
+bindsym $mod2+Return exec --no-startup-id $terminal2
 # bindsym $mod+Shift+Return exec --no-startup-id gnome-terminal --working-directory=`~/bin/termdir.py`
 bindsym $mod+Shift+Return exec --no-startup-id $terminal -d `$HOME/bin/xcwd`
 
@@ -48,6 +50,9 @@ bindsym $mod+x exec --no-startup-id gnome-calculator
 
 # Kill focused window
 bindsym $mod+Shift+q kill
+
+# Suspend
+bindsym XF86Sleep exec systemctl suspend
 
 # Quit i3
 bindsym $mod+Shift+Escape exec i3-msg exit
@@ -168,6 +173,7 @@ bindsym $mod+Shift+c reload
 
 # Restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
+bindsym $mod2+Shift+r exec --no-startup-id $HOME/bin/barstart
 
 # Resize window (you can also use the mouse for that)
 mode "resize" {
@@ -202,7 +208,7 @@ bindsym $mod+minus scratchpad show
 #  i3-gaps settings
 #  More info visit: https://github.com/Airblader/i3
 
-#smart_gaps on
+smart_gaps on
 smart_borders on
 #smart_gaps on
 
@@ -306,10 +312,10 @@ bindsym $mod+F11 exec --no-startup-id ~/.local/bin/themeswitcher
 # exec_always --no-startup-id feh --bg-fill $HOME/Pictures/Wallpapers/wallhaven-168642.png
 exec_always --no-startup-id feh --bg-fill $HOME/Pictures/Wallpapers/sadkitty1.jpg
 # exec_always --no-startup-id feh --bg-fill $HOME/Pictures/Wallpapers/dark_material.png
-exec --no-startup-id compton $HOME/.compton.conf -b
+#exec --no-startup-id compton $HOME/.compton.conf -b
 exec --no-startup-id dunst -config $HOME/.config/dunst/dunstrc
 
-exec --no-startup-id . $HOME/bin/barstart &
+#exec --no-startup-id . $HOME/bin/barstart &
 
 
 #*************  Other settings  *********************

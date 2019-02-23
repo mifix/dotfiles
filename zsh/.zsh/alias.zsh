@@ -16,8 +16,10 @@ alias DF='builtin cd $HOME/.dotfiles/'
 
 if (( ${+commands[aria2c]} )); then
   alias yt='youtube-dl -f mp4 --external-downloader aria2c'
+  alias ytn='youtube-dl --no-check-certificate -f mp4 --external-downloader aria2c'
 else
   alias yt='youtube-dl -f mp4'
+  alias ytn='youtube-dl --no-check-certificate -f mp4'
 fi
 
 alias edit_i3='e ~/.config/i3/config && i3-msg reload'

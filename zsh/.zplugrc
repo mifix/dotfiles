@@ -12,8 +12,10 @@ POWERLEVEL9K_MODE='nerdfont-complete'
 
 if [[ $(hostname) == 'plutarch' ]];then
   # zplug "bhilburn/powerlevel9k", use:powerlevel9k.zsh-theme
-  zplug "denysdovhan/spaceship-prompt", use:spaceship.zsh, from:github, as:theme
+  zplug "alexanderjeurissen/ombre.zsh", use:prompt_ombre_setup
+elif [[ $(hostname) == 'primrose' ]];then
   SPACESHIP_KUBECONTEXT_SHOW=false
+  zplug "denysdovhan/spaceship-prompt", use:spaceship.zsh, from:github, as:theme
 elif [[ $(hostname) == 'wth-kiste' ]];then
   # zplug "bhilburn/powerlevel9k", use:powerlevel9k.zsh-theme
   zplug "denysdovhan/spaceship-prompt", use:spaceship.zsh, from:github, as:theme

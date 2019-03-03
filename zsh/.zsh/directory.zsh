@@ -1,4 +1,14 @@
-alias SCHULE="builtin cd ~/Documents/Schule/"
+hash -d S="$HOME/Documents/Schule"
+alias S='builtin cd $HOME/Documents/Schule/'
+
+alias D='builtin cd $HOME/Downloads/'
+hash -d D="$HOME/Downloads"
+
+alias P='builtin cd $HOME/Projects/'
+hash -d P="$HOME/Projects"
+
+alias DF='builtin cd $HOME/.dotfiles/'
+hash -d DF="$HOME/.dotfiles"
 
 
 #
@@ -16,6 +26,11 @@ zdouble_dot_expand='true'
 # If a command is issued that can’t be executed as a normal command,
 # and the command is the name of a directory, perform the cd command to that directory.
 setopt AUTO_CD
+
+# If the argument to a cd command (or an implied cd with the AUTO_CD option
+# set) is not a directory, and does not begin with a slash, try to expand the
+# expression as if it were preceded by a ‘~’ .
+setopt CDABLE_VARS
 
 # Make cd push the old directory onto the directory stack.
 setopt AUTO_PUSHD
@@ -43,3 +58,4 @@ setopt MULTIOS
 # Disallow ‘>’ redirection to overwrite existing files.
 # ‘>|’ or ‘>!’ must be used to overwrite a file.
 setopt NO_CLOBBER
+

@@ -340,6 +340,7 @@ for_window [title="Sign in.*feedly" class="(?i)Firefox"] floating enable
 # Starting apps on a specific workspace
 #assign [class="^Tor Browser$"]           $w1
 assign [class="^Firefox$"]               $w1
+assign [class="^qutebrowser$"]               $w1
 assign [class="^Rambox$"]               $w5
 #assign [class="Spotify"]               $w7
 for_window [class="Spotify"] move to workspace $w7

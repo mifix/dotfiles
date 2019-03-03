@@ -13,3 +13,7 @@ Plug 'reedes/vim-colors-pencil'
 Plug 'connorholyday/vim-snazzy'
 
 Plug 'alexanderjeurissen/lumiere.vim'
+
+Plug 'rakr/vim-one'
+let g:one_allow_italics = 1
+

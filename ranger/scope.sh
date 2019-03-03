@@ -60,9 +60,16 @@ handle_extension() {
         # PDF
         pdf)
             # Preview as text conversion
-            pdftotext -l 10 -nopgbrk -q -- "${FILE_PATH}" - && exit 5
-            exiftool "${FILE_PATH}" && exit 5
-            exit 1;;
+            # pdftotext -l 10 -nopgbrk -q -- "${FILE_PATH}" - && exit 5
+            # exiftool "${FILE_PATH}" && exit 5
+            # exit 1;;
+            pdftoppm -f 1 -l 1 \
+             -scale-to-x 1920 \
+             -scale-to-y -1 \
+             -singlefile \
+             -jpeg -tiffcompression jpeg \
+             -- "${FILE_PATH}" "${IMAGE_CACHE_PATH%.*}" \
+            && exit 6 || exit 1;;
 
         # BitTorrent
         torrent)

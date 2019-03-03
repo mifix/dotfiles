@@ -18,8 +18,8 @@ endif
 set background=dark
 " colorscheme base16-google-light
 " colorscheme OceanicNext
-colorscheme srcery
-
+" colorscheme srcery
+colorscheme lumiere
 
 " if &term =~ '256color'
 " disable Background Color Erase (BCE) so that color schemes
@@ -41,7 +41,7 @@ endif
 
 
 let g:lightline = {
-      \ 'colorscheme': 'srcery_drk',
+      \ 'colorscheme': 'materia',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename', 'neomake' ], ['ctrlpmark'] ],
       \   'right': [ [ 'lineinfo' ], ['percent'], [ 'fileformat', 'fileencoding', 'filetype' ] ]

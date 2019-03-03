@@ -11,3 +11,5 @@ Plug 'reedes/vim-colors-pencil'
 
 
 Plug 'connorholyday/vim-snazzy'
+
+Plug 'alexanderjeurissen/lumiere.vim'

@@ -1,4 +1,5 @@
 integer t0=$(date '+%s') # start time
+t00=$(date "+%s.%N")
 #zmodload zsh/zprof
 
 # Shell color
@@ -14,9 +15,9 @@ elif [[ -e ~/.is_sneezy ]]; then
   base16_google-light
 fi
 
-if [[ -e $HOME/.ssh/id_rsa ]];then
-	eval `keychain --eval --quiet --agents ssh id_rsa`
-fi
+# if [[ -e $HOME/.ssh/id_rsa ]];then
+# 	eval `keychain --eval --quiet --agents ssh id_rsa`
+# fi
 
 # add before compinit
 fpath+=~/.zfunc
@@ -41,4 +42,7 @@ function {
 }
 unset t0
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+t01=$(date "+%s.%N")
+echo $((t01 - t00))

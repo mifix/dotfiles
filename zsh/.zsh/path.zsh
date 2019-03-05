@@ -20,6 +20,6 @@ export PATH=$PATH:$HOME/.cargo/bin
 export PATH=$PATH:./node_modules/.bin
 
 # Ruby
-if (( ${+commands[gem]} )); then
-  export PATH=$PATH:$(gem environment gemdir)/bin
-fi
+# if (( ${+commands[gem]} )); then
+#   export PATH=$PATH:$(gem environment gemdir)/bin
+# fi

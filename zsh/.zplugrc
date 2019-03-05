@@ -1,7 +1,7 @@
-#zmodload zsh/zprof
+##zmodload zsh/zprof
 source ~/.zplug/init.zsh
 
-# Try to set terminal to 256 color mode
+## Try to set terminal to 256 color mode
 zplug 'chrissicool/zsh-256color'
 
 zplug mafredri/zsh-async, from:github
@@ -40,10 +40,10 @@ zplug "hlissner/zsh-autopair", defer:2
 zplug "zsh-users/zsh-completions"
 
 # Autosuggest
-zplug "zsh-users/zsh-autosuggestions"
+zplug "zsh-users/zsh-autosuggestions", lazy:yes
 
 # Command not found
-zplug "plugins/command-not-found", from:oh-my-zsh
+zplug "plugins/command-not-found", from:oh-my-zsh, lazy:yes
 
 # A next-generation cd command with an interactive filter
 export ENHANCD_DISABLE_DOT=1
@@ -54,7 +54,7 @@ zplug "b4b4r07/enhancd", use:init.sh
 zplug "psprint/history-search-multi-word"
 
 # Taskwarrior completion
-zplug "plugins/taskwarrior", from:oh-my-zsh
+zplug "plugins/taskwarrior", from:oh-my-zsh, lazy:yes
 
 
 # Set the priority when loading
@@ -67,15 +67,15 @@ zplug "zdharma/fast-syntax-highlighting", defer:2
 
 # Install plugins if there are plugins that have not been installed
 #if ! zplug check --verbose; then
-if ! zplug check; then
-    printf "Install? [y/N]: "
-    if read -q; then
-        echo; zplug install
-    fi
-fi
+#if ! zplug check; then
+#    printf "Install? [y/N]: "
+#    if read -q; then
+#        echo; zplug install
+#    fi
+#fi
 
 # Then, source plugins and add commands to $PATH
 #zplug load --verbose
 zplug load
 
-#zprof
+##zprof

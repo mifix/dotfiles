@@ -45,4 +45,4 @@ unset t0
 # [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 t01=$(date "+%s.%N")
-echo $((t01 - t00))
+# echo $((t01 - t00))

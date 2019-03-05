@@ -17,9 +17,9 @@ elif [[ $(hostname) == 'primrose' ]];then
   SPACESHIP_KUBECONTEXT_SHOW=false
   zplug "denysdovhan/spaceship-prompt", use:spaceship.zsh, from:github, as:theme
 elif [[ $(hostname) == 'wth-kiste' ]];then
-  # zplug "bhilburn/powerlevel9k", use:powerlevel9k.zsh-theme
-  zplug "denysdovhan/spaceship-prompt", use:spaceship.zsh, from:github, as:theme
-  SPACESHIP_KUBECONTEXT_SHOW=true
+  zplug "bhilburn/powerlevel9k", use:powerlevel9k.zsh-theme
+  # zplug "denysdovhan/spaceship-prompt", use:spaceship.zsh, from:github, as:theme
+  # SPACESHIP_KUBECONTEXT_SHOW=true
 else
   zplug sindresorhus/pure, use:pure.zsh, from:github, as:theme
 fi

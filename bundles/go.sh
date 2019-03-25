@@ -2,7 +2,7 @@ APT_PACKAGES=()
 
 SNAP_CLASSIC_PACKAGES=(go)
 
-GO_PACKAGES=(github.com/nsf/gocode github.com/sourcegraph/go-langserver)
+GO_PACKAGES=(github.com/nsf/gocode github.com/sourcegraph/go-langserver github.com/saibing/bingo)
 
 # -----------------------------------------------------------------------
 

@@ -43,7 +43,7 @@ endif
 let g:lightline = {
       \ 'colorscheme': 'srcery_drk',
       \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename', 'neomake' ], ['ctrlpmark'] ],
+      \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename', 'neomake', 'cocstatus' ], ['ctrlpmark'] ],
       \   'right': [ [ 'lineinfo' ], ['percent'], [ 'fileformat', 'fileencoding', 'filetype' ] ]
       \ },
       \ 'component_function': {
@@ -55,6 +55,7 @@ let g:lightline = {
       \   'mode': 'MyMode',
       \   'ctrlpmark': 'CtrlPMark',
       \   'neomake': 'lightline_neomake#component',
+      \   'cocstatus': 'coc#status',
       \ },
       \ 'component_expand': {
       \		'neomake': 'lightline_neomake#component',

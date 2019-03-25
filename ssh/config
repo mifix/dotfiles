@@ -5,6 +5,7 @@ Host *
     ForwardAgent no
     ForwardX11 no
 
+Include ~/.ssh/htl_config
 
 Host wth
   User wth
@@ -17,3 +18,9 @@ Host rsync
 Host laptop
   User chris
   HostName 192.168.0.63
+
+
+Host letto-htl
+  User ubuntu
+  Hostname letto-htl
+  StrictHostKeyChecking no

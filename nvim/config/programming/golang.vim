@@ -35,8 +35,8 @@ augroup golang
 
 
 
-  Plug 'zchee/deoplete-go', { 'do': 'make', 'for': 'go'}
-  let g:deoplete#sources#go#align_class = 1
+  " Plug 'zchee/deoplete-go', { 'do': 'make', 'for': 'go'}
+  " let g:deoplete#sources#go#align_class = 1
 
 
 augroup END

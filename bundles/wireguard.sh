@@ -1,6 +1,6 @@
 APT_PPA_REPOSITORIES=(wireguard/wireguard)
 
-APT_PACKAGES=(wireguard)
+APT_PACKAGES=(wireguard udptunnel)
 
 # -----------------------------------------------------------------------
 

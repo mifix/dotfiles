@@ -19,16 +19,6 @@ Host laptop
   User chris
   HostName 192.168.0.63
 
-Host letto
-  User root
-  HostName 172.16.1.135
-  Port 1704
-
-Host letto-ext
-  User root
-  HostName 193.170.220.9
-  Port 1704
-
 
 Host router
   User root

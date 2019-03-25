@@ -50,6 +50,9 @@ bindsym $mod2+Shift+t exec --no-startup-id $HOME/bin/magic-term.sh test
 bindsym $mod+c exec --no-startup-id google-chrome-stable
 bindsym $mod+x exec --no-startup-id gnome-calculator
 
+# Start Windows WM
+bindsym $mod2+Shift+w exec --no-startup-id $HOME/bin/start_schule
+
 # Kill focused window
 bindsym $mod+Shift+q kill
 
@@ -306,7 +309,8 @@ bindsym $mod+F11 exec --no-startup-id ~/.local/bin/themeswitcher
 #exec_always --no-startup-id feh --bg-fill $HOME/Pictures/Wallpapers/Mountain.jpg
 # exec_always --no-startup-id feh --bg-fill $HOME/Pictures/Wallpapers/wallhaven-168642.png
 # exec_always --no-startup-id feh --bg-fill $HOME/Pictures/Wallpapers/sadkitty1.jpg
-exec_always --no-startup-id feh --bg-fill $HOME/Pictures/Wallpapers/wall03.jpg
+# exec_always --no-startup-id feh --bg-fill $HOME/Pictures/Wallpapers/wall03.jpg
+exec_always --no-startup-id feh --bg-fill $HOME/Pictures/Wallpapers/wall04.png
 exec --no-startup-id compton $HOME/.compton.conf -b
 exec --no-startup-id dunst -config $HOME/.config/dunst/dunstrc
 
@@ -342,6 +346,7 @@ for_window [title="Sign in.*feedly" class="(?i)Firefox"] floating enable
 assign [class="^Firefox$"]               $w1
 assign [class="^qutebrowser$"]               $w1
 assign [class="^Rambox$"]               $w5
+assign [class="^Remote-viewer$"]        $w4
 #assign [class="Spotify"]               $w7
 for_window [class="Spotify"] move to workspace $w7
 assign [class="Pidgin"] $w5

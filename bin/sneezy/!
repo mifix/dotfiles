@@ -1,0 +1,5 @@
+
+[Resolve]
+DNS=10.222.204.1
+Domains=lxd
+ /tmp/foo

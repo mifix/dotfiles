@@ -1,7 +1,7 @@
 APT_PACKAGES=(materia-gtk-theme arc-theme numix-gtk-theme numix-icon-theme papirus-icon-theme \
-  pcmanfm ranger mpv youtube-dl lightdm-gtk-greeter-settings scrot zathura-pdf-poppler mupdf)
+  pcmanfm ranger mpv youtube-dl lightdm-gtk-greeter-settings scrot zathura-pdf-poppler mupdf woeusb)
 
-APT_PPA_REPOSITORIES=()
+APT_PPA_REPOSITORIES=(nilarimogard/webupd8)
 
 SNAP_CLASSIC_PACKAGES=()
 

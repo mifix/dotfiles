@@ -1,0 +1,7 @@
+#!/bin/bash
+
+virsh start SCHULE_Win10
+
+sleep 3
+
+remote-viewer -f spice://localhost:5900

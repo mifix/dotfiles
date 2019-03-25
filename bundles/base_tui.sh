@@ -1,7 +1,7 @@
 APT_PPA_REPOSITORIES=(neovim-ppa/stable)
 
 APT_PACKAGES=(tmux htop aria2 fasd keychain \
-  exuberant-ctags neovim python-dev python-pip python3-dev python3-pip)
+  exuberant-ctags neovim python-dev python-pip python3-dev python3-pip atool)
 
 NIX_PACKAGES=()
 

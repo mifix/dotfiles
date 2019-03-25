@@ -12,7 +12,7 @@ if [[ $(hostname) == 'plutarch' ]];then
 elif [[ $(hostname) == 'wth-kiste' ]];then
   base16_gruvbox-dark-medium
 elif [[ -e ~/.is_sneezy ]]; then
-  base16_google-light
+  base16_snazzy
 fi
 
 # if [[ -e $HOME/.ssh/id_rsa ]];then

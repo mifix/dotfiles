@@ -1,0 +1,13 @@
+[Unit]
+Description=LXD host DNS service (see ~/bin/sneezy)
+After=snap.lxd.daemon.service
+
+[Service]
+Type=oneshot
+ExecStart=/opt/sneezy/bin/lxdhostdns_start.sh
+RemainAfterExit=true
+ExecStop=/opt/sneezy/bin/lxdhostdns_stop.sh
+StandardOutput=journal
+
+[Install]
+WantedBy=multi-user.target

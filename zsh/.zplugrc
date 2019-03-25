@@ -10,7 +10,7 @@ zplug mafredri/zsh-async, from:github
 POWERLEVEL9K_MODE='awesome-fontconfig'
 POWERLEVEL9K_MODE='nerdfont-complete'
 
-if [[ $(hostname) == 'plutarch' ]];then
+if [[ $(hostname) == 'plutarch' || -e ~/.is_sneezy ]];then
   # zplug "bhilburn/powerlevel9k", use:powerlevel9k.zsh-theme
   zplug "alexanderjeurissen/ombre.zsh", use:prompt_ombre_setup
 elif [[ $(hostname) == 'primrose' ]];then

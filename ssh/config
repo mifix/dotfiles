@@ -19,8 +19,18 @@ Host laptop
   User chris
   HostName 192.168.0.63
 
+Host letto
+  User root
+  HostName 172.16.1.135
+  Port 1704
 
-Host letto-htl
-  User ubuntu
-  Hostname letto-htl
-  StrictHostKeyChecking no
+Host letto-ext
+  User root
+  HostName 193.170.220.9
+  Port 1704
+
+
+Host router
+  User root
+  HostName 192.168.1.1
+  KexAlgorithms +diffie-hellman-group1-sha1

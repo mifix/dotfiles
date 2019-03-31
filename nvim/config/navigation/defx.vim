@@ -48,9 +48,9 @@ function! s:defx_open(...) abort
     call execute(printf('Defx %s -search=%s %s', l:args, expand('%:p'), expand('%:p:h')))
   else
     call execute(printf('Defx -toggle %s %s', l:args, l:path))
-    if l:is_opened
-      call execute('wincmd p')
-    endif
+    " if l:is_opened
+    "   call execute('wincmd p')
+    " endif
   endif
 
   return execute("norm!\<C-w>=")
@@ -66,8 +66,14 @@ endfunction
 
 function! s:defx_mappings() abort
   nnoremap <silent><buffer>m :call <sid>defx_context_menu()<CR>
-  nnoremap <silent><buffer><expr> o defx#do_action('drop')
-  nnoremap <silent><buffer><expr> <CR> defx#do_action('drop')
+  nnoremap <silent><buffer><expr> o
+        \ defx#is_directory() ?
+        \ defx#do_action('open') :
+        \ defx#do_action('multi', ['drop', 'quit'])
+  nnoremap <silent><buffer><expr> <CR>
+        \ defx#is_directory() ?
+        \ defx#do_action('open') :
+        \ defx#do_action('multi', ['drop', 'quit'])
   nnoremap <silent><buffer><expr> <2-LeftMouse> defx#do_action('drop')
   nnoremap <silent><buffer><expr> s defx#do_action('open', 'botright vsplit')
   nnoremap <silent><buffer><expr> R defx#do_action('redraw')

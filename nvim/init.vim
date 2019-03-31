@@ -276,22 +276,4 @@ function! <SID>StripTrailingWhitespaces()
 endfunction
 autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 
-
-function! MyOnBattery()
-  if ! filereadable('/sys/class/power_supply/AC/online')
-    return v:false
- end
- return readfile('/sys/class/power_supply/AC/online') == ['0']
-endfunction
-
-if MyOnBattery()
-  " call neomake#configure#automake('w')
-  call neomake#configure#automake('nw', 1000)
-else
-  " call neomake#configure#automake('nw', 1000)
-  " Full config: when writing or reading a buffer, and on changes in insert and
-  " normal mode (after 1s; no delay when writing).
-  call neomake#configure#automake('nrwi', 500)
-endif
-
 " }

@@ -310,7 +310,7 @@ bindsym $mod+F11 exec --no-startup-id ~/.local/bin/themeswitcher
 # exec_always --no-startup-id feh --bg-fill $HOME/Pictures/Wallpapers/wallhaven-168642.png
 # exec_always --no-startup-id feh --bg-fill $HOME/Pictures/Wallpapers/sadkitty1.jpg
 # exec_always --no-startup-id feh --bg-fill $HOME/Pictures/Wallpapers/wall03.jpg
-exec_always --no-startup-id feh --bg-fill $HOME/Pictures/Wallpapers/wall04.png
+exec_always --no-startup-id feh --bg-fill $HOME/Pictures/Wallpapers/budapest.jpg
 exec --no-startup-id compton $HOME/.compton.conf -b
 exec --no-startup-id dunst -config $HOME/.config/dunst/dunstrc
 

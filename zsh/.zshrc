@@ -46,3 +46,5 @@ unset t0
 
 t01=$(date "+%s.%N")
 # echo $((t01 - t00))
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"

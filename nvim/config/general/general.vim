@@ -38,6 +38,9 @@ Plug 'tpope/vim-surround'
 "  dircolors in your vidir session
 Plug 'trapd00r/vim-syntax-vidir-ls'
 
+" devicons
+Plug 'ryanoasis/vim-devicons'
+
 " i3 config syntax
 Plug 'PotatoesMaster/i3-vim-syntax'
 

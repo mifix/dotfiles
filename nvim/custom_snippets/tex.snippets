@@ -12,15 +12,15 @@ endsnippet
 
 
 snippet enu "enumerate alpha (SA)"
-\begin{enumerate}[label=\textbf{\alph*})]
-	\item ${0}
+\begin{enumerate}[label=\textbf{\alph*)}]
+	${0}
 \end{enumerate}
 endsnippet
 
 snippet enum "enumerate alpha - multicol (SA)"
 \begin{multicols}{$1}
-	\begin{enumerate}[label=\textbf{\alph*})]
-		\item ${0}
+	\begin{enumerate}[label=\textbf{\alph*)}]
+		${0}
 	\end{enumerate}
 \end{multicols}
 endsnippet
@@ -29,6 +29,51 @@ snippet item "item with points (SA)"
 \item (\points{$1}) $0
 endsnippet
 
+snippet wahreAussagen "ankreuzen wahrer Aussagen"
+\begin{center}
+	\renewcommand{\arraystretch}{1.6}
+	\begin{tabular}{|l|@{\hspace{0.4cm}}c@{\hspace{0.4cm}}|}
+	\hline
+		$0 & \checkbox \\\\ \hline
+	\end{tabular}%
+\end{center}
+endsnippet
+
+snippet wahreZeile "ankreuzen wahrer Aussagen"
+$0 & \checkbox \\\\ \hline
+endsnippet
+
+snippet Sinn "math. Satz Sinn"
+Vervollständige den folgenden Satz so, dass er mathematisch korrekt ist. \medskip
+\\\\
+$0 \blanknum{1} $1 \blanknum{2} $2. \medskip
+
+\hfill
+\parbox{.25\linewidth}{
+  \renewcommand{\arraystretch}{1.8}
+  \centering
+  \begin{tabular}{|l|@{\hspace{0.4cm}}c@{\hspace{0.4cm}}|}
+  \cline{1-2}
+  \multicolumn{2}{|c|}{\circled{1}}  \\\\ \hline
+    $3 & \checkbox \\\\ \hline
+    $4 & \checkbox \\\\ \hline
+    $5 & \checkbox \\\\ \hline
+  \end{tabular}%
+}
+\hfill
+\parbox{.65\linewidth}{
+  \renewcommand{\arraystretch}{1.8}
+  \centering
+
+  \begin{tabular}{|l|@{\hspace{0.4cm}}c@{\hspace{0.4cm}}|}
+  \cline{1-2}
+  \multicolumn{2}{|c|}{\circled{2}}  \\\\ \hline
+    $6 & \checkbox \\\\ \hline
+    $7 & \checkbox \\\\ \hline
+    $8 & \checkbox \\\\ \hline
+  \end{tabular}%
+}
+endsnippet
 
 snippet VierAusSechs "VierAusSechs (SA)"
 \VierAusSechs[width=0.45,
@@ -48,11 +93,11 @@ endsnippet
 
 snippet half "2 cols - parbox (SA)"
 \hfill
-\parbox{.${1:45}\linewidth}{
+\parbox{${1:.45}\linewidth}{
 	$0
 }
 \hfill
-\parbox{.${2:45}\linewidth}{
+\parbox{${2:.45}\linewidth}{
 
 }
 endsnippet
@@ -73,3 +118,30 @@ endsnippet
 snippet under "underline (SA)"
 \underline{\hspace{$1cm}}$0
 endsnippet
+
+
+snippet pgfplot "pgfplot (axis)"
+\begin{tikzpicture}[yscale=1,xscale=1]
+ \footnotesize
+ \def\xmin{0}; \def\xmax{3}
+ \def\ymin{-3}; \def\ymax{3}
+
+ \def\xGridExt{0.5}; \def\yGridExt{0.5}; \def\gridStep{1cm}
+
+
+ \begin{axis}[xlabel={$x$}, ylabel={$y$},
+   very thick,domain=\xmin:\xmax,ymin=\ymin,ymax=\ymax,
+   axis lines=middle,samples=50,smooth,grid,
+	 %width=0.8\textwidth,height=20em,
+   %x label style={at={(axis description cs:1.05,0.5)},anchor=north},
+   %y label style={at={(axis description cs:-0.05,.5)},rotate=90,anchor=south},
+   %xtick={0,1.57,3.14},xticklabels={$0$,$\frac{\pi}{2}$,$\pi$},
+   %ytick={-0.25,0,0.25},
+   %xticklabel style={at={(xticklabel* cs:2,1)},anchor=north west}
+	 ]
+
+   \addplot[no marks]{$0};
+ \end{axis}
+\end{tikzpicture}
+endsnippet
+

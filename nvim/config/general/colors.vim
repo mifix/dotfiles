@@ -17,3 +17,4 @@ Plug 'alexanderjeurissen/lumiere.vim'
 Plug 'rakr/vim-one'
 let g:one_allow_italics = 1
 
+Plug 'jacoborus/tender.vim'

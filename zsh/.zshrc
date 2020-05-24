@@ -1,3 +1,5 @@
+
+
 integer t0=$(date '+%s') # start time
 t00=$(date "+%s.%N")
 #zmodload zsh/zprof
@@ -6,7 +8,9 @@ t00=$(date "+%s.%N")
 BASE16_SHELL=$HOME/.config/base16-shell/
 [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
 
-if [[ $(hostname) == 'plutarch' ]];then
+if [[ $(hostname) == 'primrose' ]];then
+  eval "$(~/bin/starship init zsh)"
+elif [[ $(hostname) == 'plutarch' ]];then
   # base16_mocha
   base16_ia-light
 elif [[ $(hostname) == 'wth-kiste' ]];then

@@ -1,6 +1,7 @@
 
 [[ -d ~/bin ]] && export PATH=$PATH:~/bin
 [[ -d ~/opt/bin ]] && export PATH=$PATH:~/opt/bin
+[[ -d ~/.local/bin ]] && export PATH=$PATH:~/.local/bin
 
 
 [ -f ~/.nix-profile/etc/profile.d/nix.sh ] && source ~/.nix-profile/etc/profile.d/nix.sh

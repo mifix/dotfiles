@@ -19,6 +19,8 @@ else
 fi
 
 alias edit_i3='e ~/.config/i3/config && i3-msg reload'
+alias edit_sway='e ~/.config/sway/config && i3-msg reload'
+alias swm='swaymsg'
 
 alias ch="builtin cd $HOME"
 

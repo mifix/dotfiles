@@ -11,18 +11,24 @@ POWERLEVEL9K_MODE='awesome-fontconfig'
 POWERLEVEL9K_MODE='nerdfont-complete'
 
 if [[ $(hostname) == 'plutarch' || -e ~/.is_sneezy ]];then
-  # zplug "bhilburn/powerlevel9k", use:powerlevel9k.zsh-theme
+  # zplug "bhilborn/powerlevel9k", use:powerlevel9k.zsh-theme
   zplug "alexanderjeurissen/ombre.zsh", use:prompt_ombre_setup
-elif [[ $(hostname) == 'primrose' ]];then
-  SPACESHIP_KUBECONTEXT_SHOW=false
-  zplug "denysdovhan/spaceship-prompt", use:spaceship.zsh, from:github, as:theme
-elif [[ $(hostname) == 'wth-kiste' ]];then
-  zplug "bhilburn/powerlevel9k", use:powerlevel9k.zsh-theme
-  # zplug "denysdovhan/spaceship-prompt", use:spaceship.zsh, from:github, as:theme
-  # SPACESHIP_KUBECONTEXT_SHOW=true
-else
-  zplug sindresorhus/pure, use:pure.zsh, from:github, as:theme
+   # zplug sindresorhus/pure, use:pure.zsh, from:github, as:theme
+   # echo "IS SNEEZY"
+# elif [[ $(hostname) == 'primrose' ]];then
+#   # SPACESHIP_KUBECONTEXT_SHOW=false
+#   # zplug "denysdovhan/spaceship-prompt", use:spaceship.zsh, from:github, as:theme
+#   eval "$(~/bin/starship init zsh)"
+# elif [[ $(hostname) == 'wth-kiste' ]];then
+#   zplug "bhilburn/powerlevel9k", use:powerlevel9k.zsh-theme
+#   # zplug "denysdovhan/spaceship-prompt", use:spaceship.zsh, from:github, as:theme
+#   # SPACESHIP_KUBECONTEXT_SHOW=true
+# else
+#    zplug sindresorhus/pure, use:pure.zsh, from:github, as:theme
 fi
+#   # zplug "denysdovhan/spaceship-prompt", use:spaceship.zsh, from:github, as:theme
+
+# echo $(hostname)
 
 # Remind me of aliases (because I'm old :()
 export ZSH_PLUGINS_ALIAS_TIPS_TEXT="💡 Junge! Alias tip: "

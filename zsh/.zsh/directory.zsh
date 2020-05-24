@@ -7,6 +7,9 @@ hash -d D="$HOME/Downloads"
 alias P='builtin cd $HOME/Projects/'
 hash -d P="$HOME/Projects"
 
+alias C='builtin cd $HOME/Projects/cnt/'
+hash -d C="$HOME/Projects/cnt"
+
 alias DF='builtin cd $HOME/.dotfiles/'
 hash -d DF="$HOME/.dotfiles"
 

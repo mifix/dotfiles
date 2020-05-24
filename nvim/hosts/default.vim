@@ -18,7 +18,8 @@ endif
 set background=dark
 " colorscheme base16-google-light
 " colorscheme OceanicNext
-colorscheme srcery
+" colorscheme srcery
+color ayu
 
 let g:airline_theme='srcery'
 

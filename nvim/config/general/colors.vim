@@ -18,3 +18,7 @@ Plug 'rakr/vim-one'
 let g:one_allow_italics = 1
 
 Plug 'jacoborus/tender.vim'
+
+
+Plug 'ayu-theme/ayu-vim'
+let ayucolor="mirage"

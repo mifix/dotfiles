@@ -10,6 +10,18 @@ snippet exercise "add exercise (SA)"
 \end{exercise}
 endsnippet
 
+snippet solution "add solution (SA)"
+\begin{solution}
+	$0
+\end{solution}
+endsnippet
+
+snippet exerciseM "add exercise (Matura)"
+\begin{exercise}[subtitle={$1},thema=$2,topics={$3}]
+	$0
+\end{exercise}
+endsnippet
+
 
 snippet enu "enumerate alpha (SA)"
 \begin{enumerate}[label=\textbf{\alph*)}]
@@ -103,13 +115,13 @@ snippet half "2 cols - parbox (SA)"
 endsnippet
 
 snippet halft "2 cols - align top (SA)"
-\adjustbox{valign=t}{\begin{minipage}{.{$1:45}\textwidth}
+\adjustbox{valign=t}{\begin{minipage}{${1:.45}\textwidth}
 	$0
 \end{minipage}}
 %
 \hfill
 %
-\adjustbox{valign=t}{\begin{minipage}{.{$2:45}\textwidth}
+\adjustbox{valign=t}{\begin{minipage}{${2:.45}\textwidth}
 
 \end{minipage}}
 endsnippet
@@ -120,28 +132,33 @@ snippet under "underline (SA)"
 endsnippet
 
 
+snippet figure "Figure with caption"
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=$1\textwidth]{$2}
+	\caption{$3}
+\end{figure}
+endsnippet
+
 snippet pgfplot "pgfplot (axis)"
-\begin{tikzpicture}[yscale=1,xscale=1]
- \footnotesize
- \def\xmin{0}; \def\xmax{3}
- \def\ymin{-3}; \def\ymax{3}
+%\tikzexternalenable
+\begin{tikzpicture}
+	\def\xmin{-5}; \def\xmax{7}
+	\def\ymin{-6}; \def\ymax{6}
 
- \def\xGridExt{0.5}; \def\yGridExt{0.5}; \def\gridStep{1cm}
-
-
- \begin{axis}[xlabel={$x$}, ylabel={$y$},
-   very thick,domain=\xmin:\xmax,ymin=\ymin,ymax=\ymax,
-   axis lines=middle,samples=50,smooth,grid,
-	 %width=0.8\textwidth,height=20em,
-   %x label style={at={(axis description cs:1.05,0.5)},anchor=north},
-   %y label style={at={(axis description cs:-0.05,.5)},rotate=90,anchor=south},
-   %xtick={0,1.57,3.14},xticklabels={$0$,$\frac{\pi}{2}$,$\pi$},
-   %ytick={-0.25,0,0.25},
-   %xticklabel style={at={(xticklabel* cs:2,1)},anchor=north west}
-	 ]
-
-   \addplot[no marks]{$0};
- \end{axis}
+	\begin{axis}[
+		xmin=\xmin,xmax=\xmax,
+		ymin=\ymin,ymax=\ymax,
+		domain=\xmin:\xmax,
+		xlabel = {$x$}, ylabel = {$f(x)$},
+		xtick={\xmin,...,\xmax},
+		ytick={\ymin,...,\ymax},
+		% minor xtick={-4,-2,...,5},
+		samples=100,very thick
+		]
+		\addplot[]{$0};
+		% \addplot[only marks,mark=*] coordinates{ (0,0) };
+	\end{axis}
 \end{tikzpicture}
 endsnippet
 

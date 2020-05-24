@@ -9,8 +9,8 @@
  #     #  #  #   ##  #         #    #  #   ##  #       #        #        #
  #     #  #  #    #  #          ####   #    #  ######  ######  ######    #
 
-SNEEZY_IMAGE="sneezy-bionic"
-IMAGE="images:ubuntu/18.04"
+SNEEZY_IMAGE="sneezy-eoan"
+IMAGE="images:ubuntu/19.10"
 
 
 # To map user ids from host to container, run this command once:
